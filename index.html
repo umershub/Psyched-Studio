@@ -847,44 +847,56 @@
       gap: 24px;
       align-items: center;
     }
-    /* Mobile Metrics Clean Horizontal Carousel Setup */
+    /* Mobile Metrics Responsive Layout */
     @media (max-width: 960px) {
       .work-section {
-        overflow-x: hidden;
+        padding: 80px 20px 100px;
+        overflow: visible;
       }
       .card-grid-split {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 20px;
       }
       .card-tilt-inner {
-        padding: 18px;
+        padding: 20px 18px;
       }
 
       .stack-cards-container {
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: column !important;
         position: relative !important;
         height: auto !important;
-        gap: 20px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 20px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .stack-cards-container::-webkit-scrollbar {
-        display: none;
+        gap: 24px !important;
+        margin-top: 28px !important;
+        padding-bottom: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
       }
 
       .stack-card {
         position: relative !important;
         top: auto !important;
         left: auto !important;
-        flex: 0 0 85vw !important;
-        max-width: 360px;
+        width: 100% !important;
+        max-width: 100% !important;
         margin-bottom: 0 !important;
-        scroll-snap-align: center;
         opacity: 1 !important;
         transform: none !important;
+        display: block !important;
+        background: rgba(16, 17, 23, 0.95) !important;
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        border: 1px solid rgba(255, 253, 217, 0.12);
+        box-shadow: 
+          inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18),
+          inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
+          0 15px 35px -10px rgba(0, 0, 0, 0.85);
+      }
+
+      .card-visual-frame {
+        aspect-ratio: 16 / 10;
+        min-height: 200px;
       }
     }
     .card-visual-frame {
@@ -898,7 +910,7 @@
     .card-visual-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .stack-card:hover .card-visual-img {
@@ -4912,7 +4924,7 @@
       rootMargin: '20px 0px 20px 0px'
     });
 
-    document.querySelectorAll('.scroll-reveal, .stack-card').forEach(el => {
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
       scrollRevealObserver.observe(el);
     });
 
