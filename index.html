@@ -847,57 +847,116 @@
       gap: 24px;
       align-items: center;
     }
-    /* Mobile Metrics Responsive Layout */
+    /* Mobile Metrics Horizontal Peek Carousel & Wiggle Hint */
     @media (max-width: 960px) {
       .work-section {
-        padding: 80px 20px 100px;
-        overflow: visible;
+        padding: 70px 0 90px;
+        overflow-x: hidden;
       }
+      .work-section .max-w-7xl {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
       .card-grid-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
       .card-tilt-inner {
-        padding: 20px 18px;
+        padding: 18px 16px;
       }
 
       .stack-cards-container {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
         position: relative !important;
         height: auto !important;
-        gap: 24px !important;
-        margin-top: 28px !important;
-        padding-bottom: 20px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow: visible !important;
+        gap: 16px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 24px !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        padding: 10px 20px 24px !important;
+        scroll-padding-left: 20px;
+        scroll-padding-right: 20px;
+      }
+
+      .stack-cards-container::-webkit-scrollbar {
+        display: none;
       }
 
       .stack-card {
         position: relative !important;
         top: auto !important;
         left: auto !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        flex: 0 0 calc(100vw - 64px) !important;
+        min-width: calc(100vw - 64px) !important;
+        max-width: calc(100vw - 64px) !important;
+        width: calc(100vw - 64px) !important;
+        flex-shrink: 0 !important;
         margin-bottom: 0 !important;
+        scroll-snap-align: start !important;
         opacity: 1 !important;
         transform: none !important;
-        display: block !important;
-        background: rgba(16, 17, 23, 0.95) !important;
+        box-sizing: border-box !important;
+        background: rgba(18, 19, 26, 0.94) !important;
         backdrop-filter: blur(28px) saturate(180%);
         -webkit-backdrop-filter: blur(28px) saturate(180%);
         border: 1px solid rgba(255, 253, 217, 0.12);
+        border-radius: 20px;
         box-shadow: 
           inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18),
-          inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
-          0 15px 35px -10px rgba(0, 0, 0, 0.85);
+          0 16px 40px -12px rgba(0, 0, 0, 0.85);
       }
 
       .card-visual-frame {
-        aspect-ratio: 16 / 10;
-        min-height: 200px;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #090a0d;
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
+      .card-visual-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    /* Wiggle / Nudge Hint Animation (teases the next card to invite swipe) */
+    @keyframes cardPeekWiggle {
+      0% {
+        transform: translateX(0);
+      }
+      22% {
+        transform: translateX(-40px);
+      }
+      48% {
+        transform: translateX(0);
+      }
+      68% {
+        transform: translateX(-16px);
+      }
+      84% {
+        transform: translateX(0);
+      }
+      94% {
+        transform: translateX(-5px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .stack-cards-container.peek-wiggle {
+      animation: cardPeekWiggle 1.35s cubic-bezier(0.25, 1, 0.5, 1) both;
     }
     .card-visual-frame {
       position: relative;
@@ -2402,6 +2461,14 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Mobile Swipe & Indicator Controls (Hidden on desktop) -->
+      <div class="flex items-center justify-between mt-3 px-1 text-xs font-mono text-[rgba(255,253,217,0.55)] md:hidden">
+        <span class="inline-flex items-center gap-2 text-[#e05326] font-bold">
+          <span class="inline-block animate-pulse">←</span> Swipe to explore verified proof <span class="inline-block animate-pulse">→</span>
+        </span>
+        <span id="metric-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.7)]">1 / 4</span>
       </div>
 
     </div>
@@ -4227,6 +4294,53 @@
         inner.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)";
       });
     });
+
+    // Mobile Metric Cards Horizontal Peek & Wiggle Hint
+    const stackCardsContainer = document.querySelector(".stack-cards-container");
+    const workSection = document.getElementById("work");
+    const metricCounter = document.getElementById("metric-card-counter");
+    let hasWiggled = false;
+
+    if (stackCardsContainer) {
+      // Update counter indicator on scroll
+      stackCardsContainer.addEventListener("scroll", () => {
+        if (!hasWiggled) {
+          hasWiggled = true;
+          stackCardsContainer.classList.remove("peek-wiggle");
+        }
+        if (metricCounter) {
+          const firstCard = stackCardsContainer.querySelector(".stack-card");
+          const cardWidth = firstCard ? firstCard.offsetWidth : 300;
+          const scrollLeft = stackCardsContainer.scrollLeft;
+          const idx = Math.min(4, Math.max(1, Math.round(scrollLeft / (cardWidth + 16)) + 1));
+          metricCounter.textContent = idx + " / 4";
+        }
+      }, { passive: true });
+
+      // Immediate touch stops hint animation
+      stackCardsContainer.addEventListener("touchstart", () => {
+        hasWiggled = true;
+        stackCardsContainer.classList.remove("peek-wiggle");
+      }, { passive: true });
+
+      // Trigger wiggle animation when section scrolls into view on mobile
+      if (typeof IntersectionObserver !== "undefined" && workSection) {
+        const workWiggleObserver = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting && !hasWiggled && window.innerWidth <= 960) {
+            setTimeout(() => {
+              if (!hasWiggled) {
+                stackCardsContainer.classList.add("peek-wiggle");
+                hasWiggled = true;
+                setTimeout(() => {
+                  stackCardsContainer.classList.remove("peek-wiggle");
+                }, 1400);
+              }
+            }, 350);
+          }
+        }, { threshold: 0.2 });
+        workWiggleObserver.observe(workSection);
+      }
+    }
 
     // Interactive 3D Perspective Tilt on Director Portrait Card
     const portraitCard = document.querySelector(".director-portrait-card");
