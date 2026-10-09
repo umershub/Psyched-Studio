@@ -1276,11 +1276,39 @@
         inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.16),
         0 25px 60px -15px rgba(0, 0, 0, 0.85);
     }
-    @media (max-width: 900px) {
-      .lab-interactive-card {
-        padding: 24px;
+
+    /* Grid Architecture: 2 Columns on Desktop, Graph Above Buttons on Mobile */
+    .diagnostic-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 1024px) {
+      .diagnostic-grid-layout {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 48px;
+        row-gap: 0;
+        align-items: start;
+      }
+      .diagnostic-header-col {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .diagnostic-toggles-col {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 8px;
+      }
+      .diagnostic-graph-col {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
       }
     }
+
+    /* Base Desktop Styles for Diagnostic Toggles */
     .hook-toggle-item {
       display: flex;
       align-items: center;
@@ -1292,6 +1320,8 @@
       cursor: pointer;
       margin-bottom: 14px;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      -webkit-user-select: none;
     }
     .hook-toggle-item:hover {
       border-color: rgba(255, 253, 217, 0.22);
@@ -1301,6 +1331,18 @@
       border-color: rgba(224, 83, 38, 0.5);
       background: rgba(224, 83, 38, 0.08);
       box-shadow: 0 4px 20px -4px rgba(224, 83, 38, 0.2);
+    }
+    .hook-toggle-title-desktop {
+      display: block;
+    }
+    .hook-toggle-title-mobile {
+      display: none;
+    }
+    .hook-toggle-dot {
+      display: none;
+    }
+    .hook-toggle-desc {
+      display: block;
     }
     .toggle-knob-shell {
       width: 48px;
@@ -1328,6 +1370,133 @@
     .hook-toggle-item.active .toggle-knob-core {
       transform: translateX(22px);
       background: #ffffff;
+    }
+
+    /* Mobile Responsive View (Graph ABOVE, 3 Minimal Buttons Below in a Sleek Row) */
+    @media (max-width: 1023px) {
+      .retention-lab-section {
+        padding: 60px 16px 70px;
+      }
+      .lab-interactive-card {
+        padding: 20px 16px;
+        border-radius: 20px;
+      }
+      .diagnostic-grid-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .diagnostic-header-col {
+        order: 1;
+      }
+      /* Graph Placed Directly ABOVE Buttons */
+      .diagnostic-graph-col {
+        order: 2;
+        padding: 16px 14px !important;
+        border-radius: 16px !important;
+      }
+      /* 3 Buttons Placed Below Graph in Compact Single Row */
+      .diagnostic-toggles-col {
+        order: 3;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        margin-top: 2px !important;
+      }
+
+      /* Minimal Compact Button Styles */
+      .hook-toggle-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 10px 4px !important;
+        margin-bottom: 0 !important;
+        border-radius: 12px !important;
+        min-height: 48px !important;
+        text-align: center !important;
+        background: rgba(255, 253, 217, 0.04) !important;
+        border: 1px solid rgba(255, 253, 217, 0.1) !important;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+      .hook-toggle-item:hover {
+        background: rgba(255, 253, 217, 0.08) !important;
+        border-color: rgba(255, 253, 217, 0.2) !important;
+      }
+      .hook-toggle-item.active {
+        background: rgba(224, 83, 38, 0.16) !important;
+        border-color: rgba(224, 83, 38, 0.6) !important;
+        box-shadow: 0 0 16px -2px rgba(224, 83, 38, 0.35) !important;
+      }
+
+      /* Hide Large Desktop Elements on Mobile */
+      .hook-toggle-title-desktop {
+        display: none !important;
+      }
+      .hook-toggle-desc {
+        display: none !important; /* user requested: without description */
+      }
+      .toggle-knob-shell {
+        display: none !important; /* user requested: minimal text titles instead of big buttons */
+      }
+
+      /* Minimal Mobile Elements */
+      .hook-toggle-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+      .hook-toggle-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+      }
+      .hook-toggle-dot {
+        display: inline-block !important;
+        width: 6px !important;
+        height: 6px !important;
+        border-radius: 50% !important;
+        background: rgba(255, 253, 217, 0.25) !important;
+        flex-shrink: 0;
+        transition: all 0.3s ease !important;
+      }
+      .hook-toggle-item.active .hook-toggle-dot {
+        background: #e05326 !important;
+        box-shadow: 0 0 8px #e05326 !important;
+      }
+      .hook-toggle-title-mobile {
+        display: inline-block !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        color: rgba(255, 253, 217, 0.7) !important;
+        transition: color 0.25s ease;
+      }
+      .hook-toggle-item.active .hook-toggle-title-mobile {
+        color: #FFFDD9 !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .diagnostic-toggles-col {
+        gap: 6px !important;
+      }
+      .hook-toggle-item {
+        padding: 8px 3px !important;
+      }
+      .hook-toggle-title-mobile {
+        font-size: 10px !important;
+      }
+      .hook-toggle-header {
+        gap: 4px;
+      }
     }
 
 
@@ -3042,64 +3211,35 @@
     <div class="max-w-7xl mx-auto px-6">
       
       <div class="lab-interactive-card">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="diagnostic-grid-layout">
           
-          <!-- Left Column: Diagnostic Module Toggles -->
-          <div class="lg:col-span-6">
+          <!-- Diagnostic Header & Intro (Desktop Left Top / Mobile Order 1) -->
+          <div class="diagnostic-header-col">
             <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">PROPRIETARY RETENTION DIAGNOSTIC</span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.08] mb-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.08] mb-3 sm:mb-4">
               The Retention <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Hook Surgery™</span>
             </h2>
-            <p class="text-[rgba(255,253,217,0.7)] text-sm sm:text-base leading-relaxed mb-8">
+            <p class="text-[rgba(255,253,217,0.7)] text-xs sm:text-base leading-relaxed mb-4 sm:mb-8">
               Toggle our editing modules below to see in real-time how dynamic pacing, broadcast-grade sound design, and 3D visual context bend the YouTube retention curve upward.
             </p>
-
-            <div class="flex flex-col gap-3">
-              <!-- Toggle 1: Sound Design -->
-              <div class="hook-toggle-item" data-mod="sfx" onclick="toggleRetentionMod('sfx', this)">
-                <div>
-                  <h4 class="text-white font-bold text-base">Broadcast-Grade Sound Design</h4>
-                  <p class="text-xs text-[rgba(255,253,217,0.6)] mt-0.5">Sub-bass impact swells, spatial audio cues &amp; tension ducking.</p>
-                </div>
-                <div class="toggle-knob-shell"><div class="toggle-knob-core"></div></div>
-              </div>
-
-              <!-- Toggle 2: Cut Pacing -->
-              <div class="hook-toggle-item" data-mod="zoom" onclick="toggleRetentionMod('zoom', this)">
-                <div>
-                  <h4 class="text-white font-bold text-base">Dynamic 3.2s Cut Pacing</h4>
-                  <p class="text-xs text-[rgba(255,253,217,0.6)] mt-0.5">Elimination of dead air, verbal filler &amp; static frames.</p>
-                </div>
-                <div class="toggle-knob-shell"><div class="toggle-knob-core"></div></div>
-              </div>
-
-              <!-- Toggle 3: 3D Visual Context -->
-              <div class="hook-toggle-item" data-mod="broll" onclick="toggleRetentionMod('broll', this)">
-                <div>
-                  <h4 class="text-white font-bold text-base">After Effects 3D Visual Context</h4>
-                  <p class="text-xs text-[rgba(255,253,217,0.6)] mt-0.5">Custom 3D kinetic metaphors, animated flowcharts &amp; diagrams.</p>
-                </div>
-                <div class="toggle-knob-shell"><div class="toggle-knob-core"></div></div>
-              </div>
-            </div>
           </div>
 
-          <!-- Right Column: SVG Live Retention Graph Simulation -->
-          <div class="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#0a0b0e] border border-[rgba(255,253,217,0.12)] shadow-2xl relative">
-            <div class="flex items-center justify-between gap-4 mb-4">
+          <!-- SVG Live Retention Graph Simulation (Desktop Right Full / Mobile Order 2: Graph Above Buttons) -->
+          <div class="diagnostic-graph-col p-4 sm:p-8 rounded-2xl bg-[#0a0b0e] border border-[rgba(255,253,217,0.12)] shadow-2xl relative">
+            <div class="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap mb-3 sm:mb-4">
               <span class="font-mono text-xs font-bold tracking-wider text-[#FFFDD9] uppercase">VIEWER RETENTION (%)</span>
-              <span id="retention-percent-badge" class="px-2.5 py-1 rounded-full bg-[rgba(107,114,128,0.15)] border border-[rgba(107,114,128,0.35)] text-[#9ca3af] text-[11px] font-mono font-bold tracking-wider uppercase transition-colors duration-300">
+              <span id="retention-percent-badge" class="px-2.5 py-1 rounded-full bg-[rgba(107,114,128,0.15)] border border-[rgba(107,114,128,0.35)] text-[#9ca3af] text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase transition-colors duration-300">
                 32% RETENTION (0 MODULES ACTIVE)
               </span>
             </div>
 
-            <div class="flex flex-wrap items-center gap-4 font-mono text-xs mb-6">
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-[11px] sm:text-xs mb-4 sm:mb-6">
               <span class="text-neutral-500">-- Standard Industry Drop (32%)</span>
               <span class="text-[#e05326] font-bold">— Psyched Master Cut (<span id="retention-live-num">32</span>%)</span>
             </div>
 
             <!-- SVG Visualizer -->
-            <svg viewBox="0 0 450 180" class="w-full h-48 overflow-visible">
+            <svg viewBox="0 0 450 180" class="w-full h-40 sm:h-48 overflow-visible">
               <defs>
                 <linearGradient id="cyberGraphGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop id="cyberGraphStop" offset="0%" stop-color="#6b7280" stop-opacity="0.3" />
@@ -3123,7 +3263,7 @@
             </svg>
 
             <!-- Timeline Scrubber Axis -->
-            <div class="flex justify-between font-mono text-[11px] text-[rgba(255,253,217,0.5)] mt-4 pt-3 border-t border-[rgba(255,253,217,0.08)]">
+            <div class="flex justify-between font-mono text-[10px] sm:text-[11px] text-[rgba(255,253,217,0.5)] mt-3 sm:mt-4 pt-3 border-t border-[rgba(255,253,217,0.08)]">
               <span>0:00 (Hook)</span>
               <span>0:30 (Survival)</span>
               <span>10:00 (Payoff)</span>
@@ -3131,9 +3271,50 @@
             </div>
           </div>
 
+          <!-- Diagnostic Module Toggles (Desktop Left Bottom / Mobile Order 3: 3 Minimal Buttons Below Graph) -->
+          <div class="diagnostic-toggles-col flex flex-col gap-3">
+            <!-- Toggle 1: Sound Design -->
+            <div class="hook-toggle-item" data-mod="sfx" onclick="toggleRetentionMod('sfx', this)" role="button" tabindex="0" aria-label="Toggle Sound Design Module">
+              <div class="hook-toggle-info">
+                <div class="hook-toggle-header">
+                  <span class="hook-toggle-dot"></span>
+                  <h4 class="hook-toggle-title-desktop text-white font-bold text-base">Broadcast-Grade Sound Design</h4>
+                  <span class="hook-toggle-title-mobile font-bold text-xs uppercase tracking-wider">Sound Design</span>
+                </div>
+                <p class="hook-toggle-desc text-xs text-[rgba(255,253,217,0.6)] mt-0.5">Sub-bass impact swells, spatial audio cues &amp; tension ducking.</p>
+              </div>
+              <div class="toggle-knob-shell"><div class="toggle-knob-core"></div></div>
+            </div>
+
+            <!-- Toggle 2: Cut Pacing -->
+            <div class="hook-toggle-item" data-mod="zoom" onclick="toggleRetentionMod('zoom', this)" role="button" tabindex="0" aria-label="Toggle Cut Pacing Module">
+              <div class="hook-toggle-info">
+                <div class="hook-toggle-header">
+                  <span class="hook-toggle-dot"></span>
+                  <h4 class="hook-toggle-title-desktop text-white font-bold text-base">Dynamic 3.2s Cut Pacing</h4>
+                  <span class="hook-toggle-title-mobile font-bold text-xs uppercase tracking-wider">Cut Pacing</span>
+                </div>
+                <p class="hook-toggle-desc text-xs text-[rgba(255,253,217,0.6)] mt-0.5">Elimination of dead air, verbal filler &amp; static frames.</p>
+              </div>
+              <div class="toggle-knob-shell"><div class="toggle-knob-core"></div></div>
+            </div>
+
+            <!-- Toggle 3: 3D Visual Context -->
+            <div class="hook-toggle-item" data-mod="broll" onclick="toggleRetentionMod('broll', this)" role="button" tabindex="0" aria-label="Toggle 3D Visuals Module">
+              <div class="hook-toggle-info">
+                <div class="hook-toggle-header">
+                  <span class="hook-toggle-dot"></span>
+                  <h4 class="hook-toggle-title-desktop text-white font-bold text-base">After Effects 3D Visual Context</h4>
+                  <span class="hook-toggle-title-mobile font-bold text-xs uppercase tracking-wider">3D Visuals</span>
+                </div>
+                <p class="hook-toggle-desc text-xs text-[rgba(255,253,217,0.6)] mt-0.5">Custom 3D kinetic metaphors, animated flowcharts &amp; diagrams.</p>
+              </div>
+              <div class="toggle-knob-shell"><div class="toggle-knob-core"></div></div>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
   </section>
 
