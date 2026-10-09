@@ -847,124 +847,13 @@
       gap: 24px;
       align-items: center;
     }
-    /* Mobile Metrics Horizontal Peek Carousel & Wiggle Hint */
-    @media (max-width: 960px) {
-      .work-section {
-        padding: 70px 0 90px;
-        overflow-x: hidden;
-      }
-      .work-section .max-w-7xl {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .card-grid-split {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .card-tilt-inner {
-        padding: 18px 16px;
-      }
-
-      .stack-cards-container {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        position: relative !important;
-        height: auto !important;
-        gap: 16px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scroll-snap-type: x mandatory !important;
-        -webkit-overflow-scrolling: touch;
-        margin-top: 24px !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
-        margin-left: calc(-50vw + 50%) !important;
-        padding: 10px 20px 24px !important;
-        scroll-padding-left: 20px;
-        scroll-padding-right: 20px;
-      }
-
-      .stack-cards-container::-webkit-scrollbar {
-        display: none;
-      }
-
-      .stack-card {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        flex: 0 0 calc(100vw - 64px) !important;
-        min-width: calc(100vw - 64px) !important;
-        max-width: calc(100vw - 64px) !important;
-        width: calc(100vw - 64px) !important;
-        flex-shrink: 0 !important;
-        margin-bottom: 0 !important;
-        scroll-snap-align: start !important;
-        opacity: 1 !important;
-        transform: none !important;
-        box-sizing: border-box !important;
-        background: rgba(18, 19, 26, 0.94) !important;
-        backdrop-filter: blur(28px) saturate(180%);
-        -webkit-backdrop-filter: blur(28px) saturate(180%);
-        border: 1px solid rgba(255, 253, 217, 0.12);
-        border-radius: 20px;
-        box-shadow: 
-          inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18),
-          0 16px 40px -12px rgba(0, 0, 0, 0.85);
-      }
-
-      .card-visual-frame {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        border-radius: 12px;
-        overflow: hidden;
-        background: #090a0d;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .card-visual-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    }
-
-    /* Wiggle / Nudge Hint Animation (teases the next card to invite swipe) */
-    @keyframes cardPeekWiggle {
-      0% {
-        transform: translateX(0);
-      }
-      22% {
-        transform: translateX(-40px);
-      }
-      48% {
-        transform: translateX(0);
-      }
-      68% {
-        transform: translateX(-16px);
-      }
-      84% {
-        transform: translateX(0);
-      }
-      94% {
-        transform: translateX(-5px);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-
-    .stack-cards-container.peek-wiggle {
-      animation: cardPeekWiggle 1.35s cubic-bezier(0.25, 1, 0.5, 1) both;
-    }
     .card-visual-frame {
       position: relative;
       aspect-ratio: 16 / 9;
       border-radius: 14px;
       overflow: hidden;
-      background: #090a0d;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #08090d;
+      border: 1px solid rgba(255, 253, 217, 0.08);
     }
     .card-visual-img {
       width: 100%;
@@ -973,7 +862,29 @@
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .stack-card:hover .card-visual-img {
-      transform: scale(1.06);
+      transform: scale(1.04);
+    }
+    .card-stat-pill {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(14, 15, 20, 0.88);
+      border: 1px solid rgba(255, 253, 217, 0.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFDD9;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     }
     .video-timeline-scrub {
       position: absolute;
@@ -992,6 +903,171 @@
     }
     .stack-card:hover .video-timeline-fill {
       width: 100%;
+    }
+    .metric-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(255, 253, 217, 0.25);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .metric-dot.active {
+      width: 20px;
+      background: #e05326;
+      box-shadow: 0 0 10px rgba(224, 83, 38, 0.6);
+    }
+
+    /* Mobile Metrics Horizontal Carousel (Landscape Rectangular & Zero Cropping) */
+    @media (max-width: 960px) {
+      .work-section {
+        padding: 60px 0 80px;
+        overflow-x: hidden;
+      }
+      .work-section .max-w-7xl {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stack-cards-container {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        position: relative !important;
+        height: auto !important;
+        gap: 14px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 20px !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        padding: 8px 20px 20px !important;
+        scroll-padding-left: 20px !important;
+        scroll-padding-right: 20px !important;
+        scrollbar-width: none;
+      }
+      .stack-cards-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .stack-card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        flex: 0 0 calc(100vw - 48px) !important;
+        min-width: calc(100vw - 48px) !important;
+        max-width: 420px !important;
+        width: calc(100vw - 48px) !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 0 !important;
+        scroll-snap-align: start !important;
+        opacity: 1 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        background: rgba(15, 16, 21, 0.78) !important;
+        backdrop-filter: blur(24px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        border: 1px solid rgba(255, 253, 217, 0.1) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+      }
+
+      .card-tilt-inner {
+        padding: 14px 16px !important;
+      }
+
+      .card-grid-split {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+
+      .card-visual-frame {
+        width: 100% !important;
+        aspect-ratio: 16 / 8.5 !important;
+        max-height: 145px !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        background: #08090d !important;
+        border: 1px solid rgba(255, 253, 217, 0.08) !important;
+      }
+
+      .card-visual-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        padding: 4px !important;
+      }
+
+      .card-stat-pill {
+        bottom: 6px !important;
+        right: 6px !important;
+        padding: 3px 8px !important;
+        font-size: 9.5px !important;
+        max-width: calc(100% - 12px) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .card-info-content h3 {
+        font-size: 1.15rem !important;
+        line-height: 1.25 !important;
+        margin-top: 2px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .card-info-content p {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+        color: rgba(255, 253, 217, 0.65) !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+
+      .card-metrics-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 4px !important;
+        padding-top: 8px !important;
+        border-top: 1px solid rgba(255, 253, 217, 0.08) !important;
+      }
+
+      .card-metrics-grid .metric-val {
+        font-size: 14px !important;
+        line-height: 1.15 !important;
+        font-weight: 800 !important;
+      }
+
+      .card-metrics-grid .metric-lbl {
+        font-size: 8.5px !important;
+        line-height: 1.15 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+    }
+
+    /* Wiggle / Nudge Hint Animation (subtly teases the next card on enter) */
+    @keyframes cardPeekWiggle {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-24px); }
+      45% { transform: translateX(0); }
+      70% { transform: translateX(-10px); }
+      85% { transform: translateX(0); }
+      100% { transform: translateX(0); }
+    }
+
+    .stack-cards-container.peek-wiggle {
+      animation: cardPeekWiggle 1.1s cubic-bezier(0.25, 1, 0.5, 1) both;
     }
 
     /* ==========================================================================
@@ -2256,8 +2332,8 @@
                     365-DAY AUDIT
                   </span>
                 </div>
-                <div class="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(15,16,21,0.85)] border border-[rgba(255,253,217,0.15)] backdrop-blur-md text-[#FFFDD9] text-[11px] font-mono font-bold">
-                  <span>● 66.0M VIEWS • 6.3M WATCH HOURS</span>
+                <div class="card-stat-pill">
+                  <span>● 66.0M VIEWS • 6.3M WATCH HRS</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
@@ -2276,22 +2352,22 @@
                   </p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
+                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">66.0M</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">365-Day Views</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">66.0M</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">365D Views</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">6.3M Hrs</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Watch Time</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">6.3M Hrs</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Watch Time</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">+78.5K</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Subscribers</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">+78.5K</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Subs</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">1.2M+</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Peak Day Spike</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">1.2M+</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Peak Spike</div>
                   </div>
                 </div>
               </div>
@@ -2310,7 +2386,7 @@
                     HIGH-CTR PACKAGING
                   </span>
                 </div>
-                <div class="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(15,16,21,0.85)] border border-[rgba(255,253,217,0.15)] backdrop-blur-md text-[#FFFDD9] text-[11px] font-mono font-bold">
+                <div class="card-stat-pill">
                   <span>▲ 47.2M IMPRESSIONS (+56%)</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
@@ -2330,22 +2406,22 @@
                   </p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
+                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">47.2M</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Impressions (+56%)</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">47.2M</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Impressions</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">11.3M</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Monthly Views</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">11.3M</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Mo. Views</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">7.6%</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Avg CTR</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">7.6%</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Avg CTR</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">6:36</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Avg View Duration</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">6:36</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Avg Duration</div>
                   </div>
                 </div>
               </div>
@@ -2364,8 +2440,8 @@
                     RETENTION ARCHITECTURE
                   </span>
                 </div>
-                <div class="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(15,16,21,0.85)] border border-[rgba(255,253,217,0.15)] backdrop-blur-md text-[#FFFDD9] text-[11px] font-mono font-bold">
-                  <span>● 75% AT 30S • >60% AT MIDPOINT</span>
+                <div class="card-stat-pill">
+                  <span>● 75% AT 30S • >60% MID</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
@@ -2384,22 +2460,22 @@
                   </p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
+                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">75%+</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Hook Hold</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">75%+</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Hook Hold</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">9:20</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Master Duration</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">9:20</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Duration</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">&gt;60%</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Midpoint Hold</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">&gt;60%</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Mid Hold</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">40%</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Completion Rate</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">40%</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Completion</div>
                   </div>
                 </div>
               </div>
@@ -2418,8 +2494,8 @@
                     MONETIZATION &amp; RETENTION
                   </span>
                 </div>
-                <div class="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(15,16,21,0.85)] border border-[rgba(255,253,217,0.15)] backdrop-blur-md text-[#FFFDD9] text-[11px] font-mono font-bold">
-                  <span>💰 82% AD READ RETENTION • ZERO DROP-OFF</span>
+                <div class="card-stat-pill">
+                  <span>💰 82% AD HOLD • 0% DROP</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
@@ -2438,22 +2514,22 @@
                   </p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
+                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">82%</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Ad Read Retention</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">82%</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Ad Hold</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">100%</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Brand Brief Compliance</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">100%</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Compliance</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">3.4x</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Sponsor Click Lift</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">3.4x</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Click Lift</div>
                   </div>
                   <div>
-                    <div class="text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">2–3x</div>
-                    <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Higher Inbound Inquiries</div>
+                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">2–3x</div>
+                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Inbound Lift</div>
                   </div>
                 </div>
               </div>
@@ -2464,11 +2540,17 @@
       </div>
 
       <!-- Mobile Swipe & Indicator Controls (Hidden on desktop) -->
-      <div class="flex items-center justify-between mt-3 px-1 text-xs font-mono text-[rgba(255,253,217,0.55)] md:hidden">
-        <span class="inline-flex items-center gap-2 text-[#e05326] font-bold">
-          <span class="inline-block animate-pulse">←</span> Swipe to explore verified proof <span class="inline-block animate-pulse">→</span>
+      <div class="flex items-center justify-between mt-4 px-2 text-xs font-mono text-[rgba(255,253,217,0.65)] md:hidden">
+        <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-[11px]">
+          <span class="inline-block animate-pulse">←</span> Swipe <span class="inline-block animate-pulse">→</span>
         </span>
-        <span id="metric-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.7)]">1 / 4</span>
+        <div class="flex items-center gap-1.5" id="metric-carousel-dots">
+          <button class="metric-dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="metric-dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="metric-dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="metric-dot" data-index="3" aria-label="Slide 4"></button>
+        </div>
+        <span id="metric-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 4</span>
       </div>
 
     </div>
@@ -4295,27 +4377,54 @@
       });
     });
 
-    // Mobile Metric Cards Horizontal Peek & Wiggle Hint
+    // Mobile Metric Cards Horizontal Peek & Wiggle Hint + Indicator Dots
     const stackCardsContainer = document.querySelector(".stack-cards-container");
     const workSection = document.getElementById("work");
     const metricCounter = document.getElementById("metric-card-counter");
+    const metricDots = document.querySelectorAll("#metric-carousel-dots .metric-dot");
     let hasWiggled = false;
 
     if (stackCardsContainer) {
-      // Update counter indicator on scroll
+      function updateActiveSlide(idx) {
+        if (metricCounter) {
+          metricCounter.textContent = (idx + 1) + " / 4";
+        }
+        metricDots.forEach((dot, dIdx) => {
+          if (dIdx === idx) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+      }
+
+      // Update counter and dots indicator on scroll
       stackCardsContainer.addEventListener("scroll", () => {
         if (!hasWiggled) {
           hasWiggled = true;
           stackCardsContainer.classList.remove("peek-wiggle");
         }
-        if (metricCounter) {
-          const firstCard = stackCardsContainer.querySelector(".stack-card");
-          const cardWidth = firstCard ? firstCard.offsetWidth : 300;
+        const cards = stackCardsContainer.querySelectorAll(".stack-card");
+        if (cards.length > 0) {
           const scrollLeft = stackCardsContainer.scrollLeft;
-          const idx = Math.min(4, Math.max(1, Math.round(scrollLeft / (cardWidth + 16)) + 1));
-          metricCounter.textContent = idx + " / 4";
+          const cardWidth = cards[0].offsetWidth + 14;
+          const idx = Math.min(cards.length - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
+          updateActiveSlide(idx);
         }
       }, { passive: true });
+
+      // Clickable dots to jump directly to card
+      metricDots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const idx = parseInt(dot.dataset.index, 10);
+          const cards = stackCardsContainer.querySelectorAll(".stack-card");
+          if (cards[idx]) {
+            const targetX = cards[idx].offsetLeft - 20;
+            stackCardsContainer.scrollTo({ left: Math.max(0, targetX), behavior: "smooth" });
+            updateActiveSlide(idx);
+          }
+        });
+      });
 
       // Immediate touch stops hint animation
       stackCardsContainer.addEventListener("touchstart", () => {
@@ -4333,7 +4442,7 @@
                 hasWiggled = true;
                 setTimeout(() => {
                   stackCardsContainer.classList.remove("peek-wiggle");
-                }, 1400);
+                }, 1200);
               }
             }, 350);
           }
