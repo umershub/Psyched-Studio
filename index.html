@@ -847,7 +847,7 @@
       gap: 24px;
       align-items: center;
     }
-    /* Mobile Metrics Stack-Card Overlapping Curtain-Reveal Effect */
+    /* Mobile Metrics Stack-Card Scroll-Locked Overlapping Curtain Effect */
     @media (max-width: 960px) {
       .work-section {
         overflow-x: hidden !important;
@@ -861,33 +861,31 @@
       }
 
       .stack-cards-container {
-        position: relative !important;
-        display: block !important;
-        padding-bottom: 20px !important;
-        margin-top: 24px !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        position: relative;
+        height: 480vh; /* Creates enough vertical scroll room to pause and reveal each card */
+        padding-bottom: 20px;
+        margin-top: 24px;
+        width: 100%;
+        max-width: 100%;
       }
 
       .stack-card {
         position: sticky !important;
-        top: 80px !important;
-        margin-bottom: -380px !important; /* Pulls subsequent cards up so they fully cover the previous one */
-        background: rgba(16, 17, 23, 1) !important; /* Fully opaque so underlying cards don't show through */
+        top: 100px !important;
+        margin-bottom: 0 !important;
+        height: auto;
+        background: #101117 !important;
         opacity: 0;
         transform: translateX(100px);
         transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
         will-change: transform, opacity;
       }
-      .stack-card:last-child {
-        margin-bottom: 0 !important;
-      }
 
-      .stack-card:nth-child(1) { top: 75px !important; z-index: 10; }
-      .stack-card:nth-child(2) { top: 85px !important; z-index: 11; }
-      .stack-card:nth-child(3) { top: 95px !important; z-index: 12; }
-      .stack-card:nth-child(4) { top: 105px !important; z-index: 13; }
-      .stack-card:nth-child(5) { top: 115px !important; z-index: 14; }
+      .stack-card:nth-child(1) { top: 90px !important; z-index: 10; }
+      .stack-card:nth-child(2) { top: 110px !important; z-index: 11; }
+      .stack-card:nth-child(3) { top: 130px !important; z-index: 12; }
+      .stack-card:nth-child(4) { top: 150px !important; z-index: 13; }
+      .stack-card:nth-child(5) { top: 170px !important; z-index: 14; }
 
       .stack-card.is-visible {
         opacity: 1 !important;
