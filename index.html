@@ -2788,6 +2788,34 @@
       background: #ff5d2e;
       box-shadow: 0 0 35px rgba(224, 83, 38, 0.85);
     }
+    /* TastyEdits Iconic Red Squircle Play Button */
+    .tasty-play-btn {
+      width: 54px;
+      height: 38px;
+      border-radius: 12px;
+      background: #e05326;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(224, 83, 38, 0.55), 0 0 10px rgba(224, 83, 38, 0.3);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.3s ease;
+    }
+    .group:hover .tasty-play-btn {
+      transform: scale(1.15);
+      background: #ff5d2e;
+      box-shadow: 0 8px 28px rgba(224, 83, 38, 0.85), 0 0 20px rgba(224, 83, 38, 0.6);
+    }
+    .service-pill-btn {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .service-pill-btn.active {
+      background: rgba(224, 83, 38, 0.18) !important;
+      border-color: #e05326 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 20px rgba(224, 83, 38, 0.35);
+    }
     .thumbnail-wall-card {
       border-radius: 14px;
       overflow: hidden;
@@ -2946,12 +2974,11 @@
 
       <!-- Clean Minimal Nav Links (Redundancy Eliminated) -->
       <nav class="header-nav hidden md:flex items-center gap-5 lg:gap-7">
-        <a href="#portfolio" class="clean-nav-link">Video Edits</a>
-        <a href="#work" class="clean-nav-link">Analytics</a>
         <a href="#services" class="clean-nav-link">Services</a>
+        <a href="#work" class="clean-nav-link">Creator Metrics</a>
+        <a href="#why-us" class="clean-nav-link">Why Us</a>
         <a href="#how-it-works" class="clean-nav-link">Process</a>
         <a href="#pricing" class="clean-nav-link">Pricing</a>
-        <a href="#testimonials" class="clean-nav-link">Reviews</a>
         <a href="#faq" class="clean-nav-link">FAQ</a>
       </nav>
 
@@ -3136,309 +3163,490 @@
   </div>
 
     <!-- ==========================================================================
-       SECTION 3: PLAYABLE VIDEO EDITS & HIGH-CTR THUMBNAILS (TastyEdits Style Showcase)
+       SECTION 3: SERVICES & VIDEO SHOWCASE (#services & #portfolio) (TastyEdits Format)
        ========================================================================== -->
-  <section id="portfolio" class="video-showcase-section">
-    <div class="max-w-7xl mx-auto px-6">
+  <section id="services" class="video-showcase-section relative overflow-visible pt-16 pb-24">
+    <!-- Legacy Anchor for Portfolio links -->
+    <div id="portfolio" style="position: absolute; top: -90px; pointer-events: none;"></div>
+    <!-- Dynamic Backdrop Blur for Matter.js -->
+    <div class="services-bg-blur" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
       
-      <!-- Section Header -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
-            <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest">FEATURED MASTERCUTS // WATCH THE EDITS</span>
-          </div>
-          <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05]">
-            Watch the Edits. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Feel the Pacing.</span>
-          </h2>
-        </div>
-        <p class="text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-lg leading-relaxed">
-          Creators buy editing with their eyes and ears. Inspect our frame-by-frame pacing, kinetic b-roll sequencing, and custom 3D packaging across active channels.
-        </p>
-      </div>
-
-      <!-- Category Filter Pills -->
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-10 pb-2 border-b border-white/[0.06]">
-        <button type="button" onclick="filterPortfolio('all')" data-category="all" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#e05326] text-white transition-all shadow-md">
-          All Mastercuts (4)
+      <!-- Top Nav Pill Switcher (TastyEdits Format) -->
+      <div class="flex items-center justify-center flex-wrap gap-2.5 sm:gap-3.5 mb-16 sm:mb-20">
+        <button type="button" onclick="switchServiceTab('longform')" id="pill-longform" class="service-pill-btn active px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-white bg-white/[0.04] hover:bg-white/[0.08] transition-all duration-300">
+          Long-Form Video Editing
         </button>
-        <button type="button" onclick="filterPortfolio('long-form')" data-category="long-form" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white transition-all">
-          Long-Form (16:9)
+        <button type="button" onclick="switchServiceTab('shortform')" id="pill-shortform" class="service-pill-btn px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-[rgba(255,253,217,0.7)] hover:text-white hover:bg-white/[0.08] transition-all duration-300">
+          Short-Form Video Editing
         </button>
-        <button type="button" onclick="filterPortfolio('shorts')" data-category="shorts" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white transition-all">
-          Viral Shorts (9:16)
-        </button>
-        <button type="button" onclick="filterPortfolio('doc')" data-category="doc" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white transition-all">
-          Documentary &amp; Clinical
+        <button type="button" onclick="switchServiceTab('channel')" id="pill-channel" class="service-pill-btn px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-[rgba(255,253,217,0.7)] hover:text-white hover:bg-white/[0.08] transition-all duration-300">
+          Channel Management
         </button>
       </div>
 
-      <!-- Playable Video Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-20" id="portfolio-grid">
+      <!-- ==========================================================
+           SUB-SECTION 1: LONG-FORM VIDEO EDITING SERVICES
+           ========================================================== -->
+      <div id="services-longform" class="service-block mb-28 scroll-mt-28">
         
-        <!-- Video 1: Nate The Lawyer (16:9 Commentary Mastercut) -->
-        <div class="portfolio-item-card video-card-poster group" data-category="long-form" onclick="openVideoModal('05EbH-_w0UQ', 'Lindsay Clancy Trial Breakdown', 'Nate The Lawyer', false)">
-          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
-            <img src="assets/videos/nate-legal-cover.jpg" alt="Nate The Lawyer Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/40 to-transparent"></div>
+        <!-- Interactive Header with Matter.js Physics Tags -->
+        <div class="hover-burst-item pillar-red relative pb-4 mb-12" data-pillar="0">
+          <div class="burst-trigger-row flex flex-col items-center justify-center cursor-pointer group">
             
-            <!-- Badges overlay -->
-            <div class="absolute top-3 left-3 flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">16:9 LONG-FORM</span>
-              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">14:22 DURATION</span>
+            <!-- Centered Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4 group-hover:border-[#e05326]/60 transition-colors">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+              <span>Video with impact</span>
             </div>
 
-            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
-              1.2M+ VIEWS
-            </div>
-
-            <!-- Central Play Button -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="video-play-btn">
-                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </div>
-            </div>
-
-            <!-- Bottom Audio Wave Indicator -->
-            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
-              <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span class="font-bold">Nate The Lawyer (766K Subs)</span>
-              </span>
-              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">68% HOOK HOLD</span>
-            </div>
-          </div>
-
-          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
-              High-Stakes Legal Breakdown &amp; Trial Analysis
+            <!-- Centered Heading -->
+            <h3 class="burst-title-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight group-hover:text-[#e05326] transition-colors text-center">
+              Long-Form Video Editing Services
             </h3>
-            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
-              Fast-paced commentary cutting: zero dead air, pattern interrupts every 5–7 seconds, broadcast-grade audio leveling, and dynamic animated evidence graphics.
+
+            <!-- Centered Description -->
+            <p class="text-center text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+              Our professional video editors turn raw footage into polished long-form content. They have extensive experience across formats like talking heads, vlogs, courses, and podcasts. Whatever your niche, we've got you covered.
             </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Pacing Surgery</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Evidence Lower-Thirds</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Broadcast Fairlight SFX</span>
+
+            <!-- Interactive hover hint -->
+            <div class="flex items-center gap-1.5 mt-3 text-[11px] font-mono tracking-wider uppercase text-[rgba(255,253,217,0.45)] group-hover:text-[#e05326] transition-colors">
+              <span>✦ Hover for Studio Tags</span>
             </div>
           </div>
+
+          <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
+          <div class="burst-floating-stage" aria-hidden="true">
+            <div class="burst-pill-item pill-tag burst-pill-1">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#YouTubeLongForm</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-2">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#RetentionPacing</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-3">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#BroadcastAudioSFX</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-4">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#MotionGraphics</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-5">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#CinematicGrading</span>
+            </div>
+          </div>
+
+          <div class="burst-item-divider mt-4"></div>
         </div>
 
-        <!-- Video 2: Paige Woolen (9:16 Viral Short) -->
-        <div class="portfolio-item-card video-card-poster group" data-category="shorts" onclick="openVideoModal('astnDEO_om0', 'Viral Podcast Micro-Hook', 'Paige Woolen', true)">
-          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b] flex items-center justify-center">
-            <!-- Ambient blurred backdrop -->
-            <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen Ambient" class="absolute inset-0 w-full h-full object-cover blur-xl opacity-30 scale-110" aria-hidden="true" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/40 to-transparent"></div>
-            
-            <!-- Authentic 9:16 Phone Frame Mockup -->
-            <div class="relative h-[88%] aspect-[9/16] rounded-xl overflow-hidden shadow-2xl border border-white/20 z-10 group-hover:scale-105 transition-transform duration-500">
-              <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen Viral Short" class="w-full h-full object-cover" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
-              
-              <!-- Central Play Button -->
+        <!-- 3x2 Grid (6 Horizontal 16:9 Widescreen Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-10">
+          
+          <!-- Long-form Video 1 -->
+          <div class="service-video-card group cursor-pointer" onclick="openVideoModal('956862739', 'The Real Cost of Scaling a Business', 'Psyched Studio Mastercut', false)">
+            <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
+              <img src="assets/showcase/longform-1.webp" alt="The Real Cost of Scaling a Business" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <div class="video-play-btn scale-90">
-                  <svg class="w-5 h-5 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <div class="tasty-play-btn">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
               </div>
-
-              <!-- Vertical Phone Live Tag -->
-              <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] font-mono text-[#e05326] font-bold">
-                9:16 REEL
-              </div>
-              <div class="absolute bottom-2 left-2 right-2 text-center text-[10px] font-mono text-white/90 font-bold truncate">
-                0:48 • 4.2M Views
-              </div>
-            </div>
-
-            <!-- Card Badges -->
-            <div class="absolute top-3 left-3 flex items-center gap-2 z-20">
-              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">VERTICAL REEL</span>
-              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">0:48 DURATION</span>
-            </div>
-
-            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold z-20">
-              4.2M+ VIEWS
-            </div>
-
-            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90 z-20">
-              <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span class="font-bold">Paige Woolen (1M+ Audience)</span>
-              </span>
-              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">114% RETENTION</span>
             </div>
           </div>
 
-          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
-              Kinetic Lifestyle &amp; Podcast Micro-Hook
-            </h3>
-            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
-              Engineered for algorithmic loop completion: dynamic word-by-word kinetic captions, tension risers, punch-ins every 1.5 seconds, and visual cliffhangers.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Word-By-Word Text</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Micro-Punch Ins</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Algorithmic Looping</span>
+          <!-- Long-form Video 2 -->
+          <div class="service-video-card group cursor-pointer" onclick="openVideoModal('1009495457', 'Maximizing Multifamily Property Investments', 'Psyched Studio Mastercut', false)">
+            <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
+              <img src="assets/showcase/longform-2.webp" alt="Maximizing Multifamily Property Investments" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Long-form Video 3 -->
+          <div class="service-video-card group cursor-pointer" onclick="openVideoModal('1004308743', 'Mastering Bodybuilding Psychology & Discipline', 'Psyched Studio Mastercut', false)">
+            <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
+              <img src="assets/showcase/longform-3.webp" alt="Mastering Bodybuilding Psychology & Discipline" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Long-form Video 4 -->
+          <div class="service-video-card group cursor-pointer" onclick="openVideoModal('1060737379', 'The Science of Dopamine & Social Media Virality', 'Psyched Studio Mastercut', false)">
+            <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
+              <img src="assets/showcase/longform-4.webp" alt="The Science of Dopamine & Social Media Virality" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Long-form Video 5 -->
+          <div class="service-video-card group cursor-pointer" onclick="openVideoModal('890876009', 'Don\'t Touch That! Exotic Wildlife Encounters', 'Psyched Studio Mastercut', false)">
+            <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
+              <img src="assets/showcase/longform-5.webp" alt="Don't Touch That! Exotic Wildlife Encounters" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Long-form Video 6 -->
+          <div class="service-video-card group cursor-pointer" onclick="openVideoModal('890884197', 'Street Calisthenics & Peak Athletic Performance', 'Psyched Studio Mastercut', false)">
+            <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
+              <img src="assets/showcase/longform-6.webp" alt="Street Calisthenics & Peak Athletic Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Video 3: Dr. James O'Donovan (16:9 Clinical Documentary) -->
-        <div class="portfolio-item-card video-card-poster group" data-category="doc" onclick="openVideoModal('ClKTfE6uzR8', 'Clinical Case Study & 3D Anatomy Visuals', 'Dr. James O\'Donovan', false)">
-          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
-            <img src="assets/clients/dr-james-odonovan.jpg" alt="Dr. James O'Donovan Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/40 to-transparent"></div>
-            
-            <div class="absolute top-3 left-3 flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">CLINICAL DOC</span>
-              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">18:05 DURATION</span>
-            </div>
-
-            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
-              850K+ VIEWS
-            </div>
-
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="video-play-btn">
-                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </div>
-            </div>
-
-            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
-              <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span class="font-bold">Dr. James O'Donovan (615K Subs)</span>
-              </span>
-              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">62% AVG HOLD</span>
-            </div>
-          </div>
-
-          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
-              Clinical Case Study &amp; 3D Anatomy Visuals
-            </h3>
-            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
-              Deep-dive medical educational documentary. Motion graphics track complex physiological concepts, with custom visual metaphors and color-matched medical overlays.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">3D Anatomy Graphics</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Paper Texture Cutouts</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Deep-Dive Cadence</span>
-            </div>
-          </div>
+        <!-- See More Examples Button -->
+        <div class="text-center">
+          <a href="#booking" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white text-xs font-semibold tracking-wider transition-all duration-300 hover:scale-105">
+            <span>See More Examples</span>
+            <span>→</span>
+          </a>
         </div>
-
-        <!-- Video 4: Dan - Modern Alpha (16:9 Finance & Video Essay) -->
-        <div class="portfolio-item-card video-card-poster group" data-category="long-form" onclick="openVideoModal('Ybod1nL9Zxk', 'Economic Breakdown with Kinetic B-Roll & SFX', 'Modern Alpha', false)">
-          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
-            <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Finance Video Essay Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/50 to-transparent"></div>
-            
-            <div class="absolute top-3 left-3 flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">16:9 ESSAY</span>
-              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">11:40 DURATION</span>
-            </div>
-
-            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
-              920K+ VIEWS
-            </div>
-
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="video-play-btn">
-                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </div>
-            </div>
-
-            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
-              <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span class="font-bold">Dan — Modern Alpha (340K Subs)</span>
-              </span>
-              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">74% 30S HOOK</span>
-            </div>
-          </div>
-
-          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
-              Economic Breakdown with Kinetic B-Roll &amp; SFX
-            </h3>
-            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
-              High-yield video essay framing: bespoke stock video curation, kinetic typographic calls-to-action, tension build-ups, and native sponsor bridge integration.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Kinetic B-Roll</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Curiosity Loops</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Native Sponsor Bridge</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- High-CTR Thumbnail Architecture Wall -->
-      <div class="mt-8 pt-12 border-t border-white/[0.08]">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">PACKAGING ARCHITECTURE</span>
-            <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
-              High-CTR Thumbnail Studio Packaging
+      <!-- ==========================================================
+           SUB-SECTION 2: SHORT-FORM VIDEO EDITING SERVICES
+           ========================================================== -->
+      <div id="services-shortform" class="service-block mb-28 scroll-mt-28">
+        
+        <!-- Interactive Header with Matter.js Physics Tags -->
+        <div class="hover-burst-item pillar-cream relative pb-4 mb-12" data-pillar="1">
+          <div class="burst-trigger-row flex flex-col items-center justify-center cursor-pointer group">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4 group-hover:border-[#e05326]/60 transition-colors">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+              <span>Vertical shorts</span>
+            </div>
+
+            <h3 class="burst-title-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight group-hover:text-[#e05326] transition-colors text-center">
+              Short-Form Video Editing Services
             </h3>
+
+            <p class="text-center text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+              We create attention-grabbing vertical videos, whether we're reformatting long-form clips or editing originals. Expect custom Shorts, Reels, and TikToks with animated captions, motion graphics, and b-roll.
+            </p>
+
+            <div class="flex items-center gap-1.5 mt-3 text-[11px] font-mono tracking-wider uppercase text-[rgba(255,253,217,0.45)] group-hover:text-[#e05326] transition-colors">
+              <span>✦ Hover for Studio Tags</span>
+            </div>
           </div>
-          <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] max-w-md">
-            Psychology-tested composition, emotional contrast, and curiosity gap titles that command clicks in the algorithmic feed.
-          </p>
+
+          <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
+          <div class="burst-floating-stage" aria-hidden="true">
+            <div class="burst-pill-item pill-tag burst-pill-1">
+              <span class="tag-dot bg-[#FFFDD9]"></span>
+              <span class="tag-text">#YouTubeShorts</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-2">
+              <span class="tag-dot bg-[#FFFDD9]"></span>
+              <span class="tag-text">#InstagramReels</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-3">
+              <span class="tag-dot bg-[#FFFDD9]"></span>
+              <span class="tag-text">#TikTokAlgorithm</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-4">
+              <span class="tag-dot bg-[#FFFDD9]"></span>
+              <span class="tag-text">#AnimatedCaptions</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-5">
+              <span class="tag-dot bg-[#FFFDD9]"></span>
+              <span class="tag-text">#KineticHooks</span>
+            </div>
+          </div>
+
+          <div class="burst-item-divider mt-4"></div>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- 4x2 Grid (8 Vertical Phone Proportion Cards) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-10">
           
-          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="https://i.ytimg.com/vi/05EbH-_w0UQ/maxresdefault.jpg" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                8.4% CTR
+          <!-- Short 1 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('956878376', 'Fiery Reaction & Micro-Hooks', 'Vertical Reel', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-1.webp" alt="Fiery Reaction & Micro-Hooks" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
               </div>
             </div>
-            <div class="text-sm font-bold text-white uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
-            <div class="text-xs font-mono text-zinc-400">Curiosity Gap • Emotional Focus</div>
           </div>
 
-          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                7.6% CTR
+          <!-- Short 2 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('891265601', 'Shakespearean Philosophy in 45s', 'Vertical Short', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-2.webp" alt="Shakespearean Philosophy in 45s" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
               </div>
             </div>
-            <div class="text-sm font-bold text-white uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
-            <div class="text-xs font-mono text-zinc-400">+56% Velocity • Contrast Grade</div>
           </div>
 
-          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="https://i.ytimg.com/vi/ClKTfE6uzR8/maxresdefault.jpg" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                9.1% CTR
+          <!-- Short 3 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1004947320', 'What Is Potential In Your Training?', 'Vertical Short', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-3.webp" alt="What Is Potential In Your Training?" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
               </div>
             </div>
-            <div class="text-sm font-bold text-white uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
-            <div class="text-xs font-mono text-zinc-400">High Shock Value • 3D Accents</div>
           </div>
 
-          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="https://i.ytimg.com/vi/Axa6PyVdDTw/maxresdefault.jpg" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                7.9% CTR
+          <!-- Short 4 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('891273524', 'Heritage Bar & Kitchen Secrets', 'Vertical Reel', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-4.webp" alt="Heritage Bar & Kitchen Secrets" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
               </div>
             </div>
-            <div class="text-sm font-bold text-white uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
-            <div class="text-xs font-mono text-zinc-400">Documentary Polish • Clear Typography</div>
+          </div>
+
+          <!-- Short 5 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1015953316', 'Parker 0:03 Money Strategy', 'Vertical Reel', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-5.webp" alt="Parker 0:03 Money Strategy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Short 6 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('891273561', 'US Real Estate Market Breakdown', 'Vertical Short', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-6.webp" alt="US Real Estate Market Breakdown" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Short 7 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1060734384', 'Segmented Apart: Tech Commentary', 'Vertical Reel', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-7.webp" alt="Segmented Apart: Tech Commentary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Short 8 -->
+          <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1015954997', 'Shorter Wait Times: Adventure & Travel', 'Vertical Short', true)">
+            <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
+              <img src="assets/showcase/short-8.webp" alt="Shorter Wait Times: Adventure & Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="tasty-play-btn scale-90 sm:scale-100">
+                  <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
+
+        <!-- See More Examples Button -->
+        <div class="text-center">
+          <a href="#booking" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white text-xs font-semibold tracking-wider transition-all duration-300 hover:scale-105">
+            <span>See More Examples</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ==========================================================
+           SUB-SECTION 3: YOUTUBE CHANNEL MANAGEMENT SERVICES
+           ========================================================== -->
+      <div id="services-channel" class="service-block scroll-mt-28">
+        
+        <!-- Interactive Header with Matter.js Physics Tags -->
+        <div class="hover-burst-item pillar-red relative pb-4 mb-12" data-pillar="2">
+          <div class="burst-trigger-row flex flex-col items-center justify-center cursor-pointer group">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4 group-hover:border-[#e05326]/60 transition-colors">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+              <span>YouTube experts</span>
+            </div>
+
+            <h3 class="burst-title-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight group-hover:text-[#e05326] transition-colors text-center">
+              YouTube Channel Management Services
+            </h3>
+
+            <p class="text-center text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+              Our dedicated channel growth managers handle high-CTR packaging, title A/B testing, scheduled publishing, SEO metadata, and weekly retention audits so you can focus entirely on creating.
+            </p>
+
+            <div class="flex items-center gap-1.5 mt-3 text-[11px] font-mono tracking-wider uppercase text-[rgba(255,253,217,0.45)] group-hover:text-[#e05326] transition-colors">
+              <span>✦ Hover for Studio Tags</span>
+            </div>
+          </div>
+
+          <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
+          <div class="burst-floating-stage" aria-hidden="true">
+            <div class="burst-pill-item pill-tag burst-pill-1">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#HighCTRThumbnails</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-2">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#TitleTestingAB</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-3">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#YouTubeSEO</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-4">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#UploadScheduling</span>
+            </div>
+            <div class="burst-pill-item pill-tag burst-pill-5">
+              <span class="tag-dot bg-[#e05326]"></span>
+              <span class="tag-text">#RetentionAnalytics</span>
+            </div>
+          </div>
+
+          <div class="burst-item-divider mt-4"></div>
+        </div>
+
+        <!-- 4 Management Pillars Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-14">
+          <div class="p-6 rounded-2xl bg-[#090a10] border border-white/10 hover:border-[#e05326]/40 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-center font-mono font-bold text-[#e05326] mb-4">01</div>
+            <h4 class="text-lg font-bold text-white uppercase tracking-tight mb-2">High-CTR Packaging</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Psychology-tested thumbnail art, facial emotional contrast, and 3D visual cues designed to maximize browse impressions.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-[#090a10] border border-white/10 hover:border-[#e05326]/40 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-center font-mono font-bold text-[#e05326] mb-4">02</div>
+            <h4 class="text-lg font-bold text-white uppercase tracking-tight mb-2">Title A/B Testing</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Continuous title variations and curiosity gap experimentation to uncover peak algorithmic velocity during the first 24 hours.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-[#090a10] border border-white/10 hover:border-[#e05326]/40 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-center font-mono font-bold text-[#e05326] mb-4">03</div>
+            <h4 class="text-lg font-bold text-white uppercase tracking-tight mb-2">SEO &amp; Scheduling</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">End-to-end metadata optimization, high-yield chapter markers, playlist sequencing, and automated scheduled publishing.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-[#090a10] border border-white/10 hover:border-[#e05326]/40 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-center font-mono font-bold text-[#e05326] mb-4">04</div>
+            <h4 class="text-lg font-bold text-white uppercase tracking-tight mb-2">Retention Audits</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Weekly deep-dive analytics tracking hook hold percentage, audience drop-off points, and actionable edits for future videos.</p>
+          </div>
+        </div>
+
+        <!-- High-CTR Thumbnail Studio Packaging Wall -->
+        <div class="max-w-6xl mx-auto pt-8 border-t border-white/10">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">PACKAGING ARCHITECTURE</span>
+              <h4 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+                High-CTR Thumbnail Studio Packaging
+              </h4>
+            </div>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] max-w-md">
+              Psychology-tested composition, emotional contrast, and curiosity gap titles that command clicks in the algorithmic feed.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/05EbH-_w0UQ/maxresdefault.jpg" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
+                  8.4% CTR
+                </div>
+              </div>
+              <div class="text-sm font-bold text-white uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
+              <div class="text-xs font-mono text-zinc-400">Curiosity Gap • Emotional Focus</div>
+            </div>
+
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
+                  7.6% CTR
+                </div>
+              </div>
+              <div class="text-sm font-bold text-white uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
+              <div class="text-xs font-mono text-zinc-400">+56% Velocity • Contrast Grade</div>
+            </div>
+
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/ClKTfE6uzR8/maxresdefault.jpg" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
+                  9.1% CTR
+                </div>
+              </div>
+              <div class="text-sm font-bold text-white uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
+              <div class="text-xs font-mono text-zinc-400">High Shock Value • 3D Accents</div>
+            </div>
+
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/Axa6PyVdDTw/maxresdefault.jpg" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
+                  7.9% CTR
+                </div>
+              </div>
+              <div class="text-sm font-bold text-white uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
+              <div class="text-xs font-mono text-zinc-400">Documentary Polish • Clear Typography</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -3759,188 +3967,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       SECTION 5: CORE SERVICES (#services) (Sticky Two-Column & Matter.js Bursting Tag Physics)
-       ========================================================================== -->
-  <section id="services" class="services-sticky-section overflow-visible relative">
-    <!-- Section-Wide Dynamic Backdrop Blur (Only Active When Hovering Pillars) -->
-    <div class="services-bg-blur" aria-hidden="true"></div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      
-      <div class="sticky-two-col items-start">
-        <!-- Sticky Left Title Column -->
-        <div class="sticky-left-col">
-          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-3">WHAT WE DO</span>
-          <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05] mb-6">
-            World-Class <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Editing.</span>
-          </h2>
-          <p class="text-base sm:text-lg text-[rgba(255,253,217,0.7)] leading-relaxed mb-8 max-w-md">
-            No bloated agency overhead or endless freelancer chasing. You work with a dedicated creative pod that edits, color corrects, sound masters, and packages your content on autopilot.
-          </p>
-          <a href="#pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDD9] text-[#141313] text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(255,253,217,0.25)] hover:bg-white hover:scale-105 active:scale-95 transition-all">
-            View Pricing &amp; Packages <span>→</span>
-          </a>
-        </div>
-
-        <!-- Right Column: Kinetic Hover-Burst List -->
-        <div class="hover-burst-list flex flex-col relative">
-          
-          <!-- Pillar 1: Long-Form Video Editing -->
-          <div class="hover-burst-item pillar-red" data-pillar="0">
-            <div class="burst-trigger-row group">
-              <div class="flex items-center gap-4 sm:gap-6">
-                <span class="text-sm sm:text-base font-mono font-bold text-[#e05326] tracking-wider">[01]</span>
-                <div>
-                  <span class="text-xs font-mono font-bold text-[#e05326] tracking-wider uppercase block mb-1">VIDEO WITH IMPACT</span>
-                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-[#e05326] transition-colors duration-300">
-                    Long-Form Video Editing Services
-                  </h3>
-                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
-                    Horizontal videos for YouTube, podcasts, documentaries, and courses. Any style, any niche. We turn raw footage into high-retention stories with pattern interrupts and broadcast audio.
-                  </p>
-                </div>
-              </div>
-              <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.5)] group-hover:text-[#e05326] transition-colors">Hover Tags ⟳</span>
-                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
-                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
-            <div class="burst-floating-stage" aria-hidden="true">
-              <div class="burst-pill-item pill-tag burst-pill-1">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#YouTubeLongForm</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-2">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#RetentionPacing</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-3">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#BroadcastAudioSFX</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-4">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#MotionGraphics</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-5">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#CinematicGrading</span>
-              </div>
-            </div>
-            
-            <div class="burst-item-divider"></div>
-          </div>
-
-          <!-- Pillar 2: Short-Form Video Editing -->
-          <div class="hover-burst-item pillar-cream" data-pillar="1">
-            <div class="burst-trigger-row group">
-              <div class="flex items-center gap-4 sm:gap-6">
-                <span class="text-sm sm:text-base font-mono font-bold text-[#FFFDD9] tracking-wider">[02]</span>
-                <div>
-                  <span class="text-xs font-mono font-bold text-[#FFFDD9] tracking-wider uppercase block mb-1">VERTICAL SHORTS &amp; REELS</span>
-                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-white transition-colors duration-300">
-                    Short-Form Video Editing Services
-                  </h3>
-                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
-                    Attention-grabbing vertical videos for YouTube Shorts, Instagram Reels, and TikTok. Original content and long-form reformats with animated captions, kinetic b-roll, and trending sound design.
-                  </p>
-                </div>
-              </div>
-              <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.5)] group-hover:text-[#FFFDD9] transition-colors">Hover Tags ⟳</span>
-                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#FFFDD9] group-hover:border-[#FFFDD9] group-hover:text-[#181616] transition-all duration-300">
-                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Absolute Floating Stage -->
-            <div class="burst-floating-stage" aria-hidden="true">
-              <div class="burst-pill-item pill-tag burst-pill-1">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#YouTubeShorts</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-2">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#InstagramReels</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-3">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#TikTokAlgorithm</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-4">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#AnimatedCaptions</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-5">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#KineticHooks</span>
-              </div>
-            </div>
-            
-            <div class="burst-item-divider"></div>
-          </div>
-
-          <!-- Pillar 3: YouTube Channel Management -->
-          <div class="hover-burst-item pillar-red" data-pillar="2">
-            <div class="burst-trigger-row group">
-              <div class="flex items-center gap-4 sm:gap-6">
-                <span class="text-sm sm:text-base font-mono font-bold text-[#e05326] tracking-wider">[03]</span>
-                <div>
-                  <span class="text-xs font-mono font-bold text-[#e05326] tracking-wider uppercase block mb-1">YOUTUBE GROWTH EXPERTS</span>
-                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-[#e05326] transition-colors duration-300">
-                    YouTube Channel Management Services
-                  </h3>
-                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
-                    Our dedicated channel growth experts run and grow your YouTube channel. We design high-CTR thumbnails, write optimized titles, schedule uploads, structure chapters, and deliver weekly retention reports.
-                  </p>
-                </div>
-              </div>
-              <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.5)] group-hover:text-[#e05326] transition-colors">Hover Tags ⟳</span>
-                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
-                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Absolute Floating Stage -->
-            <div class="burst-floating-stage" aria-hidden="true">
-              <div class="burst-pill-item pill-tag burst-pill-1">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#HighCTRThumbnails</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-2">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#TitleTestingAB</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-3">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#YouTubeSEO</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-4">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#UploadScheduling</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-5">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#RetentionAnalytics</span>
-              </div>
-            </div>
-            
-            <div class="burst-item-divider"></div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ==========================================================================
        SECTION 6: WHY CREATORS CHOOSE US (#why-us) (6 Core Agency Guarantees - Replaces Messy Director Block)
@@ -6732,8 +6759,52 @@
     }
 
     /* ==========================================================
-       VIDEO SHOWCASE & ASYNC AUDIT ENGINE
+       VIDEO SHOWCASE & SERVICES ENGINE (TastyEdits Structure)
        ========================================================== */
+    function switchServiceTab(tab) {
+      const target = document.getElementById(`services-${tab}`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      updateServicePills(tab);
+      playBeep(520, "sine", 0.03);
+    }
+
+    function updateServicePills(activeTab) {
+      const tabs = ['longform', 'shortform', 'channel'];
+      tabs.forEach(t => {
+        const pill = document.getElementById(`pill-${t}`);
+        if (pill) {
+          if (t === activeTab) {
+            pill.classList.add('active');
+          } else {
+            pill.classList.remove('active');
+          }
+        }
+      });
+    }
+
+    // Auto-update active service pill on scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      if ('IntersectionObserver' in window) {
+        const serviceObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              if (id === 'services-longform') updateServicePills('longform');
+              else if (id === 'services-shortform') updateServicePills('shortform');
+              else if (id === 'services-channel') updateServicePills('channel');
+            }
+          });
+        }, { threshold: 0.2, rootMargin: "-15% 0px -50% 0px" });
+
+        ['services-longform', 'services-shortform', 'services-channel'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) serviceObserver.observe(el);
+        });
+      }
+    });
+
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll(".portfolio-filter-btn");
       buttons.forEach(btn => {
@@ -6767,17 +6838,24 @@
       if (modalTitle) modalTitle.textContent = `${creator} — ${title}`;
       if (meta) meta.textContent = `Creator: ${creator} • Verified Psyched Studio Post-Production`;
 
-      if (isVertical) {
-        container.className = "relative w-full max-w-[360px] mx-auto aspect-[9/16] bg-black flex items-center justify-center my-3 rounded-lg overflow-hidden";
+      let embedUrl = "";
+      if (/^\d+$/.test(String(videoId).trim())) {
+        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&color=e05326&title=0&byline=0&portrait=0`;
       } else {
-        container.className = "relative w-full aspect-video bg-black flex items-center justify-center";
+        embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      }
+
+      if (isVertical) {
+        container.className = "relative w-full max-w-[340px] sm:max-w-[380px] mx-auto aspect-[9/16] bg-black flex items-center justify-center my-2 sm:my-3 rounded-xl overflow-hidden shadow-2xl";
+      } else {
+        container.className = "relative w-full aspect-video bg-black flex items-center justify-center rounded-xl overflow-hidden";
       }
 
       container.innerHTML = `
         <iframe class="w-full h-full border-0" 
-                src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1" 
+                src="${embedUrl}" 
                 title="${title}" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
                 allowfullscreen></iframe>
       `;
 
