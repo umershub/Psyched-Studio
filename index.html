@@ -2135,20 +2135,18 @@
       text-shadow: 0 0 25px rgba(224, 83, 38, 0.5);
     }
     .deploy-step-card {
-      opacity: 0;
-      transform: translateY(38px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                   border-color 0.35s ease,
                   box-shadow 0.35s ease;
-      will-change: transform, opacity;
     }
     .deploy-step-card.card-revealed {
       opacity: 1;
       transform: translateY(0);
     }
-    .deploy-step-card.card-revealed:hover {
-      transform: translateY(-6px) scale(1.015);
+    .deploy-step-card:hover {
+      transform: translateY(-6px);
       border-color: rgba(224, 83, 38, 0.5);
       box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(224, 83, 38, 0.18);
     }
@@ -3288,7 +3286,7 @@
        ========================================================================== -->
   <section id="how-it-works" class="deploy-process-section">
     <!-- Backwards compatible anchor for legacy scroll links -->
-    <div id="process" style="position: absolute; top: 0;"></div>
+    <div id="process" style="position: absolute; top: 0; pointer-events: none;"></div>
 
     <div class="max-w-7xl mx-auto px-6">
       
@@ -3304,7 +3302,7 @@
           </h2>
         </div>
         <p class="text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-lg leading-relaxed">
-          Our creator-built workflow makes it easy to upload footage, review drafts, and collaborate with your team in one place.
+          Our creator-built workflow makes it easy to upload footage, review drafts with frame-accurate notes, and publish without friction.
         </p>
       </div>
 
@@ -3313,66 +3311,84 @@
         <!-- Step 1: Upload Raw Footage -->
         <div class="deploy-step-card" data-step="1">
           <div>
-            <div class="flex items-center justify-between gap-4 mb-6">
-              <span class="deploy-step-num">01</span>
-              <span class="px-2.5 py-1 rounded bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10px] font-mono text-[#FFFDD9] font-bold uppercase">
-                STEP 1: UPLOAD FOOTAGE
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10.5px] font-mono text-[#FFFDD9] font-bold tracking-wider uppercase">
+                PHASE 01 // CLOUD INGEST
               </span>
+              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[rgba(255,253,217,0.25)]">01</span>
             </div>
             <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
-              1. Upload Raw Footage
+              Upload Raw Footage
             </h3>
             <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
-              Drop your raw footage directly into your private dashboard or send a Google Drive / Dropbox link. Include your brief notes or let our creative team direct the retention vision.
+              Drop your raw footage directly into your private dashboard or share a Google Drive / Dropbox folder. Include your brief notes or let our creative team direct the retention strategy.
             </p>
           </div>
-          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)]">
-            <span class="text-[11px] font-mono text-[#e05326] font-bold block mb-1 uppercase">YOUR INPUT:</span>
-            <span class="text-xs text-[#FFFDD9] font-semibold">Zero Brief Friction • Secure Cloud Ingest</span>
+          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">YOUR INPUT</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Raw Files &amp; Notes</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">TIME REQUIRED</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Under 3 Mins</span>
+            </div>
           </div>
         </div>
 
         <!-- Step 2: 48-Hour Studio Edit -->
         <div class="deploy-step-card border-t-2 border-t-[#e05326]" data-step="2">
           <div>
-            <div class="flex items-center justify-between gap-4 mb-6">
-              <span class="deploy-step-num text-[#e05326]">02</span>
-              <span class="px-2.5 py-1 rounded bg-[rgba(224, 83, 38, 0.12)] border border-[rgba(224, 83, 38, 0.35)] text-[10px] font-mono text-[#e05326] font-bold uppercase">
-                STEP 2: 48H STUDIO SPRINT
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-[rgba(224,83,38,0.15)] border border-[rgba(224,83,38,0.4)] text-[10.5px] font-mono text-[#e05326] font-bold tracking-wider uppercase">
+                PHASE 02 // STUDIO SPRINT
               </span>
+              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[#e05326]">02</span>
             </div>
             <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
-              2. 48-Hour Studio Edit
+              48-Hour Studio Edit
             </h3>
             <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
               Your dedicated lead editor cuts dead air, patterns interrupts, grades color, mixes broadcast sound design, animates kinetic b-roll, and crafts custom high-CTR thumbnails.
             </p>
           </div>
-          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)]">
-            <span class="text-[11px] font-mono text-[#e05326] font-bold block mb-1 uppercase">OUR OUTPUT:</span>
-            <span class="text-xs text-[#FFFDD9] font-semibold">48-Hour First Draft • Motion Graphics &amp; SFX</span>
+          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">OUR OUTPUT</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Master Cut &amp; Shorts</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">TURNAROUND</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">48h Guarantee</span>
+            </div>
           </div>
         </div>
 
         <!-- Step 3: Review & 1-Click Publish -->
         <div class="deploy-step-card" data-step="3">
           <div>
-            <div class="flex items-center justify-between gap-4 mb-6">
-              <span class="deploy-step-num">03</span>
-              <span class="px-2.5 py-1 rounded bg-[rgba(224, 83, 38, 0.12)] border border-[rgba(224, 83, 38, 0.35)] text-[10px] font-mono text-[#e05326] font-bold uppercase tracking-wider">
-                STEP 3: 1-CLICK PUBLISH
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10.5px] font-mono text-[#FFFDD9] font-bold tracking-wider uppercase">
+                PHASE 03 // FULL DEPLOY
               </span>
+              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[rgba(255,253,217,0.25)]">03</span>
             </div>
             <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
-              3. Review &amp; 1-Click Publish
+              Review &amp; 1-Click Publish
             </h3>
             <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
               Review your draft with frame-by-frame timecoded notes until you’re 100% satisfied. Download 4K masters directly or let us schedule and SEO-optimize the YouTube upload.
             </p>
           </div>
-          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)]">
-            <span class="text-[11px] font-mono text-[#e05326] font-bold block mb-1 uppercase">FINAL RESULT:</span>
-            <span class="text-xs text-[#FFFDD9] font-semibold">Unlimited Revisions • Hands-Off Channel Growth</span>
+          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">FINAL RESULT</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Unlimited Revisions</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">DELIVERABLE</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">4K + Custom Thumbnails</span>
+            </div>
           </div>
         </div>
 
@@ -3407,7 +3423,7 @@
           Retention Engineered. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Audience Compounded.</span>
         </h2>
         <p class="text-[rgba(255,253,217,0.65)] text-sm sm:text-base mt-2 max-w-xl">
-          Real analytics from active channels running on the Psyched Studio engine. Zero vanity metrics.
+          Real analytics from active channels running on the Psyched Studio engine. Zero vanity metrics—just cold, hard retention curves and compound watch time growth.
         </p>
       </div>
 
@@ -3415,216 +3431,288 @@
       <div class="stack-cards-container">
         
         <!-- Stacking Card 1: 66.0M Views & 6.3M Watch Hours (Annual Scale) -->
-        <div class="stack-card project-clickable" data-cat="scale" data-project="stats-annual">
+        <div class="stack-card project-clickable group" data-cat="scale" data-project="stats-annual">
           <div class="card-tilt-inner">
             <div class="card-grid-split">
-              <div class="card-visual-frame group bg-[#08090d]">
-                <img src="assets/stats/annual-reach-66m.png" alt="66.0M Views & 6.3M Watch Hours in 365 Days" class="card-visual-img object-contain p-2" loading="lazy" decoding="async" />
-                <div class="absolute top-3 left-3 z-10 flex gap-2">
-                  <span class="px-2.5 py-0.5 rounded-full bg-[#e05326] text-white text-[10px] font-mono font-extrabold uppercase tracking-wider shadow-lg">
-                    365-DAY AUDIT
-                  </span>
+              
+              <!-- Clean Studio Visual Frame: No Floating Overlays Obscuring Data -->
+              <div class="card-visual-frame bg-[#090a10] border border-white/[0.08] rounded-2xl flex flex-col justify-between overflow-hidden shadow-2xl">
+                <div class="p-3 sm:p-4 flex items-center justify-center flex-1 min-h-[190px] sm:min-h-[220px]">
+                  <img src="assets/stats/annual-reach-66m.png" alt="66.0M Views & 6.3M Watch Hours in 365 Days" class="card-visual-img object-contain max-h-[200px] sm:max-h-[230px] w-full" loading="lazy" decoding="async" />
                 </div>
-                <div class="card-stat-pill">
-                  <span>● 66.0M VIEWS • 6.3M WATCH HRS</span>
+                <div class="card-visual-footer flex items-center justify-between px-3.5 py-2.5 bg-[#050608]/90 border-t border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.6)]">
+                  <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> YOUTUBE STUDIO AUDIT</span>
+                  <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors">CLICK TO INSPECT ↗</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
 
-              <div class="card-info-content flex flex-col justify-between">
+              <!-- Refined Info Column: Commanding 5-Layer Hierarchy -->
+              <div class="card-info-content flex flex-col justify-between py-1">
                 <div>
-                  <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="px-2 py-0.5 rounded bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.1)] text-[11px] font-mono text-[rgba(255,253,217,0.8)]">YouTube Studio Verified</span>
-                    <span class="px-2 py-0.5 rounded bg-[rgba(224,83,38,0.12)] border border-[rgba(224,83,38,0.3)] text-[11px] font-mono text-[#e05326] font-bold">Long-Form Commentary Niche</span>
+                  <div class="flex items-center gap-2 mb-2.5">
+                    <span class="text-[11px] font-mono font-bold text-[#e05326] tracking-wider uppercase">CASE 01 // 365-DAY SCALE</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.3)]">•</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] uppercase">Long-Form Commentary</span>
                   </div>
-                  <h3 class="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-[#FFFDD9] hover:text-[#e05326] transition-colors leading-tight mb-2">
-                    66.0M Views &amp; 6.3M Watch Hours
+                  
+                  <div class="mb-2">
+                    <div class="text-3xl sm:text-4xl lg:text-[42px] font-mono font-black text-[#FFFDD9] tracking-tight leading-none">
+                      66,043,712
+                    </div>
+                    <span class="text-[11px] sm:text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest mt-1.5 block">Verified 365-Day Channel Views</span>
+                  </div>
+
+                  <h3 class="text-base sm:text-lg font-bold text-[#FFFDD9] uppercase tracking-tight mb-2 group-hover:text-[#e05326] transition-colors">
+                    Long-Form Commentary Audience Flywheel
                   </h3>
-                  <p class="text-[rgba(255,253,217,0.7)] text-xs sm:text-sm leading-relaxed mb-4">
-                    Consistent, frame-accurate pacing transformed channel release cadence into a compound audience flywheel.
+                  
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-4">
+                    Consistent frame-accurate pacing and curiosity-driven story architecture transformed a stagnant upload cadence into a compound algorithmic flywheel.
                   </p>
                 </div>
 
-                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">66.0M</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">365D Views</div>
+                <div>
+                  <!-- 3 Clean, Distinct Result Metrics (No Redundancy) -->
+                  <div class="grid grid-cols-3 gap-2.5 pt-3.5 border-t border-[rgba(255,253,217,0.08)]">
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">6.3M Hrs</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Watch Time</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#e05326] font-mono">+78,500</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Subscribers</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">1.2M+</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Peak Day</div>
+                    </div>
                   </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">6.3M Hrs</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Watch Time</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">+78.5K</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Subs</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">1.2M+</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Peak Spike</div>
+
+                  <div class="mt-3.5 pt-2.5 flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors inline-flex items-center gap-1.5">
+                      Inspect Full Performance Audit <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                    <span class="text-[10px] text-[rgba(255,253,217,0.35)] uppercase hidden sm:inline">Studio Verified</span>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
 
         <!-- Stacking Card 2: 47.2M Impressions & 7.6% CTR (Packaging & CTR) -->
-        <div class="stack-card project-clickable" data-cat="ctr" data-project="stats-impressions">
+        <div class="stack-card project-clickable group" data-cat="ctr" data-project="stats-impressions">
           <div class="card-tilt-inner">
             <div class="card-grid-split">
-              <div class="card-visual-frame group bg-[#08090d]">
-                <img src="assets/stats/ctr-velocity-47m.png" alt="47.2M Impressions & 7.6% CTR" class="card-visual-img object-contain p-2" loading="lazy" decoding="async" />
-                <div class="absolute top-3 left-3 z-10 flex gap-2">
-                  <span class="px-2.5 py-0.5 rounded-full bg-[#FFFDD9] text-[#181616] text-[10px] font-mono font-extrabold uppercase tracking-wider shadow-lg">
-                    HIGH-CTR PACKAGING
-                  </span>
+              
+              <!-- Clean Studio Visual Frame -->
+              <div class="card-visual-frame bg-[#090a10] border border-white/[0.08] rounded-2xl flex flex-col justify-between overflow-hidden shadow-2xl">
+                <div class="p-3 sm:p-4 flex items-center justify-center flex-1 min-h-[190px] sm:min-h-[220px]">
+                  <img src="assets/stats/ctr-velocity-47m.png" alt="47.2M Impressions & 7.6% CTR" class="card-visual-img object-contain max-h-[200px] sm:max-h-[230px] w-full" loading="lazy" decoding="async" />
                 </div>
-                <div class="card-stat-pill">
-                  <span>▲ 47.2M IMPRESSIONS (+56%)</span>
+                <div class="card-visual-footer flex items-center justify-between px-3.5 py-2.5 bg-[#050608]/90 border-t border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.6)]">
+                  <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> YOUTUBE PACKAGING AUDIT</span>
+                  <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors">CLICK TO INSPECT ↗</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
 
-              <div class="card-info-content flex flex-col justify-between">
+              <!-- Refined Info Column -->
+              <div class="card-info-content flex flex-col justify-between py-1">
                 <div>
-                  <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="px-2 py-0.5 rounded bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.1)] text-[11px] font-mono text-[rgba(255,253,217,0.8)]">Packaging &amp; CTR</span>
-                    <span class="px-2 py-0.5 rounded bg-[rgba(224,83,38,0.12)] border border-[rgba(224,83,38,0.3)] text-[11px] font-mono text-[#e05326] font-bold">28-Day Velocity</span>
+                  <div class="flex items-center gap-2 mb-2.5">
+                    <span class="text-[11px] font-mono font-bold text-[#e05326] tracking-wider uppercase">CASE 02 // PACKAGING &amp; VELOCITY</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.3)]">•</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] uppercase">28-Day Sprint</span>
                   </div>
-                  <h3 class="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-[#FFFDD9] hover:text-[#e05326] transition-colors leading-tight mb-2">
-                    47.2M Impressions &amp; 7.6% CTR
+                  
+                  <div class="mb-2">
+                    <div class="text-3xl sm:text-4xl lg:text-[42px] font-mono font-black text-[#FFFDD9] tracking-tight leading-none">
+                      47,249,180
+                    </div>
+                    <span class="text-[11px] sm:text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest mt-1.5 block">28-Day Impressions (+56% Lift)</span>
+                  </div>
+
+                  <h3 class="text-base sm:text-lg font-bold text-[#FFFDD9] uppercase tracking-tight mb-2 group-hover:text-[#e05326] transition-colors">
+                    High-CTR Thumbnail &amp; Title Architecture
                   </h3>
-                  <p class="text-[rgba(255,253,217,0.7)] text-xs sm:text-sm leading-relaxed mb-4">
-                    Custom thumbnail architecture and curiosity gap framing that turns impressions into high-intent clicks.
+                  
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-4">
+                    Custom curiosity framing and psychology-tested packaging that transformed passive algorithmic impressions into high-converting audience clicks.
                   </p>
                 </div>
 
-                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">47.2M</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Impressions</div>
+                <div>
+                  <!-- 3 Clean, Distinct Result Metrics -->
+                  <div class="grid grid-cols-3 gap-2.5 pt-3.5 border-t border-[rgba(255,253,217,0.08)]">
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">7.6%</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Average CTR</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#e05326] font-mono">11.3M</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Mo. Views</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">6:36</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Avg Duration</div>
+                    </div>
                   </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">11.3M</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Mo. Views</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">7.6%</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Avg CTR</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">6:36</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Avg Duration</div>
+
+                  <div class="mt-3.5 pt-2.5 flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors inline-flex items-center gap-1.5">
+                      Inspect Full Performance Audit <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                    <span class="text-[10px] text-[rgba(255,253,217,0.35)] uppercase hidden sm:inline">Studio Verified</span>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
 
         <!-- Stacking Card 3: 75%+ Survival Past 30 Seconds (Retention Curve) -->
-        <div class="stack-card project-clickable" data-cat="retention" data-project="stats-retention">
+        <div class="stack-card project-clickable group" data-cat="retention" data-project="stats-retention">
           <div class="card-tilt-inner">
             <div class="card-grid-split">
-              <div class="card-visual-frame group bg-[#08090d]">
-                <img src="assets/stats/retention-curve-surgery.png" alt="75%+ Survival Past 30 Seconds Retention Curve" class="card-visual-img object-contain p-2" loading="lazy" decoding="async" />
-                <div class="absolute top-3 left-3 z-10 flex gap-2">
-                  <span class="px-2.5 py-0.5 rounded-full bg-[#e05326] text-white text-[10px] font-mono font-extrabold uppercase tracking-wider shadow-lg">
-                    RETENTION ARCHITECTURE
-                  </span>
+              
+              <!-- Clean Studio Visual Frame -->
+              <div class="card-visual-frame bg-[#090a10] border border-white/[0.08] rounded-2xl flex flex-col justify-between overflow-hidden shadow-2xl">
+                <div class="p-3 sm:p-4 flex items-center justify-center flex-1 min-h-[190px] sm:min-h-[220px]">
+                  <img src="assets/stats/retention-curve-surgery.png" alt="75%+ Survival Past 30 Seconds Retention Curve" class="card-visual-img object-contain max-h-[200px] sm:max-h-[230px] w-full" loading="lazy" decoding="async" />
                 </div>
-                <div class="card-stat-pill">
-                  <span>● 75% AT 30S • >60% MID</span>
+                <div class="card-visual-footer flex items-center justify-between px-3.5 py-2.5 bg-[#050608]/90 border-t border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.6)]">
+                  <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> YOUTUBE RETENTION AUDIT</span>
+                  <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors">CLICK TO INSPECT ↗</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
 
-              <div class="card-info-content flex flex-col justify-between">
+              <!-- Refined Info Column -->
+              <div class="card-info-content flex flex-col justify-between py-1">
                 <div>
-                  <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="px-2 py-0.5 rounded bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.1)] text-[11px] font-mono text-[rgba(255,253,217,0.8)]">Retention Architecture</span>
-                    <span class="px-2 py-0.5 rounded bg-[rgba(224,83,38,0.12)] border border-[rgba(224,83,38,0.3)] text-[11px] font-mono text-[#e05326] font-bold">Episodic Mastercut (9:20)</span>
+                  <div class="flex items-center gap-2 mb-2.5">
+                    <span class="text-[11px] font-mono font-bold text-[#e05326] tracking-wider uppercase">CASE 03 // RETENTION SURGERY</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.3)]">•</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] uppercase">Episodic Mastercut</span>
                   </div>
-                  <h3 class="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-[#FFFDD9] hover:text-[#e05326] transition-colors leading-tight mb-2">
-                    75%+ Survival Past 30 Seconds
+                  
+                  <div class="mb-2">
+                    <div class="text-3xl sm:text-4xl lg:text-[42px] font-mono font-black text-[#FFFDD9] tracking-tight leading-none">
+                      75.4%
+                    </div>
+                    <span class="text-[11px] sm:text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest mt-1.5 block">Hook Hold Past 30 Seconds</span>
+                  </div>
+
+                  <h3 class="text-base sm:text-lg font-bold text-[#FFFDD9] uppercase tracking-tight mb-2 group-hover:text-[#e05326] transition-colors">
+                    Retention Curve Engineering &amp; Cliff Elimination
                   </h3>
-                  <p class="text-[rgba(255,253,217,0.7)] text-xs sm:text-sm leading-relaxed mb-4">
-                    Eliminating the drop-off cliff: dynamic audio design, visual rhythm shifts, and tight pacing that hold viewers through the finish line.
+                  
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-4">
+                    Eliminating the 30-second cliff through kinetic pattern interrupts, dynamic sound design, and micro-loops that hold viewers across a 9:20 runtime.
                   </p>
                 </div>
 
-                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">75%+</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Hook Hold</div>
+                <div>
+                  <!-- 3 Clean, Distinct Result Metrics -->
+                  <div class="grid grid-cols-3 gap-2.5 pt-3.5 border-t border-[rgba(255,253,217,0.08)]">
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">&gt;60%</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Mid Hold (4:30)</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#e05326] font-mono">40.2%</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">End Completion</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">9:20</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Video Length</div>
+                    </div>
                   </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">9:20</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Duration</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">&gt;60%</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Mid Hold</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">40%</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Completion</div>
+
+                  <div class="mt-3.5 pt-2.5 flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors inline-flex items-center gap-1.5">
+                      Inspect Full Performance Audit <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                    <span class="text-[10px] text-[rgba(255,253,217,0.35)] uppercase hidden sm:inline">Studio Verified</span>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
 
         <!-- Stacking Card 4: Retention-Engineered Brand Integrations -->
-        <div class="stack-card project-clickable" data-cat="sponsor" data-project="stats-revenue">
+        <div class="stack-card project-clickable group" data-cat="sponsor" data-project="stats-revenue">
           <div class="card-tilt-inner">
             <div class="card-grid-split">
-              <div class="card-visual-frame group bg-[#08090d]">
-                <img src="assets/stats/monthly-revenue-25k.png" alt="Retention-Engineered Brand Integrations" class="card-visual-img object-contain p-2" loading="lazy" decoding="async" />
-                <div class="absolute top-3 left-3 z-10 flex gap-2">
-                  <span class="px-2.5 py-0.5 rounded-full bg-[#e05326] text-white text-[10px] font-mono font-extrabold uppercase tracking-wider shadow-lg">
-                    MONETIZATION &amp; RETENTION
-                  </span>
+              
+              <!-- Clean Studio Visual Frame -->
+              <div class="card-visual-frame bg-[#090a10] border border-white/[0.08] rounded-2xl flex flex-col justify-between overflow-hidden shadow-2xl">
+                <div class="p-3 sm:p-4 flex items-center justify-center flex-1 min-h-[190px] sm:min-h-[220px]">
+                  <img src="assets/stats/monthly-revenue-25k.png" alt="Retention-Engineered Brand Integrations" class="card-visual-img object-contain max-h-[200px] sm:max-h-[230px] w-full" loading="lazy" decoding="async" />
                 </div>
-                <div class="card-stat-pill">
-                  <span>💰 82% AD HOLD • 0% DROP</span>
+                <div class="card-visual-footer flex items-center justify-between px-3.5 py-2.5 bg-[#050608]/90 border-t border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.6)]">
+                  <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> SPONSOR RETENTION AUDIT</span>
+                  <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors">CLICK TO INSPECT ↗</span>
                 </div>
                 <div class="video-timeline-scrub"><div class="video-timeline-fill"></div></div>
               </div>
 
-              <div class="card-info-content flex flex-col justify-between">
+              <!-- Refined Info Column -->
+              <div class="card-info-content flex flex-col justify-between py-1">
                 <div>
-                  <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="px-2 py-0.5 rounded bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.1)] text-[11px] font-mono text-[rgba(255,253,217,0.8)]">MONETIZATION &amp; RETENTION</span>
-                    <span class="px-2 py-0.5 rounded bg-[rgba(224,83,38,0.12)] border border-[rgba(224,83,38,0.3)] text-[11px] font-mono text-[#e05326] font-bold">AD READ PACING</span>
+                  <div class="flex items-center gap-2 mb-2.5">
+                    <span class="text-[11px] font-mono font-bold text-[#e05326] tracking-wider uppercase">CASE 04 // SPONSOR INTEGRATION</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.3)]">•</span>
+                    <span class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] uppercase">Brand Brief Pacing</span>
                   </div>
-                  <h3 class="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-[#FFFDD9] hover:text-[#e05326] transition-colors leading-tight mb-2">
-                    Monetization &amp; In-Video Pacing
+                  
+                  <div class="mb-2">
+                    <div class="text-3xl sm:text-4xl lg:text-[42px] font-mono font-black text-[#FFFDD9] tracking-tight leading-none">
+                      82.1%
+                    </div>
+                    <span class="text-[11px] sm:text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest mt-1.5 block">Viewer Retention Across 60s Ad Read</span>
+                  </div>
+
+                  <h3 class="text-base sm:text-lg font-bold text-[#FFFDD9] uppercase tracking-tight mb-2 group-hover:text-[#e05326] transition-colors">
+                    Seamless Brand Integrations with Zero Drop-Off
                   </h3>
-                  <p class="text-[rgba(255,253,217,0.7)] text-xs sm:text-sm leading-relaxed mb-4">
-                    When retention stays high across the entire video, inbound sponsor interest compounds naturally. We format and edit sponsored segments to strictly comply with brand briefs without derailing your narrative rhythm—keeping viewer hold above 80%.
+                  
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-4">
+                    Edited sponsored segments that strictly honor brand deliverable briefs while preserving video narrative flow—preventing the dreaded mid-roll subscriber bounce.
                   </p>
                 </div>
 
-                <div class="card-metrics-grid grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-[rgba(255,253,217,0.1)]">
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">82%</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Ad Hold</div>
+                <div>
+                  <!-- 3 Clean, Distinct Result Metrics -->
+                  <div class="grid grid-cols-3 gap-2.5 pt-3.5 border-t border-[rgba(255,253,217,0.08)]">
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">100%</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Brief Compliance</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#e05326] font-mono">3.4x</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Sponsor CTR Lift</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-lg font-extrabold text-[#FFFDD9] font-mono">2–3x</div>
+                      <div class="text-[10px] font-mono uppercase text-[rgba(255,253,217,0.45)] mt-0.5">Re-Book Rate</div>
+                    </div>
                   </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#e05326] font-mono">100%</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Compliance</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">3.4x</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Click Lift</div>
-                  </div>
-                  <div>
-                    <div class="metric-val text-lg sm:text-xl font-extrabold text-[#FFFDD9] font-mono">2–3x</div>
-                    <div class="metric-lbl text-[10px] font-mono uppercase text-[rgba(255,253,217,0.5)]">Inbound Lift</div>
+
+                  <div class="mt-3.5 pt-2.5 flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#e05326] font-bold group-hover:text-[#ff5d2e] transition-colors inline-flex items-center gap-1.5">
+                      Inspect Full Performance Audit <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                    <span class="text-[10px] text-[rgba(255,253,217,0.35)] uppercase hidden sm:inline">Studio Verified</span>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -4202,50 +4290,108 @@
   <!-- ==========================================================================
        SECTION 10: DISCOVERY CALL & DIRECT BOOKING PORTAL
        ========================================================================== -->
-  <section id="booking" class="portal-section-wrap">
-    <!-- Anchor compatibility -->
-    <div id="contact" style="position: absolute; top: 0;"></div>
-
-    <!-- Minimalist Convincing Background Behind Portal -->
-    <div class="portal-grid-backdrop" aria-hidden="true"></div>
-    <div class="portal-ambient-glow" aria-hidden="true"></div>
-
-    <div class="max-w-7xl mx-auto relative z-10">
+  <section id="booking" class="booking-section">
+    <div class="max-w-7xl mx-auto px-6">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(224, 83, 38, 0.12)] border border-[rgba(224, 83, 38, 0.35)] text-[#e05326] text-xs font-mono font-bold uppercase tracking-wider mb-4">
-          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-ping"></span>
-          DIRECT ONBOARDING • 2 SLOTS OPEN THIS MONTH
+      <div class="mb-12 max-w-3xl">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
+          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest">SCHEDULE AUDIT // ZERO RISK</span>
         </div>
         <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05] mb-4">
           Reclaim Your Time. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Double Your Production Value.</span>
         </h2>
         <p class="text-[rgba(255,253,217,0.75)] text-sm sm:text-base leading-relaxed">
-          Select an available slot below on Cal.com for your 30-minute Channel Discovery Call, or transmit your channel link for a direct custom quote.
+          Select an available slot below for your 30-minute Channel Discovery Call, or transmit your channel link directly for an async production quote within 12 hours.
         </p>
       </div>
 
       <!-- Two-Column Interactive Container -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch booking-cards-track">
         
-        <!-- Left Column: Embedded Cal.com Calendar Widget -->
+        <!-- Left Column: Native Studio Strategy Booking Calendar -->
         <div class="lg:col-span-7 running-border-card">
           <div class="running-border-inner">
             
-            <div class="flex items-center justify-between pb-4 mb-4 border-b border-[rgba(255,253,217,0.1)] flex-shrink-0">
+            <!-- Calendar Card Header -->
+            <div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-[rgba(255,253,217,0.1)] flex-shrink-0">
               <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#e05326] animate-pulse"></span>
-                <span class="font-mono text-xs font-bold text-[#FFFDD9] uppercase tracking-wider">CAL.COM VERIFIED CALENDAR</span>
+                <span class="font-mono text-xs font-bold text-[#FFFDD9] uppercase tracking-wider">STUDIO STRATEGY CALENDAR</span>
               </div>
-              <span class="text-[11px] font-mono text-[rgba(255,253,217,0.5)]">30-MIN STRATEGY CALL</span>
+              <a href="https://cal.com/umer-sharif-p8arjv/30min" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-[rgba(255,253,217,0.7)] hover:text-[#e05326] transition-colors flex items-center gap-1 group">
+                <span>Direct Cal.com</span>
+                <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+              </a>
             </div>
 
-            <!-- Cal Inline Embed Container -->
-            <div id="cal-inline-booking">
-              <!-- Cal inline embed code begins -->
-              <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
-              <!-- Cal inline embed code ends -->
+            <!-- Interactive Native Calendar & Slot Picker -->
+            <div id="cal-inline-booking" class="custom-scrollbar">
+              
+              <!-- Month Navigator & Timezone Bar -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 bg-white/[0.03] p-3 rounded-xl border border-white/[0.06]">
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="prevMonthCal()" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-[#FFFDD9] flex items-center justify-center text-sm font-mono transition-colors" title="Previous Month">‹</button>
+                  <span id="cal-month-title" class="font-mono font-extrabold text-sm text-[#FFFDD9] tracking-wider uppercase px-2 min-w-[140px] text-center">October 2026</span>
+                  <button type="button" onclick="nextMonthCal()" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-[#FFFDD9] flex items-center justify-center text-sm font-mono transition-colors" title="Next Month">›</button>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-3 text-[11px] font-mono">
+                  <span class="text-[rgba(255,253,217,0.6)] flex items-center gap-1">
+                    <span>🌐</span> PST (GMT-8)
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-[#e05326]/15 border border-[#e05326]/30 text-[#e05326] font-bold text-[10px] uppercase">
+                    • 2 Spots Open
+                  </span>
+                </div>
+              </div>
+
+              <!-- Two-Panel Grid: Day Matrix on Left/Top, Slots on Right/Bottom -->
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                
+                <!-- Left: 7-Column Month Date Grid -->
+                <div class="md:col-span-7 bg-[#0b0c10] p-3.5 rounded-xl border border-white/[0.06]">
+                  <div class="grid grid-cols-7 gap-1 text-center font-mono text-[10.5px] font-bold text-[rgba(255,253,217,0.45)] uppercase mb-2">
+                    <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+                  </div>
+                  <div id="cal-days-grid" class="grid grid-cols-7 gap-1.5 text-center">
+                    <!-- Injected dynamically by renderStudioCalendar() -->
+                  </div>
+                  <div class="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-[rgba(255,253,217,0.5)]">
+                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Available Day</span>
+                    <span>30-Min Call</span>
+                  </div>
+                </div>
+
+                <!-- Right: Time Slots Column -->
+                <div class="md:col-span-5 flex flex-col justify-between bg-[#0b0c10] p-3.5 rounded-xl border border-white/[0.06]">
+                  <div>
+                    <div class="flex items-center justify-between mb-2.5 pb-2 border-b border-white/[0.06]">
+                      <span class="text-[10px] font-mono font-bold text-[#e05326] uppercase tracking-wider">AVAILABLE TIMES</span>
+                      <span id="cal-selected-date-label" class="text-[11px] font-mono text-[#FFFDD9] font-bold">Tue, Oct 20</span>
+                    </div>
+                    <div id="cal-time-slots-container" class="space-y-1.5">
+                      <!-- Rendered by JS -->
+                    </div>
+                  </div>
+
+                  <!-- Slot Confirmation Notice -->
+                  <div class="mt-3 pt-2.5 border-t border-white/[0.06]">
+                    <div id="cal-selected-summary" class="text-[10.5px] font-mono text-[#FFFDD9] mb-2 leading-tight">
+                      Selected: <span class="text-[#e05326] font-bold" id="cal-slot-name">Tue, Oct 20 @ 2:00 PM PST</span>
+                    </div>
+                    <button type="button" onclick="confirmSelectedSlot()" class="w-full py-2.5 rounded-lg bg-[#e05326] hover:bg-[#ff5d2e] text-white text-[11px] font-mono font-bold uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(224,83,38,0.3)] flex items-center justify-center gap-1.5">
+                      <span>Lock Slot &amp; Inquire</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Fallback Cal container if script initializes -->
+              <div id="my-cal-inline" class="hidden"></div>
+
             </div>
 
           </div>
@@ -4267,6 +4413,17 @@
             </p>
 
             <form id="transmission-form" class="space-y-4" onsubmit="handleTransmissionSubmit(event)">
+              <input type="hidden" id="selected-call-slot" name="selected_call_slot" value="Tue, Oct 20 @ 2:00 PM PST">
+              
+              <!-- Selected Call Slot Badge -->
+              <div id="form-slot-badge" class="p-2.5 rounded-lg bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-between text-xs font-mono">
+                <span class="text-[#FFFDD9] flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
+                  <span id="form-slot-text">Selected Call: Tue, Oct 20 @ 2:00 PM PST</span>
+                </span>
+                <span class="text-[#e05326] font-bold text-[10px] uppercase">LOCKED</span>
+              </div>
+
               <div>
                 <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="creator-name">Your Name / Brand</label>
                 <input type="text" id="creator-name" required placeholder="e.g. Alex Hormozi" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
@@ -4293,14 +4450,15 @@
               </div>
 
               <button type="submit" id="btn-submit-transmission" class="w-full py-3.5 rounded-xl bg-[#e05326] hover:bg-[#ff5d2e] text-white text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(224,83,38,0.35)] transition-all flex items-center justify-center gap-2">
-                <span>Send Priority Inquiry</span>
+                <span>Confirm Call &amp; Send Transmission</span>
                 <span>→</span>
               </button>
             </form>
 
             <div id="transmission-success" class="hidden mt-4 p-4 rounded-xl bg-[#e05326]/10 border border-[#e05326]/40 text-center">
-              <span class="text-xs font-mono text-[#FFFDD9] font-bold block mb-1">TRANSMISSION RECEIVED ✦</span>
-              <span class="text-[11px] text-[rgba(255,253,217,0.7)]">We’ll review your channel and reply to your email within 12 hours.</span>
+              <span class="text-xs font-mono text-[#FFFDD9] font-bold block mb-1">TRANSMISSION CONFIRMED ✦</span>
+              <span class="text-[11px] text-[rgba(255,253,217,0.8)] block mb-1.5" id="confirmed-slot-display">Your 30-min strategy call and channel details have been logged.</span>
+              <span class="text-[10px] font-mono text-[#e05326]">Calendar invite dispatched to your email. We'll reply within 12 hours!</span>
             </div>
           </div>
 
@@ -5533,84 +5691,46 @@
     /* ==========================================================
        6B. ZERO-FRICTION ONBOARDING: KINETIC TITLE + 1-BY-1 CARDS
        ========================================================== */
-    const processSection = document.getElementById("process");
+    const processSection = document.getElementById("how-it-works") || document.getElementById("process");
     const kineticDeployTitle = document.getElementById("kinetic-deploy-steps");
     const deployCards = document.querySelectorAll("#deploy-cards-grid .deploy-step-card");
-    let processCardTimeouts = [];
     let hasProcessPlayed = false;
 
     function playProcessSequence() {
       if (hasProcessPlayed) return;
       hasProcessPlayed = true;
 
-      // 1. First: Animate in "3 Steps to Scale." kinetic typography
+      // 1. Animate kinetic typography
       if (kineticDeployTitle) {
         kineticDeployTitle.classList.add("is-visible");
       }
 
-      // 2. Then: Stagger cards 1-by-1 strictly AFTER "3 Steps to Scale." completes
-      // Words timeline: "3" (0.22s), "Steps" (0.37s), "to" (0.52s), "Scale." (0.67s -> settles by ~1.10s)
-      const t1 = setTimeout(() => {
-        if (deployCards[0]) {
-          deployCards[0].classList.add("card-revealed");
-          playBeep(480, "sine", 0.03);
-        }
-      }, 1150);
-
-      const t2 = setTimeout(() => {
-        if (deployCards[1]) {
-          deployCards[1].classList.add("card-revealed");
-          playBeep(560, "sine", 0.03);
-        }
-      }, 1450);
-
-      const t3 = setTimeout(() => {
-        if (deployCards[2]) {
-          deployCards[2].classList.add("card-revealed");
-          playBeep(640, "sine", 0.04);
-        }
-      }, 1750);
-
-      processCardTimeouts = [t1, t2, t3];
-    }
-
-    function resetProcessSequence() {
-      if (processCardTimeouts.length) {
-        processCardTimeouts.forEach(t => clearTimeout(t));
-        processCardTimeouts = [];
-      }
-      hasProcessPlayed = false;
-      if (kineticDeployTitle) {
-        kineticDeployTitle.classList.remove("is-visible");
-      }
-      deployCards.forEach(card => card.classList.remove("card-revealed"));
+      // 2. Stagger subtle audio feedback for cards (cards stay visible permanently)
+      deployCards.forEach((card, idx) => {
+        setTimeout(() => {
+          card.classList.add("card-revealed");
+          playBeep(480 + idx * 80, "sine", 0.03);
+        }, 300 + idx * 220);
+      });
     }
 
     if (processSection) {
       if (typeof ScrollTrigger !== 'undefined') {
         ScrollTrigger.create({
           trigger: processSection,
-          start: "top 78%",
-          end: "bottom 15%",
-          onEnter: () => playProcessSequence(),
-          onEnterBack: () => playProcessSequence(),
-          onLeave: () => resetProcessSequence(),
-          onLeaveBack: () => resetProcessSequence()
+          start: "top 80%",
+          once: true,
+          onEnter: () => playProcessSequence()
         });
       } else {
-        const procObserver = new IntersectionObserver((entries) => {
+        const procObserver = new IntersectionObserver((entries, obs) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              if (!hasProcessPlayed) playProcessSequence();
-            } else {
-              const rect = entry.boundingClientRect;
-              const vh = window.innerHeight || document.documentElement.clientHeight;
-              if (rect.top > vh + 60 || rect.bottom < -60) {
-                resetProcessSequence();
-              }
+              playProcessSequence();
+              obs.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.12 });
         procObserver.observe(processSection);
       }
     }
@@ -6224,6 +6344,208 @@
         });
       });
     }
+
+    /* ==========================================================
+       STUDIO STRATEGY CALENDAR ENGINE
+       ========================================================== */
+    const calMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let curCalYear = 2026;
+    let curCalMonth = 9; // October (0-indexed)
+    let selectedCalDay = 20;
+    let selectedCalTime = "02:00 PM PST";
+
+    const availableTimeSlots = [
+      { time: "10:00 AM PST", tag: "" },
+      { time: "11:30 AM PST", tag: "" },
+      { time: "02:00 PM PST", tag: "★ POPULAR" },
+      { time: "04:30 PM PST", tag: "" },
+      { time: "06:00 PM PST", tag: "" }
+    ];
+
+    function renderStudioCalendar() {
+      const monthTitle = document.getElementById("cal-month-title");
+      const daysGrid = document.getElementById("cal-days-grid");
+      if (!monthTitle || !daysGrid) return;
+
+      monthTitle.textContent = `${calMonths[curCalMonth]} ${curCalYear}`;
+
+      const firstDayIndex = new Date(curCalYear, curCalMonth, 1).getDay(); // 0 is Sun
+      const startOffset = (firstDayIndex + 6) % 7; // 0 is Mon
+      const totalDays = new Date(curCalYear, curCalMonth + 1, 0).getDate();
+
+      let html = "";
+      for (let i = 0; i < startOffset; i++) {
+        html += `<div class="p-1 text-neutral-800 text-xs font-mono"></div>`;
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const dayOfWeek = (startOffset + d - 1) % 7;
+        const isSunday = (dayOfWeek === 6);
+        const isPast = (d < 14 && curCalMonth === 9 && curCalYear === 2026);
+        const isAvailable = !isSunday && !isPast;
+        const isSelected = (d === selectedCalDay);
+
+        if (!isAvailable) {
+          html += `
+            <div class="h-8 flex items-center justify-center rounded-lg text-neutral-600 text-xs font-mono opacity-40 cursor-not-allowed">
+              ${d}
+            </div>
+          `;
+        } else {
+          const selClass = isSelected 
+            ? "bg-[#e05326] text-white font-extrabold shadow-[0_0_12px_rgba(224,83,38,0.6)]" 
+            : "bg-white/[0.04] hover:bg-white/[0.12] text-[#FFFDD9] font-medium";
+          
+          html += `
+            <button type="button" onclick="selectCalDate(${d})" class="h-8 flex flex-col items-center justify-center rounded-lg text-xs font-mono transition-all relative ${selClass}">
+              <span>${d}</span>
+              ${!isSelected ? '<span class="w-1 h-1 rounded-full bg-[#e05326] absolute bottom-1"></span>' : ''}
+            </button>
+          `;
+        }
+      }
+
+      daysGrid.innerHTML = html;
+      renderTimeSlots();
+      updateSelectedSlotUI();
+    }
+
+    function renderTimeSlots() {
+      const container = document.getElementById("cal-time-slots-container");
+      const dateLabel = document.getElementById("cal-selected-date-label");
+      if (!container) return;
+
+      const dateObj = new Date(curCalYear, curCalMonth, selectedCalDay);
+      const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const dayName = dayNames[dateObj.getDay()];
+      const monthAbbr = calMonths[curCalMonth].slice(0, 3);
+      if (dateLabel) {
+        dateLabel.textContent = `${dayName}, ${monthAbbr} ${selectedCalDay}`;
+      }
+
+      let slotsHtml = "";
+      availableTimeSlots.forEach(slot => {
+        const isSel = (slot.time === selectedCalTime);
+        const btnClass = isSel 
+          ? "bg-[#e05326] text-white font-bold shadow-[0_0_15px_rgba(224,83,38,0.4)]" 
+          : "bg-white/[0.04] hover:bg-white/[0.1] text-[#FFFDD9]";
+
+        slotsHtml += `
+          <button type="button" onclick="selectTimeSlot('${slot.time}')" class="w-full px-3 py-2 rounded-lg text-xs font-mono flex items-center justify-between transition-all ${btnClass}">
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full ${isSel ? 'bg-white' : 'bg-[#e05326]'}"></span>
+              ${slot.time}
+            </span>
+            ${slot.tag ? `<span class="text-[9px] px-1.5 py-0.2 rounded font-bold ${isSel ? 'bg-white/20 text-white' : 'bg-[#e05326]/20 text-[#e05326]'}">${slot.tag}</span>` : ''}
+          </button>
+        `;
+      });
+
+      container.innerHTML = slotsHtml;
+    }
+
+    function selectCalDate(day) {
+      selectedCalDay = day;
+      playBeep(520, "sine", 0.04);
+      renderStudioCalendar();
+    }
+
+    function selectTimeSlot(time) {
+      selectedCalTime = time;
+      playBeep(640, "sine", 0.04);
+      renderTimeSlots();
+      updateSelectedSlotUI();
+    }
+
+    function updateSelectedSlotUI() {
+      const dateObj = new Date(curCalYear, curCalMonth, selectedCalDay);
+      const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const dayName = dayNames[dateObj.getDay()];
+      const monthAbbr = calMonths[curCalMonth].slice(0, 3);
+      const slotString = `${dayName}, ${monthAbbr} ${selectedCalDay} @ ${selectedCalTime}`;
+
+      const slotNameEl = document.getElementById("cal-slot-name");
+      if (slotNameEl) slotNameEl.textContent = slotString;
+
+      const hiddenInput = document.getElementById("selected-call-slot");
+      if (hiddenInput) hiddenInput.value = slotString;
+
+      const formSlotText = document.getElementById("form-slot-text");
+      if (formSlotText) formSlotText.textContent = `Selected Call: ${slotString}`;
+    }
+
+    function confirmSelectedSlot() {
+      playBeep(750, "sine", 0.06);
+      const nameInput = document.getElementById("creator-name");
+      if (nameInput) {
+        nameInput.focus();
+        nameInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+    function prevMonthCal() {
+      if (curCalMonth > 0) {
+        curCalMonth--;
+      } else {
+        curCalMonth = 11;
+        curCalYear--;
+      }
+      playBeep(450, "sine", 0.03);
+      renderStudioCalendar();
+    }
+
+    function nextMonthCal() {
+      if (curCalMonth < 11) {
+        curCalMonth++;
+      } else {
+        curCalMonth = 0;
+        curCalYear++;
+      }
+      playBeep(450, "sine", 0.03);
+      renderStudioCalendar();
+    }
+
+    function handleTransmissionSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById("transmission-form");
+      const successBox = document.getElementById("transmission-success");
+      const submitBtn = document.getElementById("btn-submit-transmission");
+      const confirmedDisplay = document.getElementById("confirmed-slot-display");
+      const hiddenInput = document.getElementById("selected-call-slot");
+
+      playBeep(880, "sine", 0.1);
+
+      if (confirmedDisplay && hiddenInput) {
+        confirmedDisplay.textContent = `Your 30-min strategy call for ${hiddenInput.value} has been logged.`;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "<span>Transmission Received ✓</span>";
+        submitBtn.classList.remove("bg-[#e05326]");
+        submitBtn.classList.add("bg-emerald-600");
+      }
+
+      if (successBox) {
+        successBox.classList.remove("hidden");
+        successBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+
+    window.selectCalDate = selectCalDate;
+    window.selectTimeSlot = selectTimeSlot;
+    window.confirmSelectedSlot = confirmSelectedSlot;
+    window.prevMonthCal = prevMonthCal;
+    window.nextMonthCal = nextMonthCal;
+    window.handleTransmissionSubmit = handleTransmissionSubmit;
+
+    // Initialize calendar on load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderStudioCalendar);
+    } else {
+      renderStudioCalendar();
+    }
+
   </script>
 
   <!-- Cal inline embed code begins -->
@@ -6232,7 +6554,7 @@
     Cal("init", "growthAudit", {origin:"https://app.cal.com"});
 
     Cal.ns.growthAudit("inline", {
-      elementOrSelector: "#cal-inline-booking",
+      elementOrSelector: "#my-cal-inline",
       config: {"layout": "month_view", "theme": "dark"},
       calLink: "umer-sharif-p8arjv/30min"
     });
