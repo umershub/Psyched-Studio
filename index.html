@@ -2755,7 +2755,7 @@
       position: relative;
       background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(224, 83, 38, 0.07) 0%, transparent 70%);
       border-bottom: 1px solid rgba(255, 253, 217, 0.08);
-      overflow: hidden;
+      overflow: visible !important;
     }
     .video-card-poster {
       position: relative;
@@ -2828,6 +2828,12 @@
       transform: translateY(-4px) scale(1.02);
       box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85);
     }
+
+    /* Offset stacking cards so they stack cleanly below the sticky pill switcher */
+    .stack-card:nth-child(1) { top: 135px !important; z-index: 10; }
+    .stack-card:nth-child(2) { top: 155px !important; z-index: 11; }
+    .stack-card:nth-child(3) { top: 175px !important; z-index: 12; }
+    .stack-card:nth-child(4) { top: 195px !important; z-index: 13; }
 
   
     /* ==========================================================
@@ -3083,7 +3089,7 @@
         </a>
 
         <!-- Showreel Trigger Button -->
-        <button id="trigger-showreel" type="button" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white text-xs font-mono border border-white/[0.08] transition-all">
+        <button id="trigger-showreel" type="button" onclick="openVideoModal('956862739', 'Psyched Studio — Official Production Reel', 'Featured Mastercut', false)" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white text-xs font-mono border border-white/[0.08] transition-all">
           <svg class="w-3.5 h-3.5 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           <span>Watch Reel (0:58)</span>
         </button>
@@ -3163,85 +3169,55 @@
   </div>
 
     <!-- ==========================================================================
-       SECTION 3: SERVICES & VIDEO SHOWCASE (#services & #portfolio) (TastyEdits Format)
+       SECTION 3: UNIFIED SERVICES, VIDEO PORTFOLIO & VERIFIED CREATOR METRICS
        ========================================================================== -->
   <section id="services" class="video-showcase-section relative overflow-visible pt-16 pb-24">
     <!-- Legacy Anchor for Portfolio links -->
     <div id="portfolio" style="position: absolute; top: -90px; pointer-events: none;"></div>
-    <!-- Dynamic Backdrop Blur for Matter.js -->
-    <div class="services-bg-blur" aria-hidden="true"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       
-      <!-- Top Nav Pill Switcher (TastyEdits Format) -->
-      <div class="flex items-center justify-center flex-wrap gap-2.5 sm:gap-3.5 mb-16 sm:mb-20">
-        <button type="button" onclick="switchServiceTab('longform')" id="pill-longform" class="service-pill-btn active px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-white bg-white/[0.04] hover:bg-white/[0.08] transition-all duration-300">
-          Long-Form Video Editing
+      <!-- Sticky Top Nav Pill Switcher (Follows user through all 3 services) -->
+      <div class="sticky top-[74px] z-30 py-2.5 px-3 mx-auto max-w-fit rounded-full bg-[#0b0c10]/90 backdrop-blur-xl border border-white/10 flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-16 sm:mb-20 shadow-[0_15px_35px_rgba(0,0,0,0.85)]">
+        <button type="button" onclick="switchServiceTab('longform')" id="pill-longform" class="service-pill-btn active px-5 sm:px-6 py-2 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-white bg-white/[0.04] hover:bg-white/[0.08] transition-all duration-300">
+          01. Long-Form Editing
         </button>
-        <button type="button" onclick="switchServiceTab('shortform')" id="pill-shortform" class="service-pill-btn px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-[rgba(255,253,217,0.7)] hover:text-white hover:bg-white/[0.08] transition-all duration-300">
-          Short-Form Video Editing
+        <button type="button" onclick="switchServiceTab('shortform')" id="pill-shortform" class="service-pill-btn px-5 sm:px-6 py-2 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-[rgba(255,253,217,0.7)] hover:text-white hover:bg-white/[0.08] transition-all duration-300">
+          02. Viral Shorts (9:16)
         </button>
-        <button type="button" onclick="switchServiceTab('channel')" id="pill-channel" class="service-pill-btn px-6 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-[rgba(255,253,217,0.7)] hover:text-white hover:bg-white/[0.08] transition-all duration-300">
-          Channel Management
+        <button type="button" onclick="switchServiceTab('channel')" id="pill-channel" class="service-pill-btn px-5 sm:px-6 py-2 rounded-full text-xs font-mono font-bold tracking-wider uppercase border border-white/10 text-[rgba(255,253,217,0.7)] hover:text-white hover:bg-white/[0.08] transition-all duration-300">
+          03. Channel Management &amp; Proof
         </button>
       </div>
 
       <!-- ==========================================================
            SUB-SECTION 1: LONG-FORM VIDEO EDITING SERVICES
            ========================================================== -->
-      <div id="services-longform" class="service-block mb-28 scroll-mt-28">
+      <div id="services-longform" class="service-block mb-28 scroll-mt-36">
         
-        <!-- Interactive Header with Matter.js Physics Tags -->
-        <div class="hover-burst-item pillar-red relative pb-4 mb-12" data-pillar="0">
-          <div class="burst-trigger-row flex flex-col items-center justify-center cursor-pointer group">
-            
-            <!-- Centered Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4 group-hover:border-[#e05326]/60 transition-colors">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
-              <span>Video with impact</span>
-            </div>
-
-            <!-- Centered Heading -->
-            <h3 class="burst-title-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight group-hover:text-[#e05326] transition-colors text-center">
-              Long-Form Video Editing Services
-            </h3>
-
-            <!-- Centered Description -->
-            <p class="text-center text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
-              Our professional video editors turn raw footage into polished long-form content. They have extensive experience across formats like talking heads, vlogs, courses, and podcasts. Whatever your niche, we've got you covered.
-            </p>
-
-            <!-- Interactive hover hint -->
-            <div class="flex items-center gap-1.5 mt-3 text-[11px] font-mono tracking-wider uppercase text-[rgba(255,253,217,0.45)] group-hover:text-[#e05326] transition-colors">
-              <span>✦ Hover for Studio Tags</span>
-            </div>
+        <!-- Clean, High-Contrast Header -->
+        <div class="relative pb-8 mb-12 border-b border-white/10 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+            <span>PILLAR 01 // VIDEO WITH IMPACT</span>
           </div>
 
-          <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
-          <div class="burst-floating-stage" aria-hidden="true">
-            <div class="burst-pill-item pill-tag burst-pill-1">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#YouTubeLongForm</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-2">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#RetentionPacing</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-3">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#BroadcastAudioSFX</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-4">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#MotionGraphics</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-5">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#CinematicGrading</span>
-            </div>
-          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+            Long-Form Video Editing <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Services.</span>
+          </h2>
 
-          <div class="burst-item-divider mt-4"></div>
+          <p class="text-[rgba(255,253,217,0.75)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+            Our dedicated lead editors turn raw footage into high-retention 16:9 mastercuts—across commentary, talking heads, documentaries, podcasts, and video essays.
+          </p>
+
+          <!-- Always-Visible Scannable Format Pills -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#YouTubeLongForm</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#RetentionPacing</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#BroadcastAudioSFX</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#MotionGraphics</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#CinematicGrading</span>
+          </div>
         </div>
 
         <!-- 3x2 Grid (6 Horizontal 16:9 Widescreen Cards) -->
@@ -3327,10 +3303,10 @@
 
         </div>
 
-        <!-- See More Examples Button -->
+        <!-- Actionable Sub-CTA Button -->
         <div class="text-center">
-          <a href="#booking" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white text-xs font-semibold tracking-wider transition-all duration-300 hover:scale-105">
-            <span>See More Examples</span>
+          <a href="#booking" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.06] hover:bg-[#e05326] border border-white/15 hover:border-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <span>Request a Free Sample Edit</span>
             <span>→</span>
           </a>
         </div>
@@ -3339,55 +3315,31 @@
       <!-- ==========================================================
            SUB-SECTION 2: SHORT-FORM VIDEO EDITING SERVICES
            ========================================================== -->
-      <div id="services-shortform" class="service-block mb-28 scroll-mt-28">
+      <div id="services-shortform" class="service-block mb-28 scroll-mt-36">
         
-        <!-- Interactive Header with Matter.js Physics Tags -->
-        <div class="hover-burst-item pillar-cream relative pb-4 mb-12" data-pillar="1">
-          <div class="burst-trigger-row flex flex-col items-center justify-center cursor-pointer group">
-            
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4 group-hover:border-[#e05326]/60 transition-colors">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
-              <span>Vertical shorts</span>
-            </div>
-
-            <h3 class="burst-title-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight group-hover:text-[#e05326] transition-colors text-center">
-              Short-Form Video Editing Services
-            </h3>
-
-            <p class="text-center text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
-              We create attention-grabbing vertical videos, whether we're reformatting long-form clips or editing originals. Expect custom Shorts, Reels, and TikToks with animated captions, motion graphics, and b-roll.
-            </p>
-
-            <div class="flex items-center gap-1.5 mt-3 text-[11px] font-mono tracking-wider uppercase text-[rgba(255,253,217,0.45)] group-hover:text-[#e05326] transition-colors">
-              <span>✦ Hover for Studio Tags</span>
-            </div>
+        <!-- Clean, High-Contrast Header -->
+        <div class="relative pb-8 mb-12 border-b border-white/10 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+            <span>PILLAR 02 // VERTICAL SHORTS</span>
           </div>
 
-          <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
-          <div class="burst-floating-stage" aria-hidden="true">
-            <div class="burst-pill-item pill-tag burst-pill-1">
-              <span class="tag-dot bg-[#FFFDD9]"></span>
-              <span class="tag-text">#YouTubeShorts</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-2">
-              <span class="tag-dot bg-[#FFFDD9]"></span>
-              <span class="tag-text">#InstagramReels</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-3">
-              <span class="tag-dot bg-[#FFFDD9]"></span>
-              <span class="tag-text">#TikTokAlgorithm</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-4">
-              <span class="tag-dot bg-[#FFFDD9]"></span>
-              <span class="tag-text">#AnimatedCaptions</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-5">
-              <span class="tag-dot bg-[#FFFDD9]"></span>
-              <span class="tag-text">#KineticHooks</span>
-            </div>
-          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+            Short-Form Video Editing <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Services.</span>
+          </h2>
 
-          <div class="burst-item-divider mt-4"></div>
+          <p class="text-[rgba(255,253,217,0.75)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+            Attention-grabbing 9:16 vertical videos—whether repurposing your long-form uploads or cutting original shoots. Built for YouTube Shorts, Reels, and TikTok with word-by-word captions, motion graphics, and b-roll.
+          </p>
+
+          <!-- Always-Visible Scannable Format Pills -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#YouTubeShorts</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#InstagramReels</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#TikTokAlgorithm</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#AnimatedCaptions</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#KineticHooks</span>
+          </div>
         </div>
 
         <!-- 4x2 Grid (8 Vertical Phone Proportion Cards) -->
@@ -3499,71 +3451,47 @@
 
         </div>
 
-        <!-- See More Examples Button -->
+        <!-- Actionable Sub-CTA Button -->
         <div class="text-center">
-          <a href="#booking" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white text-xs font-semibold tracking-wider transition-all duration-300 hover:scale-105">
-            <span>See More Examples</span>
+          <a href="#pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.06] hover:bg-[#e05326] border border-white/15 hover:border-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <span>Scale Your Shorts Output</span>
             <span>→</span>
           </a>
         </div>
       </div>
 
       <!-- ==========================================================
-           SUB-SECTION 3: YOUTUBE CHANNEL MANAGEMENT SERVICES
+           SUB-SECTION 3: YOUTUBE CHANNEL MANAGEMENT & VERIFIED METRICS
            ========================================================== -->
-      <div id="services-channel" class="service-block scroll-mt-28">
+      <div id="services-channel" class="service-block scroll-mt-36">
         
-        <!-- Interactive Header with Matter.js Physics Tags -->
-        <div class="hover-burst-item pillar-red relative pb-4 mb-12" data-pillar="2">
-          <div class="burst-trigger-row flex flex-col items-center justify-center cursor-pointer group">
-            
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4 group-hover:border-[#e05326]/60 transition-colors">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
-              <span>YouTube experts</span>
-            </div>
-
-            <h3 class="burst-title-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight group-hover:text-[#e05326] transition-colors text-center">
-              YouTube Channel Management Services
-            </h3>
-
-            <p class="text-center text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
-              Our dedicated channel growth managers handle high-CTR packaging, title A/B testing, scheduled publishing, SEO metadata, and weekly retention audits so you can focus entirely on creating.
-            </p>
-
-            <div class="flex items-center gap-1.5 mt-3 text-[11px] font-mono tracking-wider uppercase text-[rgba(255,253,217,0.45)] group-hover:text-[#e05326] transition-colors">
-              <span>✦ Hover for Studio Tags</span>
-            </div>
+        <!-- Clean, High-Contrast Header -->
+        <div class="relative pb-8 mb-12 border-b border-white/10 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-[#e05326] bg-[#e05326]/10 border border-[#e05326]/25 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+            <span>PILLAR 03 // FULL-STACK CHANNEL GROWTH</span>
           </div>
 
-          <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
-          <div class="burst-floating-stage" aria-hidden="true">
-            <div class="burst-pill-item pill-tag burst-pill-1">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#HighCTRThumbnails</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-2">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#TitleTestingAB</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-3">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#YouTubeSEO</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-4">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#UploadScheduling</span>
-            </div>
-            <div class="burst-pill-item pill-tag burst-pill-5">
-              <span class="tag-dot bg-[#e05326]"></span>
-              <span class="tag-text">#RetentionAnalytics</span>
-            </div>
-          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+            YouTube Channel Management <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">&amp; Proof.</span>
+          </h2>
 
-          <div class="burst-item-divider mt-4"></div>
+          <p class="text-[rgba(255,253,217,0.75)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+            Our dedicated channel growth managers handle high-CTR packaging, title A/B testing, scheduled publishing, SEO metadata, and weekly retention audits so you can focus entirely on creating.
+          </p>
+
+          <!-- Always-Visible Scannable Format Pills -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#HighCTRThumbnails</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#TitleTestingAB</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#YouTubeSEO</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#UploadScheduling</span>
+            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#RetentionAnalytics</span>
+          </div>
         </div>
 
         <!-- 4 Management Pillars Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-14">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
           <div class="p-6 rounded-2xl bg-[#090a10] border border-white/10 hover:border-[#e05326]/40 transition-colors">
             <div class="w-10 h-10 rounded-xl bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-center font-mono font-bold text-[#e05326] mb-4">01</div>
             <h4 class="text-lg font-bold text-white uppercase tracking-tight mb-2">High-CTR Packaging</h4>
@@ -3587,13 +3515,13 @@
         </div>
 
         <!-- High-CTR Thumbnail Studio Packaging Wall -->
-        <div class="max-w-6xl mx-auto pt-8 border-t border-white/10">
+        <div class="max-w-6xl mx-auto pt-10 pb-16 border-t border-white/10">
           <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
               <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">PACKAGING ARCHITECTURE</span>
-              <h4 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
                 High-CTR Thumbnail Studio Packaging
-              </h4>
+              </h3>
             </div>
             <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] max-w-md">
               Psychology-tested composition, emotional contrast, and curiosity gap titles that command clicks in the algorithmic feed.
@@ -3647,6 +3575,298 @@
           </div>
         </div>
 
+        <!-- ==========================================================
+             MERGED: VERIFIED CREATOR METRICS (#work)
+             ========================================================== -->
+        <div id="work" class="max-w-6xl mx-auto pt-14 border-t border-white/10 scroll-mt-32">
+          
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div>
+              <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">VERIFIED CREATOR METRICS // YOUTUBE STUDIO AUDITS</span>
+              <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-white leading-[1.06]">
+                Retention Engineered. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Audience Compounded.</span>
+              </h3>
+            </div>
+            <p class="text-zinc-300 text-sm sm:text-base max-w-md leading-relaxed">
+              Real backend YouTube Studio analytics from active channels running on the Psyched Studio engine. Click any audit to inspect the full breakdown.
+            </p>
+          </div>
+
+          <!-- Sticky Stacking Cards Container -->
+          <div class="stack-cards-container">
+            
+            <!-- Stacking Card 1: Nate The Lawyer (Annual Scale) -->
+            <div class="stack-card project-clickable group" data-cat="scale" data-project="stats-annual">
+              <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  
+                  <!-- Left Column: Rich Editorial Details -->
+                  <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 01 • 365-Day Channel Scale</span>
+                      </div>
+
+                      <h4 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
+                        Nate The Lawyer
+                      </h4>
+
+                      <!-- Big Highlight Metric -->
+                      <div class="my-4">
+                        <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
+                          +66,043,712
+                        </div>
+                        <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
+                          Verified 365-Day Channel Views • 6.3M Watch Hours
+                        </span>
+                      </div>
+
+                      <!-- Authentic Client Quote -->
+                      <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
+                        “Umer consistently delivers frame-accurate edits, engaging graphics, and rock-solid narrative retention without missing a deadline.”
+                      </blockquote>
+
+                      <!-- Creator Profile Attribution -->
+                      <div class="flex items-center gap-3 pt-2 mb-6">
+                        <img src="assets/clients/nate-the-lawyer.png" alt="Nathaniel Broughty" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10" loading="lazy" />
+                        <div>
+                          <div class="text-sm font-bold text-white flex items-center gap-1.5">
+                            Nathaniel Broughty
+                            <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                          </div>
+                          <div class="text-xs text-zinc-400 font-mono">Host &amp; Attorney @ Nate The Lawyer (766K Subs)</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-annual');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
+                        Inspect Full Audit ↗
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right Column: Big Borderless Studio Analytics Image -->
+                  <div class="col-span-12 lg:col-span-6">
+                    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
+                      <img src="assets/stats/annual-reach-66m.png" alt="66.0M Views &amp; 6.3M Watch Hours in 365 Days" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Stacking Card 2: High-CTR Packaging (47.2M Impressions) -->
+            <div class="stack-card project-clickable group" data-cat="ctr" data-project="stats-impressions">
+              <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  
+                  <!-- Left Column: Rich Editorial Details -->
+                  <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 02 • Packaging &amp; Velocity</span>
+                      </div>
+
+                      <h4 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
+                        28-Day Impression &amp; CTR Surge
+                      </h4>
+
+                      <!-- Big Highlight Metric -->
+                      <div class="my-4">
+                        <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
+                          47,249,180
+                        </div>
+                        <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
+                          28-Day Impressions (+56% Lift) • 7.6% Average CTR
+                        </span>
+                      </div>
+
+                      <!-- Editorial Audit Summary -->
+                      <div class="text-sm sm:text-base text-zinc-200 leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
+                        <span class="text-[11px] font-mono font-bold uppercase text-[#e05326] block mb-1">STUDIO AUDIT DIAGNOSIS:</span>
+                        Overhauled thumbnail contrast and title curiosity framing across 12 uploads, expanding 28-day browse impressions by +56% and generating 11.3M monthly views (+6.1M above channel baseline).
+                      </div>
+
+                      <!-- Verification Attribution -->
+                      <div class="flex items-center gap-3 pt-2 mb-6">
+                        <div class="w-11 h-11 rounded-full bg-[#e05326]/20 border border-[#e05326]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
+                          CTR
+                        </div>
+                        <div>
+                          <div class="text-sm font-bold text-white flex items-center gap-1.5">
+                            YouTube Studio Packaging Audit
+                            <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                          </div>
+                          <div class="text-xs text-zinc-400 font-mono">Verified 28-Day Sprint • 6:36 Avg View Duration</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-impressions');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
+                        Inspect Full Audit ↗
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right Column: Big Borderless Studio Analytics Image -->
+                  <div class="col-span-12 lg:col-span-6">
+                    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
+                      <img src="assets/stats/ctr-velocity-47m.png" alt="47.2M Impressions &amp; 7.6% CTR" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Stacking Card 3: Dr. James O'Donovan (Retention Surgery) -->
+            <div class="stack-card project-clickable group" data-cat="retention" data-project="stats-retention">
+              <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  
+                  <!-- Left Column: Rich Editorial Details -->
+                  <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 03 • Retention Surgery</span>
+                      </div>
+
+                      <h4 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
+                        Dr. James O'Donovan
+                      </h4>
+
+                      <!-- Big Highlight Metric -->
+                      <div class="my-4">
+                        <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
+                          75.4%
+                        </div>
+                        <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
+                          Hook Hold Past 30 Seconds • &gt;60% Midpoint Hold
+                        </span>
+                      </div>
+
+                      <!-- Authentic Client Quote -->
+                      <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
+                        “Pacing is crisp, retention holds high through 15-minute scientific breakdowns, and his understanding of YouTube's algorithmic pacing is second to none.”
+                      </blockquote>
+
+                      <!-- Creator Profile Attribution -->
+                      <div class="flex items-center gap-3 pt-2 mb-6">
+                        <img src="assets/clients/dr-james-odonovan.jpg" alt="Dr. James O'Donovan" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10" loading="lazy" />
+                        <div>
+                          <div class="text-sm font-bold text-white flex items-center gap-1.5">
+                            Dr. James O'Donovan
+                            <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                          </div>
+                          <div class="text-xs text-zinc-400 font-mono">Physician &amp; Creator @drjamesodonovan (615K Subs)</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-retention');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
+                        Inspect Full Audit ↗
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right Column: Big Borderless Studio Analytics Image -->
+                  <div class="col-span-12 lg:col-span-6">
+                    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
+                      <img src="assets/stats/retention-curve-surgery.png" alt="75.4% Hook Hold Past 30 Seconds" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Stacking Card 4: Seamless Brand Integrations -->
+            <div class="stack-card project-clickable group" data-cat="sponsor" data-project="stats-revenue">
+              <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  
+                  <!-- Left Column: Rich Editorial Details -->
+                  <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 04 • Sponsor Integration</span>
+                      </div>
+
+                      <h4 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
+                        Zero-Drop-Off Sponsor Bridges
+                      </h4>
+
+                      <!-- Big Highlight Metric -->
+                      <div class="my-4">
+                        <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
+                          82.1%
+                        </div>
+                        <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
+                          Viewer Retention Across 60s Ad Read • 3.4x Sponsor CTR Lift
+                        </span>
+                      </div>
+
+                      <!-- Editorial Audit Summary -->
+                      <div class="text-sm sm:text-base text-zinc-200 leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
+                        <span class="text-[11px] font-mono font-bold uppercase text-[#e05326] block mb-1">STUDIO AUDIT DIAGNOSIS:</span>
+                        Engineered native story bridges and custom kinetic product callouts that strictly honor sponsor briefs while preventing the mid-roll subscriber scrub-away.
+                      </div>
+
+                      <!-- Creator Profile Attribution -->
+                      <div class="flex items-center gap-3 pt-2 mb-6">
+                        <div class="w-11 h-11 rounded-full bg-[#e05326]/20 border border-[#e05326]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
+                          ROI
+                        </div>
+                        <div>
+                          <div class="text-sm font-bold text-white flex items-center gap-1.5">
+                            YouTube Monetization &amp; Sponsor Audit
+                            <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                          </div>
+                          <div class="text-xs text-zinc-400 font-mono">100% Brief Compliance • 2–3x Sponsor Re-Book Rate</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-revenue');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
+                        Inspect Full Audit ↗
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right Column: Big Borderless Studio Analytics Image -->
+                  <div class="col-span-12 lg:col-span-6">
+                    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
+                      <img src="assets/stats/monthly-revenue-25k.png" alt="82.1% Viewer Retention Across Sponsor Ad Read" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Mobile Swipe & Indicator Controls (Hidden on desktop) -->
+          <div class="flex items-center justify-between mt-6 px-2 text-xs font-mono text-zinc-400 md:hidden">
+            <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-xs">
+              <span class="inline-block animate-pulse">←</span> Swipe Case Studies <span class="inline-block animate-pulse">→</span>
+            </span>
+            <div class="flex items-center gap-1.5" id="metric-carousel-dots">
+              <button class="metric-dot active" data-index="0" aria-label="Slide 1"></button>
+              <button class="metric-dot" data-index="1" aria-label="Slide 2"></button>
+              <button class="metric-dot" data-index="2" aria-label="Slide 3"></button>
+              <button class="metric-dot" data-index="3" aria-label="Slide 4"></button>
+            </div>
+            <span id="metric-card-counter" class="font-bold tracking-wider text-white text-xs">1 / 4</span>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
@@ -3676,296 +3896,6 @@
       </div>
     </div>
   </div>
-<!-- ==========================================================================
-       SECTION 4: VERIFIED CREATOR ANALYTICS (#work) (High-Converting Video Showcase)
-       ========================================================================== -->
-  <section id="work" class="work-section">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <!-- Section Header -->
-      <div class="mb-14 max-w-3xl">
-        <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">VERIFIED CREATOR METRICS</span>
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white leading-[1.06]">
-          Retention Engineered. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Audience Compounded.</span>
-        </h2>
-        <p class="text-zinc-300 text-base sm:text-lg mt-3 leading-relaxed max-w-2xl">
-          Real analytics from active channels running on the Psyched Studio engine. See how our pacing surgery, custom packaging, and retention architecture compound views and revenue.
-        </p>
-      </div>
-
-      <!-- Sticky Stacking Cards Container (TastyEdits Success Stories: Details Left, Big Image Right, Borderless Stacking) -->
-      <div class="stack-cards-container">
-        
-        <!-- Stacking Card 1: Nate The Lawyer (Annual Scale) -->
-        <div class="stack-card project-clickable group" data-cat="scale" data-project="stats-annual">
-          <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              <!-- Left Column: Rich Editorial Details -->
-              <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 01 • Long-Form Scale</span>
-                  </div>
-
-                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
-                    Nate The Lawyer
-                  </h3>
-
-                  <!-- Big Highlight Metric -->
-                  <div class="my-4">
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
-                      +66,043,712
-                    </div>
-                    <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
-                      Verified 365-Day Channel Views • 6.3M Watch Hours
-                    </span>
-                  </div>
-
-                  <!-- Creator Quote -->
-                  <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
-                    “Consistent frame-accurate pacing and curiosity loops transformed a stagnant upload cadence into an algorithmic compounding flywheel.”
-                  </blockquote>
-
-                  <!-- Creator Profile Attribution -->
-                  <div class="flex items-center gap-3 pt-2 mb-6">
-                    <img src="assets/clients/nate-the-lawyer.png" alt="Nate The Lawyer" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10" loading="lazy" />
-                    <div>
-                      <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                        Nate Broady
-                        <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                      </div>
-                      <div class="text-xs text-zinc-400 font-mono">Host, Nate The Lawyer (766K Subscribers)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-annual');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
-                    View Case Study ↗
-                  </button>
-                </div>
-              </div>
-
-              <!-- Right Column: Big Borderless Studio Analytics Image -->
-              <div class="col-span-12 lg:col-span-6">
-                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
-                  <img src="assets/stats/annual-reach-66m.png" alt="66.0M Views & 6.3M Watch Hours in 365 Days" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Stacking Card 2: High-CTR Packaging (47.2M Impressions) -->
-        <div class="stack-card project-clickable group" data-cat="ctr" data-project="stats-impressions">
-          <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              <!-- Left Column: Rich Editorial Details -->
-              <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 02 • Packaging &amp; Velocity</span>
-                  </div>
-
-                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
-                    High-Velocity True Crime Breakdown
-                  </h3>
-
-                  <!-- Big Highlight Metric -->
-                  <div class="my-4">
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
-                      47,249,180
-                    </div>
-                    <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
-                      28-Day Impressions (+56% Lift) • 7.6% Average CTR
-                    </span>
-                  </div>
-
-                  <!-- Creator Quote -->
-                  <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
-                    “Custom curiosity framing and psychology-tested packaging captured high-velocity browse traffic within the critical first 4 hours of upload.”
-                  </blockquote>
-
-                  <!-- Creator Profile Attribution -->
-                  <div class="flex items-center gap-3 pt-2 mb-6">
-                    <div class="w-11 h-11 rounded-full bg-[#e05326]/20 border border-[#e05326]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
-                      CTR
-                    </div>
-                    <div>
-                      <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                        Legal Commentary Partner
-                        <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                      </div>
-                      <div class="text-xs text-zinc-400 font-mono">Viral True Crime Channel (450K Subscribers)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-impressions');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
-                    View Case Study ↗
-                  </button>
-                </div>
-              </div>
-
-              <!-- Right Column: Big Borderless Studio Analytics Image -->
-              <div class="col-span-12 lg:col-span-6">
-                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
-                  <img src="assets/stats/ctr-velocity-47m.png" alt="47.2M Impressions & 7.6% CTR" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Stacking Card 3: Dr. James O'Donovan (Retention Surgery) -->
-        <div class="stack-card project-clickable group" data-cat="retention" data-project="stats-retention">
-          <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              <!-- Left Column: Rich Editorial Details -->
-              <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 03 • Retention Surgery</span>
-                  </div>
-
-                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
-                    Dr. James O'Donovan
-                  </h3>
-
-                  <!-- Big Highlight Metric -->
-                  <div class="my-4">
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
-                      75.4%
-                    </div>
-                    <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
-                      Hook Hold Past 30 Seconds • 62.4% Avg Completion
-                    </span>
-                  </div>
-
-                  <!-- Creator Quote -->
-                  <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
-                    “Pacing surgery and 3D clinical motion graphics eliminated the 30-second drop-off cliff and unlocked continuous YouTube recommendation browse loops.”
-                  </blockquote>
-
-                  <!-- Creator Profile Attribution -->
-                  <div class="flex items-center gap-3 pt-2 mb-6">
-                    <img src="assets/clients/dr-james-odonovan.jpg" alt="Dr. James O'Donovan" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10" loading="lazy" />
-                    <div>
-                      <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                        Dr. James O'Donovan
-                        <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                      </div>
-                      <div class="text-xs text-zinc-400 font-mono">Medical Educator &amp; Creator (615K Subscribers)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-retention');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
-                    View Case Study ↗
-                  </button>
-                </div>
-              </div>
-
-              <!-- Right Column: Big Borderless Studio Analytics Image -->
-              <div class="col-span-12 lg:col-span-6">
-                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
-                  <img src="assets/stats/retention-curve-surgery.png" alt="75.4% Hook Hold Past 30 Seconds" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Stacking Card 4: Seamless Brand Integrations (Dan - Modern Alpha) -->
-        <div class="stack-card project-clickable group" data-cat="sponsor" data-project="stats-revenue">
-          <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              <!-- Left Column: Rich Editorial Details -->
-              <div class="col-span-12 lg:col-span-6 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-xs font-mono font-bold tracking-wider uppercase">Case Study 04 • Sponsor Integration</span>
-                  </div>
-
-                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
-                    Seamless Brand Integrations
-                  </h3>
-
-                  <!-- Big Highlight Metric -->
-                  <div class="my-4">
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-mono font-black text-[#e05326] tracking-tight leading-none">
-                      82.1%
-                    </div>
-                    <span class="text-xs sm:text-sm font-mono text-zinc-400 font-semibold uppercase tracking-wider mt-1.5 block">
-                      Viewer Retention Across 60s Ad Read • 3.4x Sponsor CTR Lift
-                    </span>
-                  </div>
-
-                  <!-- Creator Quote -->
-                  <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
-                    “Edited sponsored segments that strictly honor brand deliverable briefs while preserving organic narrative flow—resulting in 100% sponsor re-book rates.”
-                  </blockquote>
-
-                  <!-- Creator Profile Attribution -->
-                  <div class="flex items-center gap-3 pt-2 mb-6">
-                    <div class="w-11 h-11 rounded-full bg-[#e05326]/20 border border-[#e05326]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
-                      ROI
-                    </div>
-                    <div>
-                      <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                        Dan — Modern Alpha
-                        <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                      </div>
-                      <div class="text-xs text-zinc-400 font-mono">Finance &amp; High-Ticket Media (340K Subscribers)</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <button type="button" onclick="event.stopPropagation(); openProjectModal('stats-revenue');" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-[#e05326] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300">
-                    View Case Study ↗
-                  </button>
-                </div>
-              </div>
-
-              <!-- Right Column: Big Borderless Studio Analytics Image -->
-              <div class="col-span-12 lg:col-span-6">
-                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#090a10] group-hover:scale-[1.02] transition-transform duration-500">
-                  <img src="assets/stats/monthly-revenue-25k.png" alt="82.1% Viewer Retention Across Sponsor Ad Read" class="w-full h-auto object-contain max-h-[380px] sm:max-h-[440px] mx-auto" loading="lazy" decoding="async" />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Mobile Swipe & Indicator Controls (Hidden on desktop) -->
-      <div class="flex items-center justify-between mt-6 px-2 text-xs font-mono text-zinc-400 md:hidden">
-        <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-xs">
-          <span class="inline-block animate-pulse">←</span> Swipe Case Studies <span class="inline-block animate-pulse">→</span>
-        </span>
-        <div class="flex items-center gap-1.5" id="metric-carousel-dots">
-          <button class="metric-dot active" data-index="0" aria-label="Slide 1"></button>
-          <button class="metric-dot" data-index="1" aria-label="Slide 2"></button>
-          <button class="metric-dot" data-index="2" aria-label="Slide 3"></button>
-          <button class="metric-dot" data-index="3" aria-label="Slide 4"></button>
-        </div>
-        <span id="metric-card-counter" class="font-bold tracking-wider text-white text-xs">1 / 4</span>
-      </div>
-
-    </div>
-  </section>
 
 
 
@@ -4771,7 +4701,7 @@
         </button>
         <div class="faq-content">
           <p class="text-sm sm:text-base text-[rgba(255,253,217,0.75)] leading-relaxed">
-            You can choose a monthly retainer (best value for ongoing channels) or purchase video packages. Our standard pricing for long-form video editing starts as low as $278 per video in our high-output tier, or $1,495/month for our starter retainer. Every package includes a dedicated video editor and manager, guaranteed 48-hour turnarounds, unlimited revisions, motion graphics, audio mastering, color grading, and royalty-free stock footage &amp; music.
+            We offer flat, predictable monthly retainers ($1,495/mo to $4,495/mo) with a 15% discount when billed quarterly—breaking down to as low as $148 per edited video asset. Every plan includes a dedicated lead editor and creative manager, guaranteed 48-hour first drafts, unlimited revisions, custom motion graphics, broadcast audio mastering, color grading, and licensed 4K stock footage.
           </p>
         </div>
       </div>
@@ -6391,17 +6321,9 @@
       }
     }
 
-    // Hero Showreel Trigger & Escape Modal Listeners
-    const triggerShowreelBtn = document.getElementById("trigger-showreel");
+    // Escape listener for legacy showreel modal
     const showreelModalEl = document.getElementById("showreel-modal");
-    const showreelVideoEl = document.getElementById("showreel-video");
-
-    if (triggerShowreelBtn && showreelModalEl) {
-      triggerShowreelBtn.addEventListener("click", () => {
-        playBeep(580, "sine", 0.05);
-        showreelModalEl.classList.remove("opacity-0", "pointer-events-none");
-        if (showreelVideoEl) showreelVideoEl.play().catch(() => {});
-      });
+    if (showreelModalEl) {
       showreelModalEl.addEventListener("click", (e) => {
         if (e.target === showreelModalEl) closeShowreelModal();
       });
@@ -6793,12 +6715,12 @@
               const id = entry.target.id;
               if (id === 'services-longform') updateServicePills('longform');
               else if (id === 'services-shortform') updateServicePills('shortform');
-              else if (id === 'services-channel') updateServicePills('channel');
+              else if (id === 'services-channel' || id === 'work') updateServicePills('channel');
             }
           });
-        }, { threshold: 0.2, rootMargin: "-15% 0px -50% 0px" });
+        }, { threshold: 0.15, rootMargin: "-10% 0px -40% 0px" });
 
-        ['services-longform', 'services-shortform', 'services-channel'].forEach(id => {
+        ['services-longform', 'services-shortform', 'services-channel', 'work'].forEach(id => {
           const el = document.getElementById(id);
           if (el) serviceObserver.observe(el);
         });
