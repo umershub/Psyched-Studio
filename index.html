@@ -820,11 +820,6 @@
       transition: box-shadow 0.4s ease, transform 0.3s ease;
       cursor: pointer;
     }
-    .stack-card:nth-child(1) { top: 95px; z-index: 10; }
-    .stack-card:nth-child(2) { top: 115px; z-index: 11; }
-    .stack-card:nth-child(3) { top: 135px; z-index: 12; }
-    .stack-card:nth-child(4) { top: 155px; z-index: 13; }
-    .stack-card:nth-child(5) { top: 175px; z-index: 14; }
 
     .card-tilt-inner {
       padding: 22px 24px;
@@ -2829,11 +2824,13 @@
       box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85);
     }
 
-    /* Offset stacking cards so they stack cleanly below the sticky pill switcher */
-    .stack-card:nth-child(1) { top: 135px !important; z-index: 10; }
-    .stack-card:nth-child(2) { top: 155px !important; z-index: 11; }
-    .stack-card:nth-child(3) { top: 175px !important; z-index: 12; }
-    .stack-card:nth-child(4) { top: 195px !important; z-index: 13; }
+    /* Offset stacking cards so they stack cleanly below the sticky pill switcher (Desktop only) */
+    @media (min-width: 961px) {
+      .stack-card:nth-child(1) { top: 135px !important; z-index: 10; }
+      .stack-card:nth-child(2) { top: 155px !important; z-index: 11; }
+      .stack-card:nth-child(3) { top: 175px !important; z-index: 12; }
+      .stack-card:nth-child(4) { top: 195px !important; z-index: 13; }
+    }
 
     /* ==========================================================================
        TACTILE DROPPING & LANDING HASHTAG PILLS
@@ -2987,12 +2984,11 @@
     }
 </style>
 
-  <!-- External CDNs: GSAP + ScrollTrigger + Three.js + Lenis + Matter.js -->
+  <!-- External CDNs: GSAP + ScrollTrigger + Three.js + Lenis -->
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <!-- JSON-LD Structured Data: Organization & FAQPage Rich Snippets -->
   <script type="application/ld+json">
   {
@@ -3353,11 +3349,15 @@
           <div class="service-video-card group cursor-pointer" onclick="openVideoModal('956862739', 'The Real Cost of Scaling a Business', 'Psyched Studio Mastercut', false)">
             <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
               <img src="assets/showcase/longform-1.webp" alt="The Real Cost of Scaling a Business" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                <span>Business Breakdown • 1.2M Views</span>
               </div>
             </div>
           </div>
@@ -3366,11 +3366,15 @@
           <div class="service-video-card group cursor-pointer" onclick="openVideoModal('1009495457', 'Maximizing Multifamily Property Investments', 'Psyched Studio Mastercut', false)">
             <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
               <img src="assets/showcase/longform-2.webp" alt="Maximizing Multifamily Property Investments" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                <span>Real Estate Investing • 840K Views</span>
               </div>
             </div>
           </div>
@@ -3379,11 +3383,15 @@
           <div class="service-video-card group cursor-pointer" onclick="openVideoModal('1004308743', 'Mastering Bodybuilding Psychology & Discipline', 'Psyched Studio Mastercut', false)">
             <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
               <img src="assets/showcase/longform-3.webp" alt="Mastering Bodybuilding Psychology & Discipline" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                <span>Fitness &amp; Discipline • 1.5M Views</span>
               </div>
             </div>
           </div>
@@ -3392,11 +3400,15 @@
           <div class="service-video-card group cursor-pointer" onclick="openVideoModal('1060737379', 'The Science of Dopamine & Social Media Virality', 'Psyched Studio Mastercut', false)">
             <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
               <img src="assets/showcase/longform-4.webp" alt="The Science of Dopamine & Social Media Virality" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                <span>Psychology &amp; Science • 2.1M Views</span>
               </div>
             </div>
           </div>
@@ -3405,11 +3417,15 @@
           <div class="service-video-card group cursor-pointer" onclick="openVideoModal('890876009', 'Don\'t Touch That! Exotic Wildlife Encounters', 'Psyched Studio Mastercut', false)">
             <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
               <img src="assets/showcase/longform-5.webp" alt="Don't Touch That! Exotic Wildlife Encounters" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                <span>Wildlife &amp; Adventure • 950K Views</span>
               </div>
             </div>
           </div>
@@ -3418,11 +3434,15 @@
           <div class="service-video-card group cursor-pointer" onclick="openVideoModal('890884197', 'Street Calisthenics & Peak Athletic Performance', 'Psyched Studio Mastercut', false)">
             <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.2)]">
               <img src="assets/showcase/longform-6.webp" alt="Street Calisthenics & Peak Athletic Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                <span>Athletics &amp; Training • 1.1M Views</span>
               </div>
             </div>
           </div>
@@ -3490,11 +3510,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('956878376', 'Fiery Reaction & Micro-Hooks', 'Vertical Reel', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-1.webp" alt="Fiery Reaction & Micro-Hooks" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Reaction Hook • 114% Hold</span>
               </div>
             </div>
           </div>
@@ -3503,11 +3527,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('891265601', 'Shakespearean Philosophy in 45s', 'Vertical Short', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-2.webp" alt="Shakespearean Philosophy in 45s" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Philosophy Short • 92% Hold</span>
               </div>
             </div>
           </div>
@@ -3516,11 +3544,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1004947320', 'What Is Potential In Your Training?', 'Vertical Short', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-3.webp" alt="What Is Potential In Your Training?" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Fitness Motivation • 1.8M Views</span>
               </div>
             </div>
           </div>
@@ -3529,11 +3561,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('891273524', 'Heritage Bar & Kitchen Secrets', 'Vertical Reel', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-4.webp" alt="Heritage Bar & Kitchen Secrets" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Storytelling Reel • 89% Hold</span>
               </div>
             </div>
           </div>
@@ -3542,11 +3578,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1015953316', 'Parker 0:03 Money Strategy', 'Vertical Reel', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-5.webp" alt="Parker 0:03 Money Strategy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Finance Strategy • 108% Hold</span>
               </div>
             </div>
           </div>
@@ -3555,11 +3595,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('891273561', 'US Real Estate Market Breakdown', 'Vertical Short', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-6.webp" alt="US Real Estate Market Breakdown" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Real Estate Insight • 650K Views</span>
               </div>
             </div>
           </div>
@@ -3568,11 +3612,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1060734384', 'Segmented Apart: Tech Commentary', 'Vertical Reel', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-7.webp" alt="Segmented Apart: Tech Commentary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Tech Commentary • 1.4M Views</span>
               </div>
             </div>
           </div>
@@ -3581,11 +3629,15 @@
           <div class="service-short-card group cursor-pointer" onclick="openVideoModal('1015954997', 'Shorter Wait Times: Adventure & Travel', 'Vertical Short', true)">
             <div class="relative aspect-[9/16] w-full rounded-2xl overflow-hidden bg-[#0d0e14] border border-white/10 shadow-xl transition-all duration-500 group-hover:scale-[1.03] group-hover:border-[#e05326]/50 group-hover:shadow-[0_15px_30px_rgba(224,83,38,0.25)]">
               <img src="assets/showcase/short-8.webp" alt="Shorter Wait Times: Adventure & Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="tasty-play-btn scale-90 sm:scale-100">
                   <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
                 </div>
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[9px] sm:text-[10px] font-mono font-bold text-white tracking-wide shadow-lg flex items-center gap-1.5 pointer-events-none truncate">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] flex-shrink-0"></span>
+                <span class="truncate">Travel &amp; Adventure • 980K Views</span>
               </div>
             </div>
           </div>
@@ -3667,6 +3719,70 @@
             <div class="w-10 h-10 rounded-xl bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-center font-mono font-bold text-[#e05326] mb-4">04</div>
             <h4 class="text-lg font-bold text-white uppercase tracking-tight mb-2">Retention Audits</h4>
             <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Weekly deep-dive analytics tracking hook hold percentage, audience drop-off points, and actionable edits for future videos.</p>
+          </div>
+        </div>
+
+        <!-- High-CTR Thumbnail Packaging Showcase (Direct Proof of Pillar 01) -->
+        <div class="max-w-6xl mx-auto mb-16 pt-4">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e05326]/10 text-[#e05326] text-[11px] font-mono font-bold tracking-wider uppercase mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span>
+                PACKAGING SHOWCASE • PROVEN CTR BENCHMARKS
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+                High-CTR Thumbnail Studio Packaging
+              </h3>
+            </div>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] max-w-md">
+              Psychology-tested thumbnail composition, emotional contrast, and curiosity gap titles designed to win the algorithmic browse click.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14] border border-white/10 rounded-2xl hover:border-[#e05326]/50 transition-all duration-300">
+              <div class="relative aspect-video rounded-xl overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/05EbH-_w0UQ/maxresdefault.jpg" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[11px] font-mono font-extrabold shadow-md">
+                  8.4% CTR
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
+              <div class="text-[11px] font-mono text-zinc-400">Curiosity Gap • Emotional Focus</div>
+            </div>
+
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14] border border-white/10 rounded-2xl hover:border-[#e05326]/50 transition-all duration-300">
+              <div class="relative aspect-video rounded-xl overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[11px] font-mono font-extrabold shadow-md">
+                  7.6% CTR
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
+              <div class="text-[11px] font-mono text-zinc-400">+56% Velocity • Contrast Grade</div>
+            </div>
+
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14] border border-white/10 rounded-2xl hover:border-[#e05326]/50 transition-all duration-300">
+              <div class="relative aspect-video rounded-xl overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/ClKTfE6uzR8/maxresdefault.jpg" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[11px] font-mono font-extrabold shadow-md">
+                  9.1% CTR
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
+              <div class="text-[11px] font-mono text-zinc-400">High Shock Value • 3D Accents</div>
+            </div>
+
+            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14] border border-white/10 rounded-2xl hover:border-[#e05326]/50 transition-all duration-300">
+              <div class="relative aspect-video rounded-xl overflow-hidden bg-black mb-3">
+                <img src="https://i.ytimg.com/vi/Axa6PyVdDTw/maxresdefault.jpg" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[11px] font-mono font-extrabold shadow-md">
+                  7.9% CTR
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
+              <div class="text-[11px] font-mono text-zinc-400">Documentary Polish • Clear Typography</div>
+            </div>
           </div>
         </div>
 
@@ -4166,6 +4282,105 @@
         <span id="why-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 6</span>
       </div>
 
+      <!-- Why Creators Switch: 3-Column Comparison Matrix -->
+      <div class="mt-20 pt-16 border-t border-white/[0.08]">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(224,83,38,0.12)] border border-[rgba(224,83,38,0.25)] text-[#e05326] text-xs font-mono font-bold uppercase tracking-widest mb-3">
+            HONEST COMPARISON
+          </div>
+          <h3 class="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+            Why Creators Switch to <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Psyched Studio</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] mt-2">
+            See how our dedicated creative pod model compares to the alternative options creators struggle with.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto pb-4">
+          <table class="w-full min-w-[680px] text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/[0.1]">
+                <th class="py-4 px-4 text-xs font-mono font-bold uppercase tracking-wider text-[rgba(255,253,217,0.5)] w-1/4">Key Criteria</th>
+                <th class="py-4 px-4 text-xs font-mono font-bold uppercase tracking-wider text-[rgba(255,253,217,0.7)] w-1/4">Freelancers (Upwork/Fiverr)</th>
+                <th class="py-4 px-4 text-xs font-mono font-bold uppercase tracking-wider text-[rgba(255,253,217,0.7)] w-1/4">Traditional Agencies</th>
+                <th class="py-4 px-5 text-xs font-mono font-extrabold uppercase tracking-wider text-white bg-[#e05326]/20 border-x border-t border-[#e05326]/40 rounded-t-xl w-1/4 text-center">
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#e05326] text-white text-[10px] tracking-widest uppercase mr-1.5 font-sans font-bold">WINNER</span>
+                  Psyched Studio
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06] text-xs sm:text-sm">
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-bold text-[#FFFDD9]">Creative Team</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Solo freelancer, inconsistent availability &amp; high ghosting risk</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Rotating junior interns &amp; slow account rep middlemen</td>
+                <td class="py-4 px-5 bg-[#e05326]/10 border-x border-[#e05326]/30 font-semibold text-white">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[#e05326] font-bold">✓</span>
+                    <span>Dedicated Pod (Lead Editor, Art Director &amp; Growth Mgr)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-bold text-[#FFFDD9]">Turnaround SLA</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">4–10 days with frequent unannounced delays</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">5–7 business days through rigid ticketing queues</td>
+                <td class="py-4 px-5 bg-[#e05326]/10 border-x border-[#e05326]/30 font-semibold text-white">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[#e05326] font-bold">✓</span>
+                    <span>Guaranteed 48-Hour First Draft (Mon–Sat)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-bold text-[#FFFDD9]">Retention Engineering</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Basic assemble cuts, zero hook psychology or drop-off analysis</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Cookie-cutter templates without Studio analytics audits</td>
+                <td class="py-4 px-5 bg-[#e05326]/10 border-x border-[#e05326]/30 font-semibold text-white">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[#e05326] font-bold">✓</span>
+                    <span>Frame-by-frame retention surgery + hook optimization</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-bold text-[#FFFDD9]">Thumbnails &amp; Packaging</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Not included (+$75–$150/ea) or amateur DIY Canva art</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Separate add-on department with extra recurring billing</td>
+                <td class="py-4 px-5 bg-[#e05326]/10 border-x border-[#e05326]/30 font-semibold text-white">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[#e05326] font-bold">✓</span>
+                    <span>100% Included with A/B/C testing title variants</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-bold text-[#FFFDD9]">Revision Policy</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">1–2 rounds max; hourly surcharges for further tweaks</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Rigid change requests requiring 3–4 days per round</td>
+                <td class="py-4 px-5 bg-[#e05326]/10 border-x border-[#e05326]/30 font-semibold text-white">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[#e05326] font-bold">✓</span>
+                    <span>Unlimited frame-accurate comments in your portal</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-bold text-[#FFFDD9]">Pricing &amp; Commitment</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">Unpredictable hourly bills, no quality or deadline guarantee</td>
+                <td class="py-4 px-4 text-[rgba(255,253,217,0.6)]">$6,000–$10,000/mo with mandatory 6-month lock-in contracts</td>
+                <td class="py-4 px-5 bg-[#e05326]/10 border-x border-b border-[#e05326]/30 rounded-b-xl font-bold text-[#FFFDD9]">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[#e05326] font-bold">✓</span>
+                    <span>Flat $1,495–$2,795/mo • Zero contracts, pause anytime</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -4383,7 +4598,7 @@
             </div>
           </div>
 
-          <a href="#booking" class="w-full py-4 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-[#FFFDD9] text-xs font-extrabold uppercase tracking-wider text-center block transition-all border border-white/[0.1]">
+          <a href="#booking" onclick="selectPricingTier('Explore Package ($1,495/mo — 4 Long-Form Edits)')" class="w-full py-4 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-[#FFFDD9] text-xs font-extrabold uppercase tracking-wider text-center block transition-all border border-white/[0.1]">
             Get Started →
           </a>
           <p id="bill-explore" class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] text-center mt-3">Billed monthly. Pause or cancel anytime.</p>
@@ -4451,7 +4666,7 @@
             </div>
           </div>
 
-          <a href="#booking" class="w-full py-4 rounded-xl bg-[#e05326] hover:bg-[#ff5d2e] text-white text-xs font-extrabold uppercase tracking-wider text-center block transition-all shadow-[0_4px_24px_rgba(224,83,38,0.4)] hover:scale-[1.02]">
+          <a href="#booking" onclick="selectPricingTier('Trending Package ($2,795/mo — 8 Long + 8 Shorts)')" class="w-full py-4 rounded-xl bg-[#e05326] hover:bg-[#ff5d2e] text-white text-xs font-extrabold uppercase tracking-wider text-center block transition-all shadow-[0_4px_24px_rgba(224,83,38,0.4)] hover:scale-[1.02]">
             Start Trending Now →
           </a>
           <p id="bill-trending" class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] text-center mt-3">Billed monthly. Dedicated lead editor.</p>
@@ -4515,7 +4730,7 @@
             </div>
           </div>
 
-          <a href="#booking" class="w-full py-4 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-[#FFFDD9] text-xs font-extrabold uppercase tracking-wider text-center block transition-all border border-white/[0.1]">
+          <a href="#booking" onclick="selectPricingTier('Viral Package ($4,495/mo — 12+ Long + 12 Shorts + Management)')" class="w-full py-4 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-[#FFFDD9] text-xs font-extrabold uppercase tracking-wider text-center block transition-all border border-white/[0.1]">
             Scale Your Channel →
           </a>
           <p id="bill-viral" class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] text-center mt-3">Billed monthly. Full YouTube management.</p>
@@ -4953,32 +5168,7 @@
     </div>
   </div>
 
-  <!-- SHOWREEL VIDEO MODAL -->
-  <div id="showreel-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-lg opacity-0 pointer-events-none transition-all duration-300">
-    <div class="relative w-full max-w-4xl rounded-2xl overflow-hidden bg-[#0d0e12] border border-white/[0.12] shadow-2xl">
-      <!-- Branded Showreel Header -->
-      <div class="flex items-center justify-between px-5 py-3.5 bg-[#121318] border-b border-white/[0.08]">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
-          <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#FFFDD9]">PSYCHED STUDIO • PRODUCTION REEL</span>
-          <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] ml-1">0:58 MASTER</span>
-        </div>
-        <button onclick="closeShowreelModal()" class="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-white/[0.15] text-neutral-300 hover:text-white flex items-center justify-center transition-colors text-xs">
-          ✕
-        </button>
-      </div>
-
-      <div class="relative aspect-video w-full bg-black flex items-center justify-center">
-        <video id="showreel-video" class="w-full h-full object-cover" poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80" controls playsinline preload="metadata">
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-          <!-- Embed Option (YouTube/Vimeo Showreel):
-               <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/YOUR_ID?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-          Your browser does not support HTML5 video.
-        </video>
-      </div>
-    </div>
-  </div>
-<!-- SCRIPT LOGIC -->
+  <!-- SCRIPT LOGIC -->
   <script>
     /* ==========================================================
        1. LENIS SMOOTH SCROLL & REACTIVE FLOATING LIQUID GLASS HEADER
@@ -5865,237 +6055,6 @@
     }
 
     /* ==========================================================
-       4. CORE PILLARS: MATTER.JS RIGID BODY PHYSICS & KINETIC BURST
-       ========================================================== */
-    const burstItems = document.querySelectorAll(".hover-burst-item");
-    const servicesSection = document.getElementById("services");
-
-    burstItems.forEach((item, itemIdx) => {
-      const tags = item.querySelectorAll(".pill-tag, .burst-pill-item");
-      let engine = null;
-      let rafId = null;
-      let isSimRunning = false;
-      let tagBodies = [];
-
-      const cleanupSim = (animateBack = false) => {
-        isSimRunning = false;
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
-        }
-
-        if (engine && typeof Matter !== 'undefined') {
-          try {
-            Matter.World.clear(engine.world, false);
-            Matter.Engine.clear(engine);
-          } catch (e) {}
-          engine = null;
-        }
-
-        gsap.killTweensOf(tags);
-
-        if (animateBack) {
-          gsap.to(tags, {
-            duration: 0.28,
-            x: 0,
-            y: 0,
-            scale: 0,
-            opacity: 0,
-            rotation: 0,
-            ease: "power2.inOut",
-            onComplete: () => {
-              tags.forEach(tag => {
-                tag.style.transform = "translate(-50%, -50%) scale(0)";
-                tag.style.opacity = "0";
-              });
-            }
-          });
-        } else {
-          tags.forEach(tag => {
-            tag.style.transform = "translate(-50%, -50%) scale(0)";
-            tag.style.opacity = "0";
-          });
-        }
-
-        item.classList.remove("is-hovered");
-      };
-
-      item._cleanupSim = cleanupSim;
-
-      item.addEventListener("mouseenter", () => {
-        playBeep(520 + itemIdx * 80, "sine", 0.03);
-        item.classList.add("is-hovered");
-
-        // Activate Section Background Blur & Dim Sibling Items
-        if (servicesSection) servicesSection.classList.add("is-bursting");
-        burstItems.forEach(other => {
-          if (other !== item) {
-            other.classList.add("is-dimmed");
-            if (other._cleanupSim) other._cleanupSim(false);
-          } else {
-            other.classList.remove("is-dimmed");
-          }
-        });
-
-        // Cleanup any previous simulation / tweens
-        cleanupSim(false);
-
-        const isMobile = window.innerWidth < 768;
-
-        // Reset elements directly at the center of the Title text
-        gsap.set(tags, { scale: 0, opacity: 0 });
-
-        // Matter.js Physics Simulation
-        if (typeof Matter !== 'undefined') {
-          const { Engine, World, Bodies, Body } = Matter;
-
-          // Initialize Matter.js Engine & World
-          engine = Engine.create({
-            gravity: { x: 0, y: 1.4, scale: 0.001 } // Natural snappy gravity
-          });
-          const world = engine.world;
-
-          // Create Static Boundaries
-          // The bottom divider line (.burst-item-divider) sits at bottom: 0 of item.
-          // Since .burst-floating-stage is at top: 50%, the line is exactly at y = item.offsetHeight / 2.
-          const itemH = item.offsetHeight || 128;
-          const floorY = (itemH / 2) - 2; // Exact baseline resting rail on top of the divider line
-          const floorThickness = 80;      // Impenetrable solid boundary
-
-          const halfW = Math.max(280, Math.min(480, (item.offsetWidth || 760) / 2 - 20));
-
-          const floor = Bodies.rectangle(0, floorY + floorThickness / 2, 1600, floorThickness, {
-            isStatic: true,
-            friction: 0.55,    // Holds tags firmly on the line
-            restitution: 0.22   // Subtle, solid landing bounce
-          });
-
-          const leftWall = Bodies.rectangle(-halfW - 25, 0, 50, 600, {
-            isStatic: true,
-            friction: 0.15,
-            restitution: 0.35
-          });
-
-          const rightWall = Bodies.rectangle(halfW + 25, 0, 50, 600, {
-            isStatic: true,
-            friction: 0.15,
-            restitution: 0.35
-          });
-
-          const ceiling = Bodies.rectangle(0, -160, 1600, 50, {
-            isStatic: true,
-            friction: 0.1,
-            restitution: 0.3
-          });
-
-          World.add(world, [floor, leftWall, rightWall, ceiling]);
-
-          // Create Dynamic Pill Bodies for Each HTML Tag
-          tagBodies = [];
-          const totalTags = tags.length;
-
-          tags.forEach((tag, i) => {
-            const w = tag.offsetWidth || (isMobile ? 140 : 190);
-            const h = tag.offsetHeight || (isMobile ? 32 : 42);
-            const radius = Math.max(2, Math.floor(h / 2) - 1);
-
-            // Spawn centered with slight horizontal offset so bodies separate cleanly
-            const angleOffset = (i - (totalTags - 1) / 2);
-            const spawnX = angleOffset * 28;
-            const spawnY = -12 + (i * 2);
-
-            const body = Bodies.rectangle(spawnX, spawnY, w, h, {
-              chamfer: { radius: radius },
-              restitution: 0.24,  // Crisp, clean bounce when landing on the line
-              friction: 0.55,     // Stops firmly on the line without sliding off
-              frictionAir: 0.016, // Aerodynamic damping
-              density: 0.002
-            });
-
-            // Explosive Toss: Upward arc and lateral spread with tumbling spin
-            const vx = angleOffset * (isMobile ? 3.2 : 4.4) + (Math.random() - 0.5) * 1.2;
-            const vy = -7.4 - Math.random() * 3.0; // Snappy upward toss
-            const omega = (Math.random() - 0.5) * 0.16 + angleOffset * 0.02;
-
-            Body.setVelocity(body, { x: vx, y: vy });
-            Body.setAngularVelocity(body, omega);
-
-            World.add(world, body);
-            tagBodies.push({ tag, body });
-          });
-
-          // Scale & Opacity Reveal on Toss
-          gsap.fromTo(tags, 
-            { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.22, stagger: 0.025, ease: "back.out(1.5)" }
-          );
-
-          // Continuous Physics Synchronization Loop (RAF)
-          isSimRunning = true;
-          let lastTime = performance.now();
-
-          const syncLoop = (time) => {
-            if (!isSimRunning || !engine) return;
-            const delta = Math.min(time - lastTime, 33);
-            lastTime = time;
-
-            Engine.update(engine, delta);
-
-            tagBodies.forEach(({ tag, body }) => {
-              const s = gsap.getProperty(tag, "scale");
-              const op = gsap.getProperty(tag, "opacity");
-              tag.style.transform = `translate(-50%, -50%) translate3d(${body.position.x}px, ${body.position.y}px, 0px) rotate(${body.angle}rad) scale(${s})`;
-              tag.style.opacity = op;
-            });
-
-            rafId = requestAnimationFrame(syncLoop);
-          };
-
-          rafId = requestAnimationFrame(syncLoop);
-        } else {
-          // Fallback if Matter.js CDN is unavailable
-          gsap.to(tags, {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            stagger: 0.05
-          });
-        }
-      });
-
-      // Cleanup on Mouse Leave: Clear World, Stop Engine, Reset DOM & Blur
-      item.addEventListener("mouseleave", () => {
-        cleanupSim(true);
-        burstItems.forEach(other => other.classList.remove("is-dimmed"));
-
-        // De-blur section background when no pillar is hovered
-        const anyHovered = Array.from(burstItems).some(b => b.classList.contains("is-hovered"));
-        if (!anyHovered && servicesSection) {
-          servicesSection.classList.remove("is-bursting");
-        }
-      });
-    });
-
-    // Safety: Auto-cleanup physics engines when scrolling away so engines never leak in background
-    window.addEventListener("scroll", () => {
-      let anyHovered = false;
-      burstItems.forEach(item => {
-        if (item.classList.contains("is-hovered")) {
-          const rect = item.getBoundingClientRect();
-          if (rect.bottom < 40 || rect.top > window.innerHeight - 40) {
-            if (item._cleanupSim) item._cleanupSim(false);
-          } else {
-            anyHovered = true;
-          }
-        }
-      });
-      if (!anyHovered && servicesSection) {
-        servicesSection.classList.remove("is-bursting");
-        burstItems.forEach(other => other.classList.remove("is-dimmed"));
-      }
-    }, { passive: true });
-
-    /* ==========================================================
        5. TRANSPARENT PRICING TOGGLE SWITCHER
        ========================================================== */
     function setPricingMode(mode) {
@@ -6433,27 +6392,6 @@
       });
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeProjectModal();
-      });
-    }
-
-    function closeShowreelModal() {
-      const showreelModal = document.getElementById("showreel-modal");
-      const showreelVideo = document.getElementById("showreel-video");
-      if (showreelModal) showreelModal.classList.add("opacity-0", "pointer-events-none");
-      if (showreelVideo) {
-        showreelVideo.pause();
-        showreelVideo.currentTime = 0;
-      }
-    }
-
-    // Escape listener for legacy showreel modal
-    const showreelModalEl = document.getElementById("showreel-modal");
-    if (showreelModalEl) {
-      showreelModalEl.addEventListener("click", (e) => {
-        if (e.target === showreelModalEl) closeShowreelModal();
-      });
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeShowreelModal();
       });
     }
 
@@ -6865,10 +6803,13 @@
       if (!rows.length) return;
 
       if ('IntersectionObserver' in window) {
+        rows.forEach(r => r.classList.remove('is-landed')); // Reset initial state so drop animation plays
         const rowObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-landed');
+            } else {
+              entry.target.classList.remove('is-landed');
             }
           });
         }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
@@ -6888,6 +6829,21 @@
           }, 160);
         });
       });
+    }
+
+    function selectPricingTier(tierName) {
+      const notesField = document.getElementById("audit-notes");
+      if (notesField) {
+        notesField.value = "Selected Plan: " + tierName;
+        notesField.classList.add("ring-2", "ring-[#e05326]", "border-[#e05326]");
+        setTimeout(() => {
+          notesField.classList.remove("ring-2", "ring-[#e05326]");
+        }, 3000);
+      }
+      const bookingSec = document.getElementById("booking");
+      if (bookingSec) {
+        bookingSec.scrollIntoView({ behavior: "smooth" });
+      }
     }
 
     function filterPortfolio(category) {
@@ -6956,16 +6912,39 @@
       if (container) container.innerHTML = "";
     }
 
-    function handleAsyncAuditSubmit(event) {
+    async function handleAsyncAuditSubmit(event) {
       event.preventDefault();
       const form = document.getElementById("async-audit-form");
       const successBox = document.getElementById("async-audit-success");
       const submitBtn = document.getElementById("btn-submit-async");
 
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "<span>Transmitting...</span>";
+      }
+
+      const payload = {
+        access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Free key at web3forms.com for info@thepsychedstudio.com
+        subject: "New Free Sample Edit & Channel Audit Request — Psyched Studio",
+        name: document.getElementById("audit-name")?.value || "",
+        email: document.getElementById("audit-email")?.value || "",
+        channel_url: document.getElementById("audit-url")?.value || "",
+        notes: document.getElementById("audit-notes")?.value || ""
+      };
+
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error("Audit form submit error:", err);
+      }
+
       playBeep(880, "sine", 0.08);
 
       if (submitBtn) {
-        submitBtn.disabled = true;
         submitBtn.innerHTML = "<span>Audit Request Received ✓</span>";
         submitBtn.classList.remove("bg-[#e05326]");
         submitBtn.classList.add("bg-emerald-600");
@@ -6981,6 +6960,7 @@
     window.openVideoModal = openVideoModal;
     window.closeVideoModal = closeVideoModal;
     window.handleAsyncAuditSubmit = handleAsyncAuditSubmit;
+    window.selectPricingTier = selectPricingTier;
 
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeVideoModal();
