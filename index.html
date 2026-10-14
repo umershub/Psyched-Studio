@@ -2835,7 +2835,118 @@
     .stack-card:nth-child(3) { top: 175px !important; z-index: 12; }
     .stack-card:nth-child(4) { top: 195px !important; z-index: 13; }
 
-  
+    /* ==========================================================================
+       TACTILE DROPPING & LANDING HASHTAG PILLS
+       ========================================================================== */
+    .dropping-hashtag-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.5rem;
+      perspective: 1000px;
+      min-height: 42px;
+    }
+
+    .dropping-hashtag-pill {
+      opacity: 0;
+      transform: translateY(-36px) scale(0.88);
+      filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      background: rgba(18, 19, 26, 0.92);
+      border: 1.5px solid rgba(255, 253, 217, 0.16);
+      border-radius: 9999px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18),
+        0 10px 24px -6px rgba(0, 0, 0, 0.75);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: 
+        opacity 0.45s ease-out, 
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+        filter 0.45s ease-out,
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+      will-change: transform, opacity, filter;
+    }
+
+    .dropping-hashtag-pill .tag-dot {
+      width: 7.5px;
+      height: 7.5px;
+      border-radius: 9999px;
+      background: #e05326;
+      box-shadow: 0 0 8px rgba(224, 83, 38, 0.85);
+      flex-shrink: 0;
+    }
+
+    .dropping-hashtag-pill .tag-dot.dot-cream {
+      background: #FFFDD9;
+      box-shadow: 0 0 8px rgba(255, 253, 217, 0.75);
+    }
+
+    .dropping-hashtag-pill .tag-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 253, 217, 0.95);
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+
+    /* Landed state (triggered on scroll) */
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Sequential Stagger Delays */
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:nth-child(1) { transition-delay: 0.04s; }
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:nth-child(2) { transition-delay: 0.12s; }
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:nth-child(3) { transition-delay: 0.20s; }
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:nth-child(4) { transition-delay: 0.28s; }
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:nth-child(5) { transition-delay: 0.36s; }
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:nth-child(6) { transition-delay: 0.44s; }
+
+    /* Interactive Hover / Click on Landed Pills */
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:hover {
+      transform: translateY(-3px) scale(1.04) !important;
+      border-color: #e05326;
+      background: rgba(26, 27, 36, 0.98);
+      box-shadow: 
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.3),
+        0 14px 28px -4px rgba(224, 83, 38, 0.4);
+    }
+    .dropping-hashtag-row.is-landed .dropping-hashtag-pill:hover .tag-text {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .dropping-hashtag-row {
+        gap: 8px;
+        margin-top: 1.25rem;
+      }
+      .dropping-hashtag-pill {
+        padding: 6px 13px;
+        gap: 6px;
+      }
+      .dropping-hashtag-pill .tag-text {
+        font-size: 11px;
+      }
+      .dropping-hashtag-pill .tag-dot {
+        width: 6.5px;
+        height: 6.5px;
+      }
+    }
+
     /* ==========================================================
        TASTYEDITS-INSPIRED TYPOGRAPHY & READABILITY SYSTEM
        ========================================================== */
@@ -3210,13 +3321,28 @@
             Our dedicated lead editors turn raw footage into high-retention 16:9 mastercuts—across commentary, talking heads, documentaries, podcasts, and video essays.
           </p>
 
-          <!-- Always-Visible Scannable Format Pills -->
-          <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#YouTubeLongForm</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#RetentionPacing</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#BroadcastAudioSFX</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#MotionGraphics</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#CinematicGrading</span>
+          <!-- Dropping & Landing Hashtags Row -->
+          <div class="dropping-hashtag-row">
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#YouTubeLongForm</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot dot-cream"></span>
+              <span class="tag-text">#RetentionPacing</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#BroadcastAudioSFX</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot dot-cream"></span>
+              <span class="tag-text">#MotionGraphics</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#CinematicGrading</span>
+            </div>
           </div>
         </div>
 
@@ -3332,13 +3458,28 @@
             Attention-grabbing 9:16 vertical videos—whether repurposing your long-form uploads or cutting original shoots. Built for YouTube Shorts, Reels, and TikTok with word-by-word captions, motion graphics, and b-roll.
           </p>
 
-          <!-- Always-Visible Scannable Format Pills -->
-          <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#YouTubeShorts</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#InstagramReels</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#TikTokAlgorithm</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#AnimatedCaptions</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#KineticHooks</span>
+          <!-- Dropping & Landing Hashtags Row -->
+          <div class="dropping-hashtag-row">
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#YouTubeShorts</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot dot-cream"></span>
+              <span class="tag-text">#InstagramReels</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#TikTokAlgorithm</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot dot-cream"></span>
+              <span class="tag-text">#AnimatedCaptions</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#KineticHooks</span>
+            </div>
           </div>
         </div>
 
@@ -3480,13 +3621,28 @@
             Our dedicated channel growth managers handle high-CTR packaging, title A/B testing, scheduled publishing, SEO metadata, and weekly retention audits so you can focus entirely on creating.
           </p>
 
-          <!-- Always-Visible Scannable Format Pills -->
-          <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#HighCTRThumbnails</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#TitleTestingAB</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#YouTubeSEO</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#UploadScheduling</span>
-            <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#FFFDD9]">#RetentionAnalytics</span>
+          <!-- Dropping & Landing Hashtags Row -->
+          <div class="dropping-hashtag-row">
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#HighCTRThumbnails</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot dot-cream"></span>
+              <span class="tag-text">#TitleTestingAB</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#YouTubeSEO</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot dot-cream"></span>
+              <span class="tag-text">#UploadScheduling</span>
+            </div>
+            <div class="dropping-hashtag-pill">
+              <span class="tag-dot"></span>
+              <span class="tag-text">#RetentionAnalytics</span>
+            </div>
           </div>
         </div>
 
@@ -3514,67 +3670,6 @@
           </div>
         </div>
 
-        <!-- High-CTR Thumbnail Studio Packaging Wall -->
-        <div class="max-w-6xl mx-auto pt-10 pb-16 border-t border-white/10">
-          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-            <div>
-              <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">PACKAGING ARCHITECTURE</span>
-              <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
-                High-CTR Thumbnail Studio Packaging
-              </h3>
-            </div>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] max-w-md">
-              Psychology-tested composition, emotional contrast, and curiosity gap titles that command clicks in the algorithmic feed.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-                <img src="https://i.ytimg.com/vi/05EbH-_w0UQ/maxresdefault.jpg" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                  8.4% CTR
-                </div>
-              </div>
-              <div class="text-sm font-bold text-white uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
-              <div class="text-xs font-mono text-zinc-400">Curiosity Gap • Emotional Focus</div>
-            </div>
-
-            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-                <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                  7.6% CTR
-                </div>
-              </div>
-              <div class="text-sm font-bold text-white uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
-              <div class="text-xs font-mono text-zinc-400">+56% Velocity • Contrast Grade</div>
-            </div>
-
-            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-                <img src="https://i.ytimg.com/vi/ClKTfE6uzR8/maxresdefault.jpg" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                  9.1% CTR
-                </div>
-              </div>
-              <div class="text-sm font-bold text-white uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
-              <div class="text-xs font-mono text-zinc-400">High Shock Value • 3D Accents</div>
-            </div>
-
-            <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
-              <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-                <img src="https://i.ytimg.com/vi/Axa6PyVdDTw/maxresdefault.jpg" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
-                  7.9% CTR
-                </div>
-              </div>
-              <div class="text-sm font-bold text-white uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
-              <div class="text-xs font-mono text-zinc-400">Documentary Polish • Clear Typography</div>
-            </div>
-          </div>
-        </div>
-
         <!-- ==========================================================
              MERGED: VERIFIED CREATOR METRICS (#work)
              ========================================================== -->
@@ -3595,7 +3690,7 @@
           <!-- Sticky Stacking Cards Container -->
           <div class="stack-cards-container">
             
-            <!-- Stacking Card 1: Nate The Lawyer (Annual Scale) -->
+            <!-- Stacking Card 1: 365-Day Channel Scale -->
             <div class="stack-card project-clickable group" data-cat="scale" data-project="stats-annual">
               <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -3608,7 +3703,7 @@
                       </div>
 
                       <h4 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
-                        Nate The Lawyer
+                        365-Day Channel Scale &amp; Compounding Reach
                       </h4>
 
                       <!-- Big Highlight Metric -->
@@ -3621,20 +3716,23 @@
                         </span>
                       </div>
 
-                      <!-- Authentic Client Quote -->
-                      <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
-                        “Umer consistently delivers frame-accurate edits, engaging graphics, and rock-solid narrative retention without missing a deadline.”
-                      </blockquote>
+                      <!-- Editorial Audit Summary -->
+                      <div class="text-sm sm:text-base text-zinc-200 leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
+                        <span class="text-[11px] font-mono font-bold uppercase text-[#e05326] block mb-1">STUDIO AUDIT DIAGNOSIS:</span>
+                        Deployed systematic 48-hour sprint editing cadence and frame-by-frame pacing surgery, converting unpredictable algorithmic reach into a compounding traffic engine generating 66,043,712 views and 6.3M watch hours.
+                      </div>
 
-                      <!-- Creator Profile Attribution -->
+                      <!-- Verification Attribution -->
                       <div class="flex items-center gap-3 pt-2 mb-6">
-                        <img src="assets/clients/nate-the-lawyer.png" alt="Nathaniel Broughty" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10" loading="lazy" />
+                        <div class="w-11 h-11 rounded-full bg-[#e05326]/20 border border-[#e05326]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
+                          365D
+                        </div>
                         <div>
                           <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                            Nathaniel Broughty
+                            YouTube Studio Annual Audit
                             <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                           </div>
-                          <div class="text-xs text-zinc-400 font-mono">Host &amp; Attorney @ Nate The Lawyer (766K Subs)</div>
+                          <div class="text-xs text-zinc-400 font-mono">Verified 365-Day Performance • 1.2M+ Single-Day Peak</div>
                         </div>
                       </div>
                     </div>
@@ -3722,7 +3820,7 @@
               </div>
             </div>
 
-            <!-- Stacking Card 3: Dr. James O'Donovan (Retention Surgery) -->
+            <!-- Stacking Card 3: Flatline Retention Curve Surgery -->
             <div class="stack-card project-clickable group" data-cat="retention" data-project="stats-retention">
               <div class="card-tilt-inner p-6 sm:p-8 lg:p-12">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -3735,7 +3833,7 @@
                       </div>
 
                       <h4 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[#e05326] transition-colors">
-                        Dr. James O'Donovan
+                        Flatline Retention Curve Surgery
                       </h4>
 
                       <!-- Big Highlight Metric -->
@@ -3748,20 +3846,23 @@
                         </span>
                       </div>
 
-                      <!-- Authentic Client Quote -->
-                      <blockquote class="text-sm sm:text-base text-zinc-200 italic leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
-                        “Pacing is crisp, retention holds high through 15-minute scientific breakdowns, and his understanding of YouTube's algorithmic pacing is second to none.”
-                      </blockquote>
+                      <!-- Editorial Audit Summary -->
+                      <div class="text-sm sm:text-base text-zinc-200 leading-relaxed my-5 border-l-2 border-[#e05326] pl-4">
+                        <span class="text-[11px] font-mono font-bold uppercase text-[#e05326] block mb-1">STUDIO AUDIT DIAGNOSIS:</span>
+                        Eliminated narrative dead air and engineered micro pattern interrupts every 4–7 seconds on a long-form master cut, holding audience attention above 75% through the critical 30-second mark and &gt;60% past the 4-minute midpoint.
+                      </div>
 
-                      <!-- Creator Profile Attribution -->
+                      <!-- Verification Attribution -->
                       <div class="flex items-center gap-3 pt-2 mb-6">
-                        <img src="assets/clients/dr-james-odonovan.jpg" alt="Dr. James O'Donovan" class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10" loading="lazy" />
+                        <div class="w-11 h-11 rounded-full bg-[#e05326]/20 border border-[#e05326]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
+                          RET
+                        </div>
                         <div>
                           <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                            Dr. James O'Donovan
+                            YouTube Studio Retention Curve Audit
                             <svg class="w-4 h-4 text-[#e05326]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                           </div>
-                          <div class="text-xs text-zinc-400 font-mono">Physician &amp; Creator @drjamesodonovan (615K Subs)</div>
+                          <div class="text-xs text-zinc-400 font-mono">Verified Audience Retention Curve • Micro-Hook Engineering</div>
                         </div>
                       </div>
                     </div>
@@ -3916,6 +4017,30 @@
         <p class="text-[rgba(255,253,217,0.75)] text-base sm:text-lg mt-3 leading-relaxed">
           Every order includes motion graphics, sound design, color correction, and unlimited revisions. Here’s why top YouTubers, podcasters, and brands switch to Psyched Studio:
         </p>
+
+        <!-- Dropping & Landing Hashtags Row -->
+        <div class="dropping-hashtag-row">
+          <div class="dropping-hashtag-pill">
+            <span class="tag-dot"></span>
+            <span class="tag-text">#DedicatedPod</span>
+          </div>
+          <div class="dropping-hashtag-pill">
+            <span class="tag-dot dot-cream"></span>
+            <span class="tag-text">#48HrTurnaround</span>
+          </div>
+          <div class="dropping-hashtag-pill">
+            <span class="tag-dot"></span>
+            <span class="tag-text">#UnlimitedRevisions</span>
+          </div>
+          <div class="dropping-hashtag-pill">
+            <span class="tag-dot dot-cream"></span>
+            <span class="tag-text">#BroadcastAudio</span>
+          </div>
+          <div class="dropping-hashtag-pill">
+            <span class="tag-dot"></span>
+            <span class="tag-text">#ZeroContracts</span>
+          </div>
+        </div>
       </div>
 
       <!-- 6 Guarantees Grid (Slider on Mobile, 3x2 on Desktop) -->
@@ -6687,6 +6812,11 @@
       const target = document.getElementById(`services-${tab}`);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const row = target.querySelector('.dropping-hashtag-row');
+        if (row) {
+          row.classList.remove('is-landed');
+          setTimeout(() => row.classList.add('is-landed'), 120);
+        }
       }
       updateServicePills(tab);
       playBeep(520, "sine", 0.03);
@@ -6725,7 +6855,40 @@
           if (el) serviceObserver.observe(el);
         });
       }
+
+      // Initialize dropping and landing hashtags
+      initDroppingHashtags();
     });
+
+    function initDroppingHashtags() {
+      const rows = document.querySelectorAll('.dropping-hashtag-row');
+      if (!rows.length) return;
+
+      if ('IntersectionObserver' in window) {
+        const rowObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-landed');
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+        rows.forEach(r => rowObserver.observe(r));
+      } else {
+        rows.forEach(r => r.classList.add('is-landed'));
+      }
+
+      // Play audio beep and subtle spring response on click
+      document.querySelectorAll('.dropping-hashtag-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          playBeep(640, "sine", 0.03);
+          pill.style.transform = 'translateY(2px) scale(0.96)';
+          setTimeout(() => {
+            pill.style.transform = '';
+          }, 160);
+        });
+      });
+    }
 
     function filterPortfolio(category) {
       const buttons = document.querySelectorAll(".portfolio-filter-btn");
