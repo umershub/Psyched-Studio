@@ -2749,14 +2749,150 @@
       }
     }
 
+  
+    /* ==========================================================
+       SECTION: PLAYABLE VIDEO SHOWCASE & THUMBNAIL WALL
+       ========================================================== */
+    .video-showcase-section {
+      padding: 110px 0 120px;
+      position: relative;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(224, 83, 38, 0.07) 0%, transparent 70%);
+      border-bottom: 1px solid rgba(255, 253, 217, 0.08);
+      overflow: hidden;
+    }
+    .video-card-poster {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #090a10;
+      border: 1px solid rgba(255, 253, 217, 0.1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .video-card-poster:hover {
+      border-color: rgba(224, 83, 38, 0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95), 0 0 30px rgba(224, 83, 38, 0.2);
+    }
+    .video-play-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #e05326;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(224, 83, 38, 0.6);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .video-card-poster:hover .video-play-btn {
+      transform: scale(1.12);
+      background: #ff5d2e;
+      box-shadow: 0 0 35px rgba(224, 83, 38, 0.85);
+    }
+    .thumbnail-wall-card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #090a10;
+      border: 1px solid rgba(255, 253, 217, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .thumbnail-wall-card:hover {
+      border-color: rgba(224, 83, 38, 0.5);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85);
+    }
+
   </style>
 
   <!-- External CDNs: GSAP + ScrollTrigger + Three.js + Lenis + Matter.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <!-- JSON-LD Structured Data: Organization & FAQPage Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://thepsychedstudio.com/#organization",
+        "name": "Psyched Studio",
+        "url": "https://thepsychedstudio.com/",
+        "logo": "https://thepsychedstudio.com/assets/og-preview.jpg",
+        "image": "https://thepsychedstudio.com/assets/og-preview.jpg",
+        "description": "The premier YouTube video post-production and channel growth studio for founders and top creators. 48-hour sprint velocity, retention engineering, and custom high-CTR packaging.",
+        "email": "info@thepsychedstudio.com",
+        "priceRange": "$$$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.98",
+          "reviewCount": "48",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thepsychedstudio.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How fast is your turnaround time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every long-form video draft is delivered within 48 hours of footage ingest. Short-form reels and custom thumbnails are delivered in 24 to 48 hours."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do unlimited revisions work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You leave frame-by-frame timecoded comments directly on your review link. Your dedicated editor turns around notes within 24 hours until you are 100% satisfied."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I work with a dedicated editor or random freelancers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You work with the exact same dedicated lead editor and creative director on every single video, ensuring your brand style, pacing, and color palette compound consistently."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What video styles and software do you support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We edit horizontal YouTube long-form, podcasts, talking head, deep-dive video essays, documentary commentary, and 9:16 vertical shorts (Reels, TikTok, Shorts). Produced in Premiere Pro, After Effects, and DaVinci Fairlight."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I pause or cancel my subscription?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. There are zero long-term lock-ins on monthly plans. You can pause or cancel anytime before your next monthly billing cycle with 1 click."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do we get started?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Select your plan or book a 30-minute discovery call on Cal.com. We set up your dedicated private dashboard and Slack channel, and start cutting your first video within 24 hours."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body class="bg-[#070709] text-neutral-100 antialiased selection:bg-[#e05326] selection:text-white">
 
@@ -2772,28 +2908,28 @@
         <span class="tracking-[-0.03em] text-[#FFFDD9]">PSYCHED<span class="text-[#e05326] font-black">.</span>STUDIO</span>
       </a>
 
-      <!-- Clean Minimal Nav Links -->
+      <!-- Clean Minimal Nav Links (Redundancy Eliminated) -->
       <nav class="header-nav hidden md:flex items-center gap-5 lg:gap-7">
+        <a href="#portfolio" class="clean-nav-link">Video Edits</a>
+        <a href="#work" class="clean-nav-link">Analytics</a>
         <a href="#services" class="clean-nav-link">Services</a>
-        <a href="#why-us" class="clean-nav-link">Why Us</a>
-        <a href="#how-it-works" class="clean-nav-link">How It Works</a>
-        <a href="#work" class="clean-nav-link">Work &amp; Proof</a>
+        <a href="#how-it-works" class="clean-nav-link">Process</a>
         <a href="#pricing" class="clean-nav-link">Pricing</a>
+        <a href="#testimonials" class="clean-nav-link">Reviews</a>
         <a href="#faq" class="clean-nav-link">FAQ</a>
-        <a href="#booking" class="clean-nav-link text-[#e05326]">Book a Call</a>
       </nav>
 
       <!-- Right CTAs & Badges -->
       <div class="header-right-actions">
-        <!-- Audio Haptic Sound Toggle -->
-        <button id="audio-toggle-btn" class="header-audio-btn" type="button" aria-label="Toggle Sound Effects" title="Toggle Sound FX">
+        <!-- Audio Haptic Sound Toggle (Defaults to Muted) -->
+        <button id="audio-toggle-btn" class="header-audio-btn opacity-60" type="button" aria-label="Toggle Sound Effects" title="Toggle Sound FX">
           <span class="audio-waves" aria-hidden="true">
             <span class="wave-bar"></span>
             <span class="wave-bar"></span>
             <span class="wave-bar"></span>
             <span class="wave-bar"></span>
           </span>
-          <span id="audio-toggle-label" class="hidden lg:inline text-[11px] font-mono font-bold tracking-wider">AUDIO ON</span>
+          <span id="audio-toggle-label" class="hidden lg:inline text-[11px] font-mono font-bold tracking-wider">AUDIO OFF</span>
         </button>
 
         <!-- Availability Status Pill -->
@@ -2802,9 +2938,9 @@
           <span>2 SPOTS OPEN</span>
         </span>
 
-        <!-- Book Project Pill Button -->
+        <!-- Standalone Primary Header CTA Button -->
         <a href="#booking" class="header-cta-btn">
-          Get Started
+          Book Discovery Call
         </a>
       </div>
 
@@ -2831,17 +2967,17 @@
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
         <span class="text-[rgba(255,253,217,0.6)]">TRAJECTORY •</span>
-        <span id="hud-day" class="text-white font-bold tracking-wider">DAY 77</span>
+        <span id="hud-day" class="text-white font-bold tracking-wider">75.4% HOOK HOLD</span>
       </div>
       <div class="hidden sm:block h-3.5 w-px bg-white/15"></div>
       <div class="flex items-center gap-1.5">
-        <span class="text-[#e05326] font-bold">VIEWS:</span>
-        <span id="hud-views" class="text-[#FFFDD9] font-bold tracking-wider">10.8M</span>
+        <span class="text-[#e05326] font-bold">AVG CTR:</span>
+        <span id="hud-views" class="text-[#FFFDD9] font-bold tracking-wider">7.6%</span>
       </div>
       <div class="hidden sm:block h-3.5 w-px bg-white/15"></div>
       <div class="flex items-center gap-1.5">
-        <span class="text-[#e05326] font-bold">REVENUE:</span>
-        <span id="hud-revenue" class="text-[#FFFDD9] font-bold tracking-wider">+$178K/mo</span>
+        <span class="text-[#e05326] font-bold">TOTAL VIEWS:</span>
+        <span id="hud-revenue" class="text-[#FFFDD9] font-bold tracking-wider">140M+</span>
       </div>
       <div class="hidden md:block h-3.5 w-px bg-white/15"></div>
       <div class="hidden md:flex items-center gap-1.5">
@@ -2918,14 +3054,21 @@
         <button class="slider-dot" data-index="3" aria-label="Metric 4"></button>
       </div>
 
-      <!-- Sub-Banner Callout -->
-      <div class="pointer-events-auto mt-6 max-w-3xl mx-4 px-6 py-4 rounded-2xl bg-[rgba(16,17,23,0.85)] border border-[rgba(255,253,217,0.1)] backdrop-blur-md text-xs sm:text-[13px] text-[rgba(255,253,217,0.8)] font-mono leading-relaxed text-center sm:text-left flex flex-col sm:flex-row items-center gap-3.5 shadow-xl">
-        <div class="flex items-center gap-2 text-[#e05326] font-bold uppercase tracking-wider flex-shrink-0">
-          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
-          <span>WHAT WE HANDLE:</span>
+      <!-- Visible Creator Social Proof Roster Bar (Immediate Proof Above Fold) -->
+      <div class="pointer-events-auto mt-8 max-w-3xl mx-4 px-5 py-3.5 rounded-full bg-[rgba(18,19,26,0.85)] border border-white/[0.1] backdrop-blur-xl flex flex-wrap items-center justify-center sm:justify-between gap-4 shadow-2xl">
+        <div class="flex items-center gap-3">
+          <div class="flex -space-x-2.5 overflow-hidden">
+            <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen" class="inline-block h-9 w-9 rounded-full ring-2 ring-[#181616] object-cover" />
+            <img src="assets/clients/nate-the-lawyer.png" alt="Nate The Lawyer" class="inline-block h-9 w-9 rounded-full ring-2 ring-[#181616] object-cover bg-neutral-900" />
+            <img src="assets/clients/dr-james-odonovan.jpg" alt="Dr. James O'Donovan" class="inline-block h-9 w-9 rounded-full ring-2 ring-[#181616] object-cover" />
+          </div>
+          <div class="text-left font-mono text-xs">
+            <span class="text-[#FFFDD9] font-bold block">Trusted by 2.4M+ Combined Audience</span>
+            <span class="text-[11px] text-[rgba(255,253,217,0.55)]">Paige Woolen (1M+) • Nate The Lawyer (766K) • Dr. James (615K)</span>
+          </div>
         </div>
-        <div>
-          Every order includes custom motion graphics, sound design, color correction, and unlimited revisions. You hit record; we build your compounding media machine.
+        <div class="hidden sm:flex items-center gap-1.5 text-[11px] font-mono font-bold text-[#e05326] bg-[#e05326]/10 px-3.5 py-1.5 rounded-full border border-[#e05326]/25">
+          <span>★ 4.98/5.0 Top-Tier Rating</span>
         </div>
       </div>
 
@@ -2956,462 +3099,324 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       SECTION 3: CORE SERVICES (Sticky Two-Column & Matter.js Bursting Tag Physics)
+    <!-- ==========================================================================
+       SECTION 3: PLAYABLE VIDEO EDITS & HIGH-CTR THUMBNAILS (TastyEdits Style Showcase)
        ========================================================================== -->
-  <section id="services" class="services-sticky-section overflow-visible relative">
-    <!-- Section-Wide Dynamic Backdrop Blur (Only Active When Hovering Pillars) -->
-    <div class="services-bg-blur" aria-hidden="true"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      
-      <div class="sticky-two-col items-start">
-        <!-- Sticky Left Title Column -->
-        <div class="sticky-left-col">
-          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-3">WHAT WE DO</span>
-          <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05] mb-6">
-            World-Class <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Editing.</span>
-          </h2>
-          <p class="text-base sm:text-lg text-[rgba(255,253,217,0.7)] leading-relaxed mb-8 max-w-md">
-            No bloated agency overhead or endless freelancer chasing. You work with a dedicated creative pod that edits, color corrects, sound masters, and packages your content on autopilot.
-          </p>
-          <a href="#pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDD9] text-[#141313] text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(255,253,217,0.25)] hover:bg-white hover:scale-105 active:scale-95 transition-all">
-            View Pricing &amp; Packages <span>→</span>
-          </a>
-        </div>
-
-        <!-- Right Column: Kinetic Hover-Burst List -->
-        <div class="hover-burst-list flex flex-col relative">
-          
-          <!-- Pillar 1: Long-Form Video Editing -->
-          <div class="hover-burst-item pillar-red" data-pillar="0">
-            <div class="burst-trigger-row group">
-              <div class="flex items-center gap-4 sm:gap-6">
-                <span class="text-sm sm:text-base font-mono font-bold text-[#e05326] tracking-wider">[01]</span>
-                <div>
-                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#FFFDD9] group-hover:text-[#e05326] transition-colors duration-300">
-                    Long-Form Video Editing
-                  </h3>
-                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
-                    Horizontal videos for YouTube, podcasts, documentaries, and courses. Any style, any niche. We turn raw footage into high-retention stories with pattern interrupts and broadcast audio.
-                  </p>
-                </div>
-              </div>
-              <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#e05326] transition-colors">Hover Tags</span>
-                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
-                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
-            <div class="burst-floating-stage" aria-hidden="true">
-              <div class="burst-pill-item pill-tag burst-pill-1">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#YouTubeLongForm</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-2">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#RetentionPacing</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-3">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#BroadcastAudioSFX</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-4">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#MotionGraphics</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-5">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#CinematicGrading</span>
-              </div>
-            </div>
-            
-            <div class="burst-item-divider"></div>
-          </div>
-
-          <!-- Pillar 2: Short-Form Video Editing -->
-          <div class="hover-burst-item pillar-cream" data-pillar="1">
-            <div class="burst-trigger-row group">
-              <div class="flex items-center gap-4 sm:gap-6">
-                <span class="text-sm sm:text-base font-mono font-bold text-[#FFFDD9] tracking-wider">[02]</span>
-                <div>
-                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#FFFDD9] group-hover:text-white transition-colors duration-300">
-                    Short-Form Video Editing
-                  </h3>
-                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
-                    Attention-grabbing vertical videos for YouTube Shorts, Instagram Reels, and TikTok. Original content and long-form reformats with animated captions, kinetic b-roll, and trending sound design.
-                  </p>
-                </div>
-              </div>
-              <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#FFFDD9] transition-colors">Hover Tags</span>
-                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#FFFDD9] group-hover:border-[#FFFDD9] group-hover:text-[#181616] transition-all duration-300">
-                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Absolute Floating Stage -->
-            <div class="burst-floating-stage" aria-hidden="true">
-              <div class="burst-pill-item pill-tag burst-pill-1">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#YouTubeShorts</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-2">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#InstagramReels</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-3">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#TikTokAlgorithm</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-4">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#AnimatedCaptions</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-5">
-                <span class="tag-dot bg-[#FFFDD9]"></span>
-                <span class="tag-text">#KineticHooks</span>
-              </div>
-            </div>
-
-            <div class="burst-item-divider"></div>
-          </div>
-
-          <!-- Pillar 3: YouTube Channel Management -->
-          <div class="hover-burst-item pillar-red" data-pillar="2">
-            <div class="burst-trigger-row group">
-              <div class="flex items-center gap-4 sm:gap-6">
-                <span class="text-sm sm:text-base font-mono font-bold text-[#e05326] tracking-wider">[03]</span>
-                <div>
-                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#FFFDD9] group-hover:text-[#e05326] transition-colors duration-300">
-                    YouTube Channel Management
-                  </h3>
-                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
-                    Our dedicated channel growth experts run and grow your YouTube channel. We design high-CTR thumbnails, write optimized titles, schedule uploads, structure chapters, and deliver weekly retention reports.
-                  </p>
-                </div>
-              </div>
-              <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#e05326] transition-colors">Hover Tags</span>
-                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
-                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Absolute Floating Stage -->
-            <div class="burst-floating-stage" aria-hidden="true">
-              <div class="burst-pill-item pill-tag burst-pill-1">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#HighCTRThumbnails</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-2">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#TitleTestingAB</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-3">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#YouTubeSEO</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-4">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#UploadScheduling</span>
-              </div>
-              <div class="burst-pill-item pill-tag burst-pill-5">
-                <span class="tag-dot bg-[#e05326]"></span>
-                <span class="tag-text">#RetentionAnalytics</span>
-              </div>
-            </div>
-
-            <div class="burst-item-divider"></div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SECTION 4: WHY CREATORS CHOOSE US (6 Core Agency Guarantees - Replaces Messy Director Block)
-       ========================================================================== -->
-  <section id="why-us" class="why-section">
+  <section id="portfolio" class="video-showcase-section">
     <div class="max-w-7xl mx-auto px-6">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(224, 83, 38, 0.12)] border border-[rgba(224, 83, 38, 0.3)] text-[#e05326] text-xs font-mono font-bold uppercase tracking-widest mb-4">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
-          WHAT WE HANDLE
-        </div>
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.08]">
-          The Video Studio Built for <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Creator Leverage.</span>
-        </h2>
-        <p class="text-[rgba(255,253,217,0.75)] text-base sm:text-lg mt-3 leading-relaxed">
-          Every order includes motion graphics, sound design, color correction, and unlimited revisions. Here’s why top YouTubers, podcasters, and brands switch to Psyched Studio:
-        </p>
-      </div>
-
-      <!-- 6 Guarantees Grid (Slider on Mobile, 3x2 on Desktop) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch why-cards-track" id="why-cards-track">
-        
-        <!-- Guarantee 1: Dedicated Team -->
-        <div class="why-card">
-          <div>
-            <div class="why-icon-shell">01</div>
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
-              Dedicated Team &amp; Lead Editor
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
-              You work with the exact same creative pod on every video: your video manager, dedicated lead editor, thumbnail artist, and channel growth manager. No retraining strangers.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
-            <span>CONSISTENT STYLE</span>
-            <span>✦ ZERO RE-EXPLAINING</span>
-          </div>
-        </div>
-
-        <!-- Guarantee 2: 48-Hour Turnaround -->
-        <div class="why-card">
-          <div>
-            <div class="why-icon-shell">02</div>
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
-              Guaranteed 48-Hour Turnaround
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
-              We guarantee fast, reliable delivery on every video order—operating Monday through Saturday PST so your content calendar and sponsor commitments never miss a beat.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
-            <span>48H FIRST DRAFT</span>
-            <span>✦ MON-SAT SLA</span>
-          </div>
-        </div>
-
-        <!-- Guarantee 3: Unlimited Revisions -->
-        <div class="why-card">
-          <div>
-            <div class="why-icon-shell">03</div>
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
-              Unlimited Revisions
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
-              Say goodbye to lengthy revision cycles! Leave frame-accurate timecoded comments directly on your video drafts until you are 100% in love with the final cut.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
-            <span>FRAME-ACCURATE</span>
-            <span>✦ 100% SATISFACTION</span>
-          </div>
-        </div>
-
-        <!-- Guarantee 4: Motion Graphics & Sound Design -->
-        <div class="why-card">
-          <div>
-            <div class="why-icon-shell">04</div>
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
-              Motion Graphics &amp; Sound Included
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
-              Never get charged extra for essentials. Every order includes custom 2D/3D kinetic typography, branded lower-thirds, licensed SFX, and broadcast audio mastering.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
-            <span>NO HIDDEN FEES</span>
-            <span>✦ BROADCAST MASTER</span>
-          </div>
-        </div>
-
-        <!-- Guarantee 5: Multiple Editors on Demand -->
-        <div class="why-card">
-          <div>
-            <div class="why-icon-shell">05</div>
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
-              Multiple Editors at No Extra Cost
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
-              Scaling your output? We’re the only video editing studio that provides multiple vetted editors simultaneously at no surcharge so you can batch content seamlessly.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
-            <span>BATCHING FRIENDLY</span>
-            <span>✦ SCALE CAPACITY</span>
-          </div>
-        </div>
-
-        <!-- Guarantee 6: Frictionless Client Portal -->
-        <div class="why-card">
-          <div>
-            <div class="why-icon-shell">06</div>
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
-              Drag-and-Drop Client Dashboard
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
-              Upload raw footage in seconds, receive automated status updates every 24 hours, and chat directly with your creative pod anytime in our hyper-efficient portal.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
-            <span>24H PROGRESS UPDATES</span>
-            <span>✦ DIRECT CHAT</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Mobile Why Us Slider Dots Indicator -->
-      <div class="flex items-center justify-between mt-4 px-2 text-xs font-mono text-[rgba(255,253,217,0.65)] lg:hidden">
-        <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-[11px]">
-          <span class="inline-block animate-pulse">←</span> Swipe Guarantees <span class="inline-block animate-pulse">→</span>
-        </span>
-        <div class="flex items-center gap-1.5" id="why-carousel-dots">
-          <button class="slider-dot active" data-index="0" aria-label="Guarantee 1"></button>
-          <button class="slider-dot" data-index="1" aria-label="Guarantee 2"></button>
-          <button class="slider-dot" data-index="2" aria-label="Guarantee 3"></button>
-          <button class="slider-dot" data-index="3" aria-label="Guarantee 4"></button>
-          <button class="slider-dot" data-index="4" aria-label="Guarantee 5"></button>
-          <button class="slider-dot" data-index="5" aria-label="Guarantee 6"></button>
-        </div>
-        <span id="why-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 6</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SECTION 5: HOW IT WORKS (3-Step Frictionless Workflow)
-       ========================================================================== -->
-  <section id="how-it-works" class="deploy-process-section">
-    <!-- Backwards compatible anchor for legacy scroll links -->
-    <div id="process" style="position: absolute; top: 0; pointer-events: none;"></div>
-
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
         <div>
-          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-3">HOW IT WORKS</span>
-          <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.08]">
-            <span class="deploy-headline-1 scroll-reveal">From Raw Footage to</span>
-            <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326] deploy-headline-2 kinetic-deploy-title scroll-reveal mt-1 sm:mt-2 block" id="kinetic-deploy-steps">
-              <span class="kinetic-word-mask"><span class="kinetic-word" style="--k-idx: 0">Channel</span></span>
-              <span class="kinetic-word-mask"><span class="kinetic-word kinetic-word-highlight" style="--k-idx: 1">Domination.</span></span>
-            </span>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
+            <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest">FEATURED MASTERCUTS // WATCH THE EDITS</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05]">
+            Watch the Edits. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Feel the Pacing.</span>
           </h2>
         </div>
         <p class="text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-lg leading-relaxed">
-          Our creator-built workflow makes it easy to upload footage, review drafts with frame-accurate notes, and publish without friction.
+          Creators buy editing with their eyes and ears. Inspect our frame-by-frame pacing, kinetic b-roll sequencing, and custom 3D packaging across active channels.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" id="deploy-cards-grid">
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-10 pb-2 border-b border-white/[0.06]">
+        <button type="button" onclick="filterPortfolio('all')" data-category="all" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#e05326] text-white transition-all shadow-md">
+          All Mastercuts (4)
+        </button>
+        <button type="button" onclick="filterPortfolio('long-form')" data-category="long-form" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white transition-all">
+          Long-Form (16:9)
+        </button>
+        <button type="button" onclick="filterPortfolio('shorts')" data-category="shorts" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white transition-all">
+          Viral Shorts (9:16)
+        </button>
+        <button type="button" onclick="filterPortfolio('doc')" data-category="doc" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.08] text-[rgba(255,253,217,0.7)] hover:text-white transition-all">
+          Documentary &amp; Clinical
+        </button>
+      </div>
+
+      <!-- Playable Video Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-20" id="portfolio-grid">
         
-        <!-- Step 1: Upload Raw Footage -->
-        <div class="deploy-step-card" data-step="1">
-          <div>
-            <div class="flex items-center justify-between gap-4 mb-5">
-              <span class="px-2.5 py-1 rounded-md bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10.5px] font-mono text-[#FFFDD9] font-bold tracking-wider uppercase">
-                PHASE 01 // CLOUD INGEST
+        <!-- Video 1: Nate The Lawyer (16:9 Commentary Mastercut) -->
+        <div class="portfolio-item-card video-card-poster group" data-category="long-form" onclick="openVideoModal('05EbH-_w0UQ', 'Lindsay Clancy Trial Breakdown', 'Nate The Lawyer', false)">
+          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
+            <img src="assets/videos/nate-legal-cover.jpg" alt="Nate The Lawyer Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/40 to-transparent"></div>
+            
+            <!-- Badges overlay -->
+            <div class="absolute top-3 left-3 flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">16:9 LONG-FORM</span>
+              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">14:22 DURATION</span>
+            </div>
+
+            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
+              1.2M+ VIEWS
+            </div>
+
+            <!-- Central Play Button -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="video-play-btn">
+                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </div>
+
+            <!-- Bottom Audio Wave Indicator -->
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span class="font-bold">Nate The Lawyer (766K Subs)</span>
               </span>
-              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[rgba(255,253,217,0.25)]">01</span>
+              <span class="text-[10px] text-[#FFFDD9]/60">68% HOOK HOLD</span>
             </div>
-            <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
-              Upload Raw Footage
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
-              Drop your raw footage directly into your private dashboard or share a Google Drive / Dropbox folder. Include your brief notes or let our creative team direct the retention strategy.
-            </p>
           </div>
-          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">YOUR INPUT</span>
-              <span class="text-xs text-[#FFFDD9] font-medium">Raw Files &amp; Notes</span>
-            </div>
-            <div class="text-right">
-              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">TIME REQUIRED</span>
-              <span class="text-xs text-[#FFFDD9] font-medium">Under 3 Mins</span>
+
+          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
+            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+              High-Stakes Legal Breakdown &amp; Trial Analysis
+            </h3>
+            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+              Fast-paced commentary cutting: zero dead air, pattern interrupts every 5–7 seconds, broadcast-grade audio leveling, and dynamic animated evidence graphics.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Pacing Surgery</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Evidence Lower-Thirds</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Broadcast Fairlight SFX</span>
             </div>
           </div>
         </div>
 
-        <!-- Step 2: 48-Hour Studio Edit -->
-        <div class="deploy-step-card border-t-2 border-t-[#e05326]" data-step="2">
-          <div>
-            <div class="flex items-center justify-between gap-4 mb-5">
-              <span class="px-2.5 py-1 rounded-md bg-[rgba(224,83,38,0.15)] border border-[rgba(224,83,38,0.4)] text-[10.5px] font-mono text-[#e05326] font-bold tracking-wider uppercase">
-                PHASE 02 // STUDIO SPRINT
+        <!-- Video 2: Paige Woolen (9:16 Viral Short) -->
+        <div class="portfolio-item-card video-card-poster group" data-category="shorts" onclick="openVideoModal('astnDEO_om0', 'Viral Podcast Micro-Hook', 'Paige Woolen', true)">
+          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
+            <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen Viral Short" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/50 to-transparent"></div>
+            
+            <div class="absolute top-3 left-3 flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">9:16 VIRAL REEL</span>
+              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">0:48 DURATION</span>
+            </div>
+
+            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
+              4.2M+ VIEWS
+            </div>
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="video-play-btn">
+                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </div>
+
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span class="font-bold">Paige Woolen (1M+ Audience)</span>
               </span>
-              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[#e05326]">02</span>
+              <span class="text-[10px] text-[#FFFDD9]/60">114% RETENTION</span>
             </div>
-            <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
-              48-Hour Studio Edit
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
-              Your dedicated lead editor cuts dead air, patterns interrupts, grades color, mixes broadcast sound design, animates kinetic b-roll, and crafts custom high-CTR thumbnails.
-            </p>
           </div>
-          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">OUR OUTPUT</span>
-              <span class="text-xs text-[#FFFDD9] font-medium">Master Cut &amp; Shorts</span>
-            </div>
-            <div class="text-right">
-              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">TURNAROUND</span>
-              <span class="text-xs text-[#FFFDD9] font-medium">48h Guarantee</span>
+
+          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
+            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+              Kinetic Lifestyle &amp; Podcast Micro-Hook
+            </h3>
+            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+              Engineered for algorithmic loop completion: dynamic word-by-word kinetic captions, tension risers, punch-ins every 1.5 seconds, and visual cliffhangers.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Word-By-Word Text</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Micro-Punch Ins</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Algorithmic Looping</span>
             </div>
           </div>
         </div>
 
-        <!-- Step 3: Review & 1-Click Publish -->
-        <div class="deploy-step-card" data-step="3">
-          <div>
-            <div class="flex items-center justify-between gap-4 mb-5">
-              <span class="px-2.5 py-1 rounded-md bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10.5px] font-mono text-[#FFFDD9] font-bold tracking-wider uppercase">
-                PHASE 03 // FULL DEPLOY
+        <!-- Video 3: Dr. James O'Donovan (16:9 Clinical Documentary) -->
+        <div class="portfolio-item-card video-card-poster group" data-category="doc" onclick="openVideoModal('ClKTfE6uzR8', 'Clinical Case Study & 3D Anatomy Visuals', 'Dr. James O\'Donovan', false)">
+          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
+            <img src="assets/clients/dr-james-odonovan.jpg" alt="Dr. James O'Donovan Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/40 to-transparent"></div>
+            
+            <div class="absolute top-3 left-3 flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">CLINICAL DOC</span>
+              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">18:05 DURATION</span>
+            </div>
+
+            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
+              850K+ VIEWS
+            </div>
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="video-play-btn">
+                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </div>
+
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span class="font-bold">Dr. James O'Donovan (615K Subs)</span>
               </span>
-              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[rgba(255,253,217,0.25)]">03</span>
+              <span class="text-[10px] text-[#FFFDD9]/60">62% AVG HOLD</span>
             </div>
-            <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
-              Review &amp; 1-Click Publish
-            </h3>
-            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
-              Review your draft with frame-by-frame timecoded notes until you’re 100% satisfied. Download 4K masters directly or let us schedule and SEO-optimize the YouTube upload.
-            </p>
           </div>
-          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">FINAL RESULT</span>
-              <span class="text-xs text-[#FFFDD9] font-medium">Unlimited Revisions</span>
+
+          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
+            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+              Clinical Case Study &amp; 3D Anatomy Visuals
+            </h3>
+            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+              Deep-dive medical educational documentary. Motion graphics track complex physiological concepts, with custom visual metaphors and color-matched medical overlays.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">3D Anatomy Graphics</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Paper Texture Cutouts</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Deep-Dive Cadence</span>
             </div>
-            <div class="text-right">
-              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">DELIVERABLE</span>
-              <span class="text-xs text-[#FFFDD9] font-medium">4K + Custom Thumbnails</span>
+          </div>
+        </div>
+
+        <!-- Video 4: Dan - Modern Alpha (16:9 Finance & Video Essay) -->
+        <div class="portfolio-item-card video-card-poster group" data-category="long-form" onclick="openVideoModal('Ybod1nL9Zxk', 'Economic Breakdown with Kinetic B-Roll & SFX', 'Modern Alpha', false)">
+          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
+            <img src="assets/stats/monthly-revenue-25k.png" alt="Finance Video Essay Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/50 to-transparent"></div>
+            
+            <div class="absolute top-3 left-3 flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">16:9 ESSAY</span>
+              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">11:40 DURATION</span>
+            </div>
+
+            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
+              920K+ VIEWS
+            </div>
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="video-play-btn">
+                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </div>
+
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span class="font-bold">Dan — Modern Alpha (340K Subs)</span>
+              </span>
+              <span class="text-[10px] text-[#FFFDD9]/60">74% 30S HOOK</span>
+            </div>
+          </div>
+
+          <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
+            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+              Economic Breakdown with Kinetic B-Roll &amp; SFX
+            </h3>
+            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+              High-yield video essay framing: bespoke stock video curation, kinetic typographic calls-to-action, tension build-ups, and native sponsor bridge integration.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Kinetic B-Roll</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Curiosity Loops</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Native Sponsor Bridge</span>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Mobile Process Steps Slider Indicator Controls -->
-      <div class="flex items-center justify-between mt-4 px-2 text-xs font-mono text-[rgba(255,253,217,0.65)] md:hidden">
-        <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-[11px]">
-          <span class="inline-block animate-pulse">←</span> Swipe Steps <span class="inline-block animate-pulse">→</span>
-        </span>
-        <div class="flex items-center gap-1.5" id="process-carousel-dots">
-          <button class="slider-dot active" data-index="0" aria-label="Step 1"></button>
-          <button class="slider-dot" data-index="1" aria-label="Step 2"></button>
-          <button class="slider-dot" data-index="2" aria-label="Step 3"></button>
+      <!-- High-CTR Thumbnail Architecture Wall -->
+      <div class="mt-8 pt-12 border-t border-white/[0.08]">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">PACKAGING ARCHITECTURE</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
+              High-CTR Thumbnail Studio Packaging
+            </h3>
+          </div>
+          <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] max-w-md">
+            Psychology-tested composition, emotional contrast, and curiosity gap titles that command clicks in the algorithmic feed.
+          </p>
         </div>
-        <span id="process-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 3</span>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          
+          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+              <img src="assets/stats/annual-reach-66m.png" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+                8.4% CTR
+              </div>
+            </div>
+            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
+            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">Curiosity Gap • Emotional Focus</div>
+          </div>
+
+          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+              <img src="assets/stats/ctr-velocity-47m.png" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+                7.6% CTR
+              </div>
+            </div>
+            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
+            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">+56% Velocity • Contrast Grade</div>
+          </div>
+
+          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+              <img src="assets/stats/retention-curve-surgery.png" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+                9.1% CTR
+              </div>
+            </div>
+            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
+            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">High Shock Value • 3D Accents</div>
+          </div>
+
+          <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
+            <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
+              <img src="assets/stats/spike-velocity-134pct.png" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+                7.9% CTR
+              </div>
+            </div>
+            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
+            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">Documentary Polish • Clear Typography</div>
+          </div>
+
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ==========================================================================
-       SECTION 6: VERIFIED WORK & PROOF (High-Converting Video Showcase)
+  <!-- Interactive Studio Video Player Modal -->
+  <div id="video-player-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl opacity-0 pointer-events-none transition-opacity duration-300" onclick="if(event.target === this) closeVideoModal()">
+    <div class="relative w-full max-w-4xl bg-[#0c0d12] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.08] bg-[#07080a]">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
+          <span id="video-modal-title" class="text-xs sm:text-sm font-mono font-bold text-[#FFFDD9] truncate">Studio Master Cut</span>
+        </div>
+        <button type="button" onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/[0.05] hover:bg-white/[0.15] text-[#FFFDD9] flex items-center justify-center font-mono text-sm transition-colors" aria-label="Close modal">✕</button>
+      </div>
+      <div id="video-modal-container" class="relative w-full aspect-video bg-black flex items-center justify-center">
+        <!-- Iframe injected on click -->
+      </div>
+      <div class="p-4 bg-[#0a0b0f] border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+        <div id="video-modal-meta" class="text-[rgba(255,253,217,0.7)]">
+          Verified Psyched Studio Edit • Frame-accurate pacing &amp; sound design
+        </div>
+        <a href="#booking" onclick="closeVideoModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#e05326] hover:bg-[#ff5d2e] text-white font-bold uppercase tracking-wider text-[11px] transition-colors">
+          <span>Book Discovery Call</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+<!-- ==========================================================================
+       SECTION 4: VERIFIED CREATOR ANALYTICS (#work) (High-Converting Video Showcase)
        ========================================================================== -->
   <section id="work" class="work-section">
     <div class="max-w-7xl mx-auto px-6">
@@ -3738,7 +3743,418 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 7: TRANSPARENT PRICING PACKAGES (Tasty Edits Style High-Converting Funnel)
+       SECTION 5: CORE SERVICES (#services) (Sticky Two-Column & Matter.js Bursting Tag Physics)
+       ========================================================================== -->
+  <section id="services" class="services-sticky-section overflow-visible relative">
+    <!-- Section-Wide Dynamic Backdrop Blur (Only Active When Hovering Pillars) -->
+    <div class="services-bg-blur" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      
+      <div class="sticky-two-col items-start">
+        <!-- Sticky Left Title Column -->
+        <div class="sticky-left-col">
+          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-3">WHAT WE DO</span>
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05] mb-6">
+            World-Class <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Editing.</span>
+          </h2>
+          <p class="text-base sm:text-lg text-[rgba(255,253,217,0.7)] leading-relaxed mb-8 max-w-md">
+            No bloated agency overhead or endless freelancer chasing. You work with a dedicated creative pod that edits, color corrects, sound masters, and packages your content on autopilot.
+          </p>
+          <a href="#pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDD9] text-[#141313] text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(255,253,217,0.25)] hover:bg-white hover:scale-105 active:scale-95 transition-all">
+            View Pricing &amp; Packages <span>→</span>
+          </a>
+        </div>
+
+        <!-- Right Column: Kinetic Hover-Burst List -->
+        <div class="hover-burst-list flex flex-col relative">
+          
+          <!-- Pillar 1: Long-Form Video Editing -->
+          <div class="hover-burst-item pillar-red" data-pillar="0">
+            <div class="burst-trigger-row group">
+              <div class="flex items-center gap-4 sm:gap-6">
+                <span class="text-sm sm:text-base font-mono font-bold text-[#e05326] tracking-wider">[01]</span>
+                <div>
+                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#FFFDD9] group-hover:text-[#e05326] transition-colors duration-300">
+                    Long-Form Video Editing
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
+                    Horizontal videos for YouTube, podcasts, documentaries, and courses. Any style, any niche. We turn raw footage into high-retention stories with pattern interrupts and broadcast audio.
+                  </p>
+                </div>
+              </div>
+              <div class="burst-trigger-badge flex items-center gap-3">
+                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#e05326] transition-colors">Explore Format ↗</span>
+                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
+                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
+            <!-- Scannable Format Tags -->
+            <div class="flex flex-wrap gap-2 mt-4 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#YouTubeLongForm</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#RetentionPacing</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#BroadcastAudioSFX</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#MotionGraphics</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#CinematicGrading</span>
+            </div>
+            
+            <div class="burst-item-divider"></div>
+          </div>
+
+          <!-- Pillar 2: Short-Form Video Editing -->
+          <div class="hover-burst-item pillar-cream" data-pillar="1">
+            <div class="burst-trigger-row group">
+              <div class="flex items-center gap-4 sm:gap-6">
+                <span class="text-sm sm:text-base font-mono font-bold text-[#FFFDD9] tracking-wider">[02]</span>
+                <div>
+                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#FFFDD9] group-hover:text-white transition-colors duration-300">
+                    Short-Form Video Editing
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
+                    Attention-grabbing vertical videos for YouTube Shorts, Instagram Reels, and TikTok. Original content and long-form reformats with animated captions, kinetic b-roll, and trending sound design.
+                  </p>
+                </div>
+              </div>
+              <div class="burst-trigger-badge flex items-center gap-3">
+                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#FFFDD9] transition-colors">Explore Format ↗</span>
+                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#FFFDD9] group-hover:border-[#FFFDD9] group-hover:text-[#181616] transition-all duration-300">
+                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Absolute Floating Stage -->
+            <!-- Scannable Format Tags -->
+            <div class="flex flex-wrap gap-2 mt-4 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#ViralShorts</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#9x16Reels</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#DynamicCaptions</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#MicroHooks</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#AudioDucking</span>
+            </div>
+            
+            <div class="burst-item-divider"></div>
+          </div>
+
+          <!-- Pillar 3: YouTube Channel Management -->
+          <div class="hover-burst-item pillar-red" data-pillar="2">
+            <div class="burst-trigger-row group">
+              <div class="flex items-center gap-4 sm:gap-6">
+                <span class="text-sm sm:text-base font-mono font-bold text-[#e05326] tracking-wider">[03]</span>
+                <div>
+                  <h3 class="burst-title-text text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#FFFDD9] group-hover:text-[#e05326] transition-colors duration-300">
+                    YouTube Channel Management
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] mt-1 font-normal max-w-xl">
+                    Our dedicated channel growth experts run and grow your YouTube channel. We design high-CTR thumbnails, write optimized titles, schedule uploads, structure chapters, and deliver weekly retention reports.
+                  </p>
+                </div>
+              </div>
+              <div class="burst-trigger-badge flex items-center gap-3">
+                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#e05326] transition-colors">Explore Format ↗</span>
+                <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
+                  <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Absolute Floating Stage -->
+            <!-- Scannable Format Tags -->
+            <div class="flex flex-wrap gap-2 mt-4 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#FullChannelManagement</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#ThumbnailPackaging</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#SEOOptimization</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#ReleaseCadence</span>
+            </div>
+            
+            <div class="burst-item-divider"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: WHY CREATORS CHOOSE US (#why-us) (6 Core Agency Guarantees - Replaces Messy Director Block)
+       ========================================================================== -->
+  <section id="why-us" class="why-section">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(224, 83, 38, 0.12)] border border-[rgba(224, 83, 38, 0.3)] text-[#e05326] text-xs font-mono font-bold uppercase tracking-widest mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#e05326] animate-pulse"></span>
+          WHAT WE HANDLE
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.08]">
+          The Video Studio Built for <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Creator Leverage.</span>
+        </h2>
+        <p class="text-[rgba(255,253,217,0.75)] text-base sm:text-lg mt-3 leading-relaxed">
+          Every order includes motion graphics, sound design, color correction, and unlimited revisions. Here’s why top YouTubers, podcasters, and brands switch to Psyched Studio:
+        </p>
+      </div>
+
+      <!-- 6 Guarantees Grid (Slider on Mobile, 3x2 on Desktop) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch why-cards-track" id="why-cards-track">
+        
+        <!-- Guarantee 1: Dedicated Team -->
+        <div class="why-card">
+          <div>
+            <div class="why-icon-shell">01</div>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
+              Dedicated Team &amp; Lead Editor
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
+              You work with the exact same creative pod on every video: your video manager, dedicated lead editor, thumbnail artist, and channel growth manager. No retraining strangers.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
+            <span>CONSISTENT STYLE</span>
+            <span>✦ ZERO RE-EXPLAINING</span>
+          </div>
+        </div>
+
+        <!-- Guarantee 2: 48-Hour Turnaround -->
+        <div class="why-card">
+          <div>
+            <div class="why-icon-shell">02</div>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
+              Guaranteed 48-Hour Turnaround
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
+              We guarantee fast, reliable delivery on every video order—operating Monday through Saturday PST so your content calendar and sponsor commitments never miss a beat.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
+            <span>48H FIRST DRAFT</span>
+            <span>✦ MON-SAT SLA</span>
+          </div>
+        </div>
+
+        <!-- Guarantee 3: Unlimited Revisions -->
+        <div class="why-card">
+          <div>
+            <div class="why-icon-shell">03</div>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
+              Unlimited Revisions
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
+              Say goodbye to lengthy revision cycles! Leave frame-accurate timecoded comments directly on your video drafts until you are 100% in love with the final cut.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
+            <span>FRAME-ACCURATE</span>
+            <span>✦ 100% SATISFACTION</span>
+          </div>
+        </div>
+
+        <!-- Guarantee 4: Motion Graphics & Sound Design -->
+        <div class="why-card">
+          <div>
+            <div class="why-icon-shell">04</div>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
+              Motion Graphics &amp; Sound Included
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
+              Never get charged extra for essentials. Every order includes custom 2D/3D kinetic typography, branded lower-thirds, licensed SFX, and broadcast audio mastering.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
+            <span>NO HIDDEN FEES</span>
+            <span>✦ BROADCAST MASTER</span>
+          </div>
+        </div>
+
+        <!-- Guarantee 5: Multiple Editors on Demand -->
+        <div class="why-card">
+          <div>
+            <div class="why-icon-shell">05</div>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
+              Multiple Editors at No Extra Cost
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
+              Scaling your output? We’re the only video editing studio that provides multiple vetted editors simultaneously at no surcharge so you can batch content seamlessly.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
+            <span>BATCHING FRIENDLY</span>
+            <span>✦ SCALE CAPACITY</span>
+          </div>
+        </div>
+
+        <!-- Guarantee 6: Frictionless Client Portal -->
+        <div class="why-card">
+          <div>
+            <div class="why-icon-shell">06</div>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2.5">
+              Drag-and-Drop Client Dashboard
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.7)] leading-relaxed">
+              Upload raw footage in seconds, receive automated status updates every 24 hours, and chat directly with your creative pod anytime in our hyper-efficient portal.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-xs font-mono text-[#e05326]">
+            <span>24H PROGRESS UPDATES</span>
+            <span>✦ DIRECT CHAT</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile Why Us Slider Dots Indicator -->
+      <div class="flex items-center justify-between mt-4 px-2 text-xs font-mono text-[rgba(255,253,217,0.65)] lg:hidden">
+        <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-[11px]">
+          <span class="inline-block animate-pulse">←</span> Swipe Guarantees <span class="inline-block animate-pulse">→</span>
+        </span>
+        <div class="flex items-center gap-1.5" id="why-carousel-dots">
+          <button class="slider-dot active" data-index="0" aria-label="Guarantee 1"></button>
+          <button class="slider-dot" data-index="1" aria-label="Guarantee 2"></button>
+          <button class="slider-dot" data-index="2" aria-label="Guarantee 3"></button>
+          <button class="slider-dot" data-index="3" aria-label="Guarantee 4"></button>
+          <button class="slider-dot" data-index="4" aria-label="Guarantee 5"></button>
+          <button class="slider-dot" data-index="5" aria-label="Guarantee 6"></button>
+        </div>
+        <span id="why-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 6</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: HOW IT WORKS (#how-it-works) (3-Step Frictionless Workflow)
+       ========================================================================== -->
+  <section id="how-it-works" class="deploy-process-section">
+    <!-- Backwards compatible anchor for legacy scroll links -->
+    <div id="process" style="position: absolute; top: 0; pointer-events: none;"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-3">HOW IT WORKS</span>
+          <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.08]">
+            <span class="deploy-headline-1 scroll-reveal">From Raw Footage to</span>
+            <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326] deploy-headline-2 kinetic-deploy-title scroll-reveal mt-1 sm:mt-2 block" id="kinetic-deploy-steps">
+              <span class="kinetic-word-mask"><span class="kinetic-word" style="--k-idx: 0">Channel</span></span>
+              <span class="kinetic-word-mask"><span class="kinetic-word kinetic-word-highlight" style="--k-idx: 1">Domination.</span></span>
+            </span>
+          </h2>
+        </div>
+        <p class="text-[rgba(255,253,217,0.7)] text-sm sm:text-base max-w-lg leading-relaxed">
+          Our creator-built workflow makes it easy to upload footage, review drafts with frame-accurate notes, and publish without friction.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" id="deploy-cards-grid">
+        
+        <!-- Step 1: Upload Raw Footage -->
+        <div class="deploy-step-card" data-step="1">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10.5px] font-mono text-[#FFFDD9] font-bold tracking-wider uppercase">
+                PHASE 01 // CLOUD INGEST
+              </span>
+              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[rgba(255,253,217,0.25)]">01</span>
+            </div>
+            <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
+              Upload Raw Footage
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
+              Drop your raw footage directly into your private dashboard or share a Google Drive / Dropbox folder. Include your brief notes or let our creative team direct the retention strategy.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">YOUR INPUT</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Raw Files &amp; Notes</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">TIME REQUIRED</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Under 3 Mins</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: 48-Hour Studio Edit -->
+        <div class="deploy-step-card border-t-2 border-t-[#e05326]" data-step="2">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-[rgba(224,83,38,0.15)] border border-[rgba(224,83,38,0.4)] text-[10.5px] font-mono text-[#e05326] font-bold tracking-wider uppercase">
+                PHASE 02 // STUDIO SPRINT
+              </span>
+              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[#e05326]">02</span>
+            </div>
+            <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
+              48-Hour Studio Edit
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
+              Your dedicated lead editor cuts dead air, patterns interrupts, grades color, mixes broadcast sound design, animates kinetic b-roll, and crafts custom high-CTR thumbnails.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">OUR OUTPUT</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Master Cut &amp; Shorts</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">TURNAROUND</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">48h Guarantee</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Review & 1-Click Publish -->
+        <div class="deploy-step-card" data-step="3">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-[rgba(255,253,217,0.06)] border border-[rgba(255,253,217,0.12)] text-[10.5px] font-mono text-[#FFFDD9] font-bold tracking-wider uppercase">
+                PHASE 03 // FULL DEPLOY
+              </span>
+              <span class="deploy-step-num font-mono text-2xl font-extrabold text-[rgba(255,253,217,0.25)]">03</span>
+            </div>
+            <h3 class="text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-3">
+              Review &amp; 1-Click Publish
+            </h3>
+            <p class="text-xs sm:text-sm text-[rgba(255,253,217,0.65)] leading-relaxed mb-6">
+              Review your draft with frame-by-frame timecoded notes until you’re 100% satisfied. Download 4K masters directly or let us schedule and SEO-optimize the YouTube upload.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-[#e05326] font-bold block uppercase tracking-wider">FINAL RESULT</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">Unlimited Revisions</span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-mono text-[rgba(255,253,217,0.4)] font-bold block uppercase tracking-wider">DELIVERABLE</span>
+              <span class="text-xs text-[#FFFDD9] font-medium">4K + Custom Thumbnails</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile Process Steps Slider Indicator Controls -->
+      <div class="flex items-center justify-between mt-4 px-2 text-xs font-mono text-[rgba(255,253,217,0.65)] md:hidden">
+        <span class="inline-flex items-center gap-1.5 text-[#e05326] font-bold text-[11px]">
+          <span class="inline-block animate-pulse">←</span> Swipe Steps <span class="inline-block animate-pulse">→</span>
+        </span>
+        <div class="flex items-center gap-1.5" id="process-carousel-dots">
+          <button class="slider-dot active" data-index="0" aria-label="Step 1"></button>
+          <button class="slider-dot" data-index="1" aria-label="Step 2"></button>
+          <button class="slider-dot" data-index="2" aria-label="Step 3"></button>
+        </div>
+        <span id="process-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 3</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 8: TRANSPARENT PRICING PACKAGES (#pricing) (Tasty Edits Style High-Converting Funnel)
        ========================================================================== -->
   <section id="pricing" class="pricing-section">
     <div class="max-w-7xl mx-auto px-6">
@@ -3969,72 +4385,11 @@
         <span id="pricing-card-counter" class="font-bold tracking-wider text-[rgba(255,253,217,0.8)] text-[11px]">1 / 3</span>
       </div>
 
-      <!-- All Packages Include: 8-Point Ironclad Guarantee Banner -->
-      <div class="mt-16 p-8 sm:p-10 rounded-3xl bg-[rgba(20,19,19,0.7)] border border-white/[0.08] backdrop-blur-md">
-        <div class="text-center max-w-2xl mx-auto mb-8">
-          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest block mb-2">EVERY ORDER INCLUDES</span>
-          <h3 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#FFFDD9] tracking-tight">
-            Our 8 Ironclad Studio Guarantees
-          </h3>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Dedicated Pod
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Exact same lead editor, manager, and thumbnail artist on every order.</p>
           </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> 48-Hour Turnaround
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Fast, consistent drafts delivered Monday through Saturday PST.</p>
-          </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Unlimited Revisions
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Leave timecoded comments directly until you are 100% satisfied.</p>
-          </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Motion Graphics
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Custom kinetic text, visual metaphors, and branded lower-thirds.</p>
-          </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Sound Design &amp; SFX
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Broadcast dialogue leveling, impact risers, and licensed tracks.</p>
-          </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Color Correction
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Shot-matching, skin tone perfection, and cinematic grading.</p>
-          </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> 4K Stock Footage
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">Unlimited royalty-free B-roll from premium creator libraries.</p>
-          </div>
-          <div class="pricing-guarantee-card">
-            <div class="text-sm font-bold text-[#FFFDD9] mb-1 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> 100% IP Ownership
-            </div>
-            <p class="text-xs text-[rgba(255,253,217,0.6)] leading-relaxed">You own all raw files, final 4K renders, and complete rights.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </section>
 
   <!-- ==========================================================================
-       SECTION 8: CLIENT TESTIMONIALS (Infinite Review Carousel with Creator Proof)
+       SECTION 9: CLIENT TESTIMONIALS (#testimonials) (Infinite Review Carousel with Creator Proof)
        ========================================================================== -->
   <section id="testimonials" class="py-28 px-6 max-w-7xl mx-auto border-t border-[rgba(255,253,217,0.08)] overflow-hidden">
     <!-- Backwards compatible anchor -->
@@ -4177,7 +4532,123 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 9: FREQUENTLY ASKED QUESTIONS (FAQ - Direct Tasty Edits Answers)
+       SECTION 10: DISCOVERY CALL & DIRECT BOOKING PORTAL (#booking)
+       ========================================================================== -->
+  <section id="booking" class="booking-section">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="mb-12 max-w-3xl">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
+          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest">SCHEDULE AUDIT // ZERO FRICTION</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05] mb-4">
+          Reclaim Your Time. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Double Your Production Value.</span>
+        </h2>
+        <p class="text-[rgba(255,253,217,0.75)] text-sm sm:text-base leading-relaxed">
+          Book a direct 30-minute discovery call below, or request a free async video audit and sample hook cut without jumping on a call.
+        </p>
+      </div>
+
+      <!-- Two-Column Interactive Container -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch booking-cards-track">
+        
+        <!-- Left Column: Real Live Cal.com Booker (Direct In-Page Call Scheduling) -->
+        <div class="lg:col-span-7 running-border-card">
+          <div class="running-border-inner flex flex-col justify-between">
+            
+            <!-- Calendar Card Header -->
+            <div class="flex items-center justify-between pb-3.5 mb-2 border-b border-[rgba(255,253,217,0.1)] flex-shrink-0">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#e05326] animate-pulse"></span>
+                <span class="font-mono text-xs font-bold text-[#FFFDD9] uppercase tracking-wider">LIVE 30-MIN STRATEGY CALL</span>
+              </div>
+              <a href="https://cal.com/umer-sharif-p8arjv/30min" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-[rgba(255,253,217,0.7)] hover:text-[#e05326] transition-colors flex items-center gap-1 group">
+                <span>Direct Cal.com</span>
+                <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+              </a>
+            </div>
+
+            <!-- Real Live Cal.com Responsive Embed -->
+            <div class="w-full flex-1 min-h-[480px] rounded-xl overflow-hidden bg-[#0a0b10] border border-white/[0.08] relative">
+              <iframe src="https://cal.com/umer-sharif-p8arjv/30min?embed=true&theme=dark" 
+                      class="w-full h-full border-0 absolute inset-0" 
+                      allow="camera; microphone; autoplay; fullscreen" 
+                      title="Cal.com Booking Calendar"></iframe>
+            </div>
+
+            <div class="pt-3 mt-2 border-t border-[rgba(255,253,217,0.08)] flex items-center justify-between text-[11px] font-mono text-[rgba(255,253,217,0.5)]">
+              <span>Instant Confirmation • Google Meet Link Dispatched</span>
+              <span class="text-[#e05326] font-bold">• 2 SPOTS OPEN</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Fast 3-Field Async Video Audit & Sample Edit Lead Magnet -->
+        <div class="lg:col-span-5 priority-transmission-box flex flex-col justify-between p-6 sm:p-8">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-wider">• ASYNC TRANSMISSION</span>
+              <span class="text-[10px] font-mono text-[#FFFDD9]/60 bg-white/[0.06] px-2 py-0.5 rounded">NO CALL REQUIRED</span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2">
+              Free Sample Edit &amp; Channel Audit
+            </h3>
+            <p class="text-xs text-[rgba(255,253,217,0.7)] leading-relaxed mb-6">
+              Prefer to skip the call? Drop your raw footage or channel handle. We'll audit your retention drop-offs and send back a free sample hook edit within 12 hours.
+            </p>
+
+            <form id="async-audit-form" class="space-y-4" onsubmit="handleAsyncAuditSubmit(event)">
+              <div>
+                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="audit-name">Your Name / Creator Handle</label>
+                <input type="text" id="audit-name" required placeholder="e.g. Alex Hormozi" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="audit-email">Email Address</label>
+                <input type="email" id="audit-email" required placeholder="alex@media.com" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="audit-url">YouTube Channel Link or Video URL</label>
+                <input type="text" id="audit-url" required placeholder="youtube.com/@yourchannel or Drive link" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="audit-notes">Specific Goal or Note (Optional)</label>
+                <input type="text" id="audit-notes" placeholder="e.g. Fix 30s hook cliff, cut dead air, scale to 8/mo" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
+              </div>
+
+              <button type="submit" id="btn-submit-async" class="w-full py-3.5 rounded-xl bg-[#e05326] hover:bg-[#ff5d2e] text-white text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(224,83,38,0.35)] transition-all flex items-center justify-center gap-2">
+                <span>Request Free Video Audit &amp; Sample Edit</span>
+                <span>→</span>
+              </button>
+            </form>
+
+            <div id="async-audit-success" class="hidden mt-4 p-4 rounded-xl bg-[#e05326]/10 border border-[#e05326]/40 text-center">
+              <span class="text-xs font-mono text-[#FFFDD9] font-bold block mb-1">TRANSMISSION RECEIVED ✦</span>
+              <span class="text-[11px] text-[rgba(255,253,217,0.8)] block mb-1">We'll review your channel analytics and email your custom video audit within 12 hours.</span>
+              <span class="text-[10px] font-mono text-[#e05326]">Direct inbox: info@thepsychedstudio.com</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.1)] flex items-center justify-between text-[11px] font-mono text-[rgba(255,253,217,0.5)]">
+            <span class="flex items-center gap-1.5 text-[#e05326] font-bold">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> DIRECT CONTACT
+            </span>
+            <span>info@thepsychedstudio.com</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+<!-- ==========================================================================
+       SECTION 11: FREQUENTLY ASKED QUESTIONS (#faq) (FAQ - Direct Tasty Edits Answers)
        ========================================================================== -->
   <section id="faq" class="py-24 px-6 max-w-5xl mx-auto border-t border-[rgba(255,253,217,0.08)]">
     <div class="text-center max-w-3xl mx-auto mb-16">
@@ -4288,195 +4759,7 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 10: DISCOVERY CALL & DIRECT BOOKING PORTAL
-       ========================================================================== -->
-  <section id="booking" class="booking-section">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <!-- Section Header -->
-      <div class="mb-12 max-w-3xl">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
-          <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-widest">SCHEDULE AUDIT // ZERO RISK</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-[#FFFDD9] leading-[1.05] mb-4">
-          Reclaim Your Time. <span class="font-['Instrument_Serif',serif] italic font-normal text-[#e05326]">Double Your Production Value.</span>
-        </h2>
-        <p class="text-[rgba(255,253,217,0.75)] text-sm sm:text-base leading-relaxed">
-          Select an available slot below for your 30-minute Channel Discovery Call, or transmit your channel link directly for an async production quote within 12 hours.
-        </p>
-      </div>
-
-      <!-- Two-Column Interactive Container -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch booking-cards-track">
-        
-        <!-- Left Column: Native Studio Strategy Booking Calendar -->
-        <div class="lg:col-span-7 running-border-card">
-          <div class="running-border-inner">
-            
-            <!-- Calendar Card Header -->
-            <div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-[rgba(255,253,217,0.1)] flex-shrink-0">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#e05326] animate-pulse"></span>
-                <span class="font-mono text-xs font-bold text-[#FFFDD9] uppercase tracking-wider">STUDIO STRATEGY CALENDAR</span>
-              </div>
-              <a href="https://cal.com/umer-sharif-p8arjv/30min" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-[rgba(255,253,217,0.7)] hover:text-[#e05326] transition-colors flex items-center gap-1 group">
-                <span>Direct Cal.com</span>
-                <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
-              </a>
-            </div>
-
-            <!-- Interactive Native Calendar & Slot Picker -->
-            <div id="cal-inline-booking" class="custom-scrollbar">
-              
-              <!-- Month Navigator & Timezone Bar -->
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 bg-white/[0.03] p-3 rounded-xl border border-white/[0.06]">
-                <div class="flex items-center gap-2">
-                  <button type="button" onclick="prevMonthCal()" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-[#FFFDD9] flex items-center justify-center text-sm font-mono transition-colors" title="Previous Month">‹</button>
-                  <span id="cal-month-title" class="font-mono font-extrabold text-sm text-[#FFFDD9] tracking-wider uppercase px-2 min-w-[140px] text-center">October 2026</span>
-                  <button type="button" onclick="nextMonthCal()" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-[#FFFDD9] flex items-center justify-center text-sm font-mono transition-colors" title="Next Month">›</button>
-                </div>
-                <div class="flex items-center justify-between sm:justify-end gap-3 text-[11px] font-mono">
-                  <span class="text-[rgba(255,253,217,0.6)] flex items-center gap-1">
-                    <span>🌐</span> PST (GMT-8)
-                  </span>
-                  <span class="px-2 py-0.5 rounded bg-[#e05326]/15 border border-[#e05326]/30 text-[#e05326] font-bold text-[10px] uppercase">
-                    • 2 Spots Open
-                  </span>
-                </div>
-              </div>
-
-              <!-- Two-Panel Grid: Day Matrix on Left/Top, Slots on Right/Bottom -->
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-                
-                <!-- Left: 7-Column Month Date Grid -->
-                <div class="md:col-span-7 bg-[#0b0c10] p-3.5 rounded-xl border border-white/[0.06]">
-                  <div class="grid grid-cols-7 gap-1 text-center font-mono text-[10.5px] font-bold text-[rgba(255,253,217,0.45)] uppercase mb-2">
-                    <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
-                  </div>
-                  <div id="cal-days-grid" class="grid grid-cols-7 gap-1.5 text-center">
-                    <!-- Injected dynamically by renderStudioCalendar() -->
-                  </div>
-                  <div class="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-[rgba(255,253,217,0.5)]">
-                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> Available Day</span>
-                    <span>30-Min Call</span>
-                  </div>
-                </div>
-
-                <!-- Right: Time Slots Column -->
-                <div class="md:col-span-5 flex flex-col justify-between bg-[#0b0c10] p-3.5 rounded-xl border border-white/[0.06]">
-                  <div>
-                    <div class="flex items-center justify-between mb-2.5 pb-2 border-b border-white/[0.06]">
-                      <span class="text-[10px] font-mono font-bold text-[#e05326] uppercase tracking-wider">AVAILABLE TIMES</span>
-                      <span id="cal-selected-date-label" class="text-[11px] font-mono text-[#FFFDD9] font-bold">Tue, Oct 20</span>
-                    </div>
-                    <div id="cal-time-slots-container" class="space-y-1.5">
-                      <!-- Rendered by JS -->
-                    </div>
-                  </div>
-
-                  <!-- Slot Confirmation Notice -->
-                  <div class="mt-3 pt-2.5 border-t border-white/[0.06]">
-                    <div id="cal-selected-summary" class="text-[10.5px] font-mono text-[#FFFDD9] mb-2 leading-tight">
-                      Selected: <span class="text-[#e05326] font-bold" id="cal-slot-name">Tue, Oct 20 @ 2:00 PM PST</span>
-                    </div>
-                    <button type="button" onclick="confirmSelectedSlot()" class="w-full py-2.5 rounded-lg bg-[#e05326] hover:bg-[#ff5d2e] text-white text-[11px] font-mono font-bold uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(224,83,38,0.3)] flex items-center justify-center gap-1.5">
-                      <span>Lock Slot &amp; Inquire</span>
-                      <span>→</span>
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Fallback Cal container if script initializes -->
-              <div id="my-cal-inline" class="hidden"></div>
-
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Right Column: Direct Priority Inquiry & Transmission Form -->
-        <div class="lg:col-span-5 priority-transmission-box flex flex-col justify-between p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <span class="text-xs font-mono font-bold text-[#e05326] uppercase tracking-wider">• ASYNC TRANSMISSION</span>
-              <span class="text-[10px] font-mono text-[#FFFDD9]/60 bg-white/[0.06] px-2 py-0.5 rounded">DIRECT INBOX</span>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-extrabold uppercase text-[#FFFDD9] tracking-tight mb-2">
-              Prefer Direct Inquiry?
-            </h3>
-            <p class="text-xs text-[rgba(255,253,217,0.7)] leading-relaxed mb-6">
-              Drop your channel handle and current upload cadence. We’ll review your videos and reply with a custom production plan within 12 hours.
-            </p>
-
-            <form id="transmission-form" class="space-y-4" onsubmit="handleTransmissionSubmit(event)">
-              <input type="hidden" id="selected-call-slot" name="selected_call_slot" value="Tue, Oct 20 @ 2:00 PM PST">
-              
-              <!-- Selected Call Slot Badge -->
-              <div id="form-slot-badge" class="p-2.5 rounded-lg bg-[#e05326]/10 border border-[#e05326]/30 flex items-center justify-between text-xs font-mono">
-                <span class="text-[#FFFDD9] flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-[#e05326] animate-pulse"></span>
-                  <span id="form-slot-text">Selected Call: Tue, Oct 20 @ 2:00 PM PST</span>
-                </span>
-                <span class="text-[#e05326] font-bold text-[10px] uppercase">LOCKED</span>
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="creator-name">Your Name / Brand</label>
-                <input type="text" id="creator-name" required placeholder="e.g. Alex Hormozi" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="creator-email">Email Address</label>
-                <input type="email" id="creator-email" required placeholder="alex@media.com" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="channel-url">YouTube Channel Link or Portfolio</label>
-                <input type="text" id="channel-url" required placeholder="youtube.com/@yourchannel" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs text-[#FFFDD9] placeholder-neutral-500 focus:outline-none focus:border-[#e05326] transition-colors">
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-mono text-[rgba(255,253,217,0.7)] uppercase mb-1.5 font-bold" for="monthly-cadence">Monthly Video Cadence</label>
-                <select id="monthly-cadence" class="w-full px-4 py-3 rounded-xl bg-[#141313] border border-white/[0.1] text-xs text-[#FFFDD9] focus:outline-none focus:border-[#e05326] transition-colors">
-                  <option value="4-long-form">4 Long-Form Videos / Month (Explore Package)</option>
-                  <option value="8-long-shorts" selected>8 Long-Form + 8 Shorts (Trending Package - Most Popular)</option>
-                  <option value="12-full-mgmt">12+ Videos + Full YouTube Management (Viral Package)</option>
-                  <option value="custom">Custom Production Volume</option>
-                </select>
-              </div>
-
-              <button type="submit" id="btn-submit-transmission" class="w-full py-3.5 rounded-xl bg-[#e05326] hover:bg-[#ff5d2e] text-white text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(224,83,38,0.35)] transition-all flex items-center justify-center gap-2">
-                <span>Confirm Call &amp; Send Transmission</span>
-                <span>→</span>
-              </button>
-            </form>
-
-            <div id="transmission-success" class="hidden mt-4 p-4 rounded-xl bg-[#e05326]/10 border border-[#e05326]/40 text-center">
-              <span class="text-xs font-mono text-[#FFFDD9] font-bold block mb-1">TRANSMISSION CONFIRMED ✦</span>
-              <span class="text-[11px] text-[rgba(255,253,217,0.8)] block mb-1.5" id="confirmed-slot-display">Your 30-min strategy call and channel details have been logged.</span>
-              <span class="text-[10px] font-mono text-[#e05326]">Calendar invite dispatched to your email. We'll reply within 12 hours!</span>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-[rgba(255,253,217,0.1)] flex items-center justify-between text-[11px] font-mono text-[rgba(255,253,217,0.5)]">
-            <span class="flex items-center gap-1.5 text-[#e05326] font-bold">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#e05326]"></span> DIRECT CONTACT
-            </span>
-            <span>hello@psychedstudio.com</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SECTION 11: GLOBAL FOOTER
+       SECTION 12: GLOBAL FOOTER
        ========================================================================== -->
   <footer class="py-16 px-6 max-w-7xl mx-auto border-t border-[rgba(255,253,217,0.08)]">
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -4630,7 +4913,7 @@
        2. WEB AUDIO SYNTHESIZER HAPTICS & SOUND SYSTEM (DEFAULT ON)
        ========================================================== */
     let audioCtx = null;
-    let audioEnabled = true; // Sound enabled by default
+    let audioEnabled = false; // Audio muted by default for polite browsing
     let lastBeepTime = 0;
 
     function initAudio() {
@@ -4659,6 +4942,28 @@
     window.addEventListener('touchstart', unlockAudio, { passive: true });
     window.addEventListener('pointermove', unlockAudio, { passive: true, once: true });
     window.addEventListener('wheel', unlockAudio, { passive: true, once: true });
+
+    // Audio toggle button listener
+    const audioToggleBtn = document.getElementById('audio-toggle-btn');
+    const audioToggleLabel = document.getElementById('audio-toggle-label');
+    if (audioToggleBtn) {
+      audioToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        initAudio();
+        audioEnabled = !audioEnabled;
+        if (audioToggleLabel) {
+          audioToggleLabel.textContent = audioEnabled ? 'AUDIO ON' : 'AUDIO OFF';
+        }
+        if (audioEnabled) {
+          audioToggleBtn.classList.remove('opacity-60');
+          audioToggleBtn.classList.add('text-[#e05326]', 'opacity-100');
+          playBeep(650, 'sine', 0.08);
+        } else {
+          audioToggleBtn.classList.remove('text-[#e05326]', 'opacity-100');
+          audioToggleBtn.classList.add('opacity-60');
+        }
+      });
+    }
 
     function playBeep(freq = 440, type = 'sine', duration = 0.08) {
       if (!audioEnabled) return;
@@ -4768,10 +5073,10 @@
 
       // Static milestone pins
       const milestones = [
-        { u: 0.166, day: "DAY 15", label: "+42% RETENTION HOOK" },
-        { u: 0.333, day: "DAY 30", label: "ALGO BREAKTHROUGH" },
-        { u: 0.666, day: "DAY 60", label: "VIRAL SCALE (8.4M)" },
-        { u: 0.950, day: "DAY 90", label: "$18.4M CLIENT HIGH" }
+        { u: 0.18, day: "DAY 15", label: "75.4% 30S HOOK HOLD" },
+        { u: 0.38, day: "DAY 30", label: "7.6% AVG CTR BENCHMARK" },
+        { u: 0.68, day: "DAY 60", label: "6.3M WATCH HOURS" },
+        { u: 0.95, day: "DAY 90", label: "140M+ VIEWS COMPOUNDED" }
       ];
 
       let padX = 60;
@@ -4843,10 +5148,10 @@
         ctx.lineWidth = 1;
 
         const gridLevels = [
-          { frac: 1.0,  val: "$18.4M • 140M VIEWS" },
-          { frac: 0.72, val: "$11.2M • 85M VIEWS" },
-          { frac: 0.45, val: "$5.4M • 38M VIEWS" },
-          { frac: 0.20, val: "$1.2M • 8M VIEWS" }
+          { frac: 1.0,  val: "140M+ VIEWS • 6.3M WATCH HRS" },
+          { frac: 0.72, val: "85M VIEWS • 7.6% AVG CTR" },
+          { frac: 0.45, val: "42M VIEWS • >60% MID HOLD" },
+          { frac: 0.20, val: "12M VIEWS • 75% 30S RETENTION" }
         ];
 
         ctx.font = '10px "JetBrains Mono", monospace';
@@ -5644,34 +5949,40 @@
        ========================================================== */
     function setPricingMode(mode) {
       const btnMonthly = document.getElementById("pricing-tab-monthly");
-      const btnPackages = document.getElementById("pricing-tab-packages");
+      const btnQuarterly = document.getElementById("pricing-tab-quarterly");
       const pExplore = document.getElementById("price-explore");
       const pTrending = document.getElementById("price-trending");
       const pViral = document.getElementById("price-viral");
-      const perExplore = document.getElementById("period-explore");
-      const perTrending = document.getElementById("period-trending");
-      const perViral = document.getElementById("period-viral");
+      const subExplore = document.getElementById("sub-explore");
+      const subTrending = document.getElementById("sub-trending");
+      const subViral = document.getElementById("sub-viral");
+      const billNoticeExplore = document.getElementById("bill-explore");
+      const billNoticeTrending = document.getElementById("bill-trending");
+      const billNoticeViral = document.getElementById("bill-viral");
 
-      if (mode === "packages") {
+      if (mode === "quarterly") {
         if (btnMonthly) {
           btnMonthly.classList.remove("bg-[#e05326]", "text-white");
           btnMonthly.classList.add("text-[rgba(255,253,217,0.7)]");
         }
-        if (btnPackages) {
-          btnPackages.classList.add("bg-[#e05326]", "text-white");
-          btnPackages.classList.remove("text-[rgba(255,253,217,0.7)]");
+        if (btnQuarterly) {
+          btnQuarterly.classList.add("bg-[#e05326]", "text-white");
+          btnQuarterly.classList.remove("text-[rgba(255,253,217,0.7)]");
         }
-        if (pExplore) pExplore.textContent = "$327";
-        if (pTrending) pTrending.textContent = "$305";
-        if (pViral) pViral.textContent = "$278";
-        if (perExplore) perExplore.textContent = "/ per video";
-        if (perTrending) perTrending.textContent = "/ per video";
-        if (perViral) perViral.textContent = "/ per video";
+        if (pExplore) pExplore.textContent = "$1,270";
+        if (pTrending) pTrending.textContent = "$2,375";
+        if (pViral) pViral.textContent = "$3,820";
+        if (subExplore) subExplore.textContent = "~$318 per video edit (Save $675/qtr)";
+        if (subTrending) subTrending.textContent = "~$148 per video asset (Save $1,260/qtr)";
+        if (subViral) subViral.textContent = "~$159 per video asset (Save $2,025/qtr)";
+        if (billNoticeExplore) billNoticeExplore.textContent = "Billed $3,810 every 3 months. Priority pod.";
+        if (billNoticeTrending) billNoticeTrending.textContent = "Billed $7,125 every 3 months. Priority pod.";
+        if (billNoticeViral) billNoticeViral.textContent = "Billed $11,460 every 3 months. Dedicated pod.";
         playBeep(580, "sine", 0.04);
       } else {
-        if (btnPackages) {
-          btnPackages.classList.remove("bg-[#e05326]", "text-white");
-          btnPackages.classList.add("text-[rgba(255,253,217,0.7)]");
+        if (btnQuarterly) {
+          btnQuarterly.classList.remove("bg-[#e05326]", "text-white");
+          btnQuarterly.classList.add("text-[rgba(255,253,217,0.7)]");
         }
         if (btnMonthly) {
           btnMonthly.classList.add("bg-[#e05326]", "text-white");
@@ -5680,9 +5991,12 @@
         if (pExplore) pExplore.textContent = "$1,495";
         if (pTrending) pTrending.textContent = "$2,795";
         if (pViral) pViral.textContent = "$4,495";
-        if (perExplore) perExplore.textContent = "/ month";
-        if (perTrending) perTrending.textContent = "/ month";
-        if (perViral) perViral.textContent = "/ month";
+        if (subExplore) subExplore.textContent = "~$374 per video edit";
+        if (subTrending) subTrending.textContent = "~$175 per video asset (8 Long + 8 Shorts)";
+        if (subViral) subViral.textContent = "~$187 per video asset (12+ Long + 12 Shorts)";
+        if (billNoticeExplore) billNoticeExplore.textContent = "Billed monthly. Pause or cancel anytime.";
+        if (billNoticeTrending) billNoticeTrending.textContent = "Billed monthly. Dedicated lead editor.";
+        if (billNoticeViral) billNoticeViral.textContent = "Billed monthly. Full YouTube management.";
         playBeep(480, "sine", 0.04);
       }
     }
@@ -6545,6 +6859,99 @@
     } else {
       renderStudioCalendar();
     }
+
+  
+    /* ==========================================================
+       VIDEO SHOWCASE & ASYNC AUDIT ENGINE
+       ========================================================== */
+    function filterPortfolio(category) {
+      const buttons = document.querySelectorAll(".portfolio-filter-btn");
+      buttons.forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.add("bg-[#e05326]", "text-white");
+          btn.classList.remove("bg-white/[0.04]", "text-[rgba(255,253,217,0.7)]");
+        } else {
+          btn.classList.remove("bg-[#e05326]", "text-white");
+          btn.classList.add("bg-white/[0.04]", "text-[rgba(255,253,217,0.7)]");
+        }
+      });
+
+      const cards = document.querySelectorAll(".portfolio-item-card");
+      cards.forEach(card => {
+        if (category === "all" || card.dataset.category === category) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+      playBeep(520, "sine", 0.03);
+    }
+
+    function openVideoModal(videoId, title, creator, isVertical = false) {
+      const modal = document.getElementById("video-player-modal");
+      const modalTitle = document.getElementById("video-modal-title");
+      const container = document.getElementById("video-modal-container");
+      const meta = document.getElementById("video-modal-meta");
+      if (!modal || !container) return;
+
+      if (modalTitle) modalTitle.textContent = `${creator} — ${title}`;
+      if (meta) meta.textContent = `Creator: ${creator} • Verified Psyched Studio Post-Production`;
+
+      if (isVertical) {
+        container.className = "relative w-full max-w-[360px] mx-auto aspect-[9/16] bg-black flex items-center justify-center my-3 rounded-lg overflow-hidden";
+      } else {
+        container.className = "relative w-full aspect-video bg-black flex items-center justify-center";
+      }
+
+      container.innerHTML = `
+        <iframe class="w-full h-full border-0" 
+                src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1" 
+                title="${title}" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+      `;
+
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      playBeep(620, "sine", 0.04);
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById("video-player-modal");
+      const container = document.getElementById("video-modal-container");
+      if (!modal) return;
+      modal.classList.add("opacity-0", "pointer-events-none");
+      if (container) container.innerHTML = "";
+    }
+
+    function handleAsyncAuditSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById("async-audit-form");
+      const successBox = document.getElementById("async-audit-success");
+      const submitBtn = document.getElementById("btn-submit-async");
+
+      playBeep(880, "sine", 0.08);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "<span>Audit Request Received ✓</span>";
+        submitBtn.classList.remove("bg-[#e05326]");
+        submitBtn.classList.add("bg-emerald-600");
+      }
+
+      if (successBox) {
+        successBox.classList.remove("hidden");
+        successBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+
+    window.filterPortfolio = filterPortfolio;
+    window.openVideoModal = openVideoModal;
+    window.closeVideoModal = closeVideoModal;
+    window.handleAsyncAuditSubmit = handleAsyncAuditSubmit;
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeVideoModal();
+    });
 
   </script>
 
