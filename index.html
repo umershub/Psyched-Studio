@@ -2804,7 +2804,46 @@
       box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85);
     }
 
-  </style>
+  
+    /* ==========================================================
+       TASTYEDITS-INSPIRED TYPOGRAPHY & READABILITY SYSTEM
+       ========================================================== */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Boost readability for descriptions and body paragraphs */
+    .pricing-card p,
+    .portfolio-item-card p,
+    .stack-card p,
+    .deploy-step-card p,
+    .services-sticky-section p,
+    .faq-answer p {
+      color: rgba(244, 244, 245, 0.88) !important;
+      font-size: 13.5px !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Crisp feature text for pricing */
+    .pricing-feature-item span {
+      color: #f4f4f5 !important;
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+    }
+    .pricing-feature-item strong {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+
+    /* Clear, readable metadata tags */
+    .portfolio-item-card .font-mono,
+    .thumbnail-wall-card .font-mono {
+      color: rgba(244, 244, 245, 0.82) !important;
+      font-size: 11.5px !important;
+    }
+</style>
 
   <!-- External CDNs: GSAP + ScrollTrigger + Three.js + Lenis + Matter.js -->
   
@@ -3169,66 +3208,83 @@
                 <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
                 <span class="font-bold">Nate The Lawyer (766K Subs)</span>
               </span>
-              <span class="text-[10px] text-[#FFFDD9]/60">68% HOOK HOLD</span>
+              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">68% HOOK HOLD</span>
             </div>
           </div>
 
           <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
               High-Stakes Legal Breakdown &amp; Trial Analysis
             </h3>
-            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
               Fast-paced commentary cutting: zero dead air, pattern interrupts every 5–7 seconds, broadcast-grade audio leveling, and dynamic animated evidence graphics.
             </p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Pacing Surgery</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Evidence Lower-Thirds</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Broadcast Fairlight SFX</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Pacing Surgery</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Evidence Lower-Thirds</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Broadcast Fairlight SFX</span>
             </div>
           </div>
         </div>
 
         <!-- Video 2: Paige Woolen (9:16 Viral Short) -->
         <div class="portfolio-item-card video-card-poster group" data-category="shorts" onclick="openVideoModal('astnDEO_om0', 'Viral Podcast Micro-Hook', 'Paige Woolen', true)">
-          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
-            <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen Viral Short" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/50 to-transparent"></div>
+          <div class="relative aspect-video w-full overflow-hidden bg-[#07080b] flex items-center justify-center">
+            <!-- Ambient blurred backdrop -->
+            <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen Ambient" class="absolute inset-0 w-full h-full object-cover blur-xl opacity-30 scale-110" aria-hidden="true" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/40 to-transparent"></div>
             
-            <div class="absolute top-3 left-3 flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">9:16 VIRAL REEL</span>
-              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">0:48 DURATION</span>
-            </div>
+            <!-- Authentic 9:16 Phone Frame Mockup -->
+            <div class="relative h-[88%] aspect-[9/16] rounded-xl overflow-hidden shadow-2xl border border-white/20 z-10 group-hover:scale-105 transition-transform duration-500">
+              <img src="assets/clients/paige-woolen.jpg" alt="Paige Woolen Viral Short" class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+              
+              <!-- Central Play Button -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="video-play-btn scale-90">
+                  <svg class="w-5 h-5 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </div>
 
-            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold">
-              4.2M+ VIEWS
-            </div>
-
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="video-play-btn">
-                <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <!-- Vertical Phone Live Tag -->
+              <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] font-mono text-[#e05326] font-bold">
+                9:16 REEL
+              </div>
+              <div class="absolute bottom-2 left-2 right-2 text-center text-[10px] font-mono text-white/90 font-bold truncate">
+                0:48 • 4.2M Views
               </div>
             </div>
 
-            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90">
+            <!-- Card Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-2 z-20">
+              <span class="px-2.5 py-1 rounded-md bg-[#e05326] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">VERTICAL REEL</span>
+              <span class="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[#FFFDD9] text-[10px] font-mono">0:48 DURATION</span>
+            </div>
+
+            <div class="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[#e05326] font-bold z-20">
+              4.2M+ VIEWS
+            </div>
+
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-[#FFFDD9]/90 z-20">
               <span class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
                 <span class="font-bold">Paige Woolen (1M+ Audience)</span>
               </span>
-              <span class="text-[10px] text-[#FFFDD9]/60">114% RETENTION</span>
+              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">114% RETENTION</span>
             </div>
           </div>
 
           <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
               Kinetic Lifestyle &amp; Podcast Micro-Hook
             </h3>
-            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
               Engineered for algorithmic loop completion: dynamic word-by-word kinetic captions, tension risers, punch-ins every 1.5 seconds, and visual cliffhangers.
             </p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Word-By-Word Text</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Micro-Punch Ins</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Algorithmic Looping</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Word-By-Word Text</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Micro-Punch Ins</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Algorithmic Looping</span>
             </div>
           </div>
         </div>
@@ -3259,21 +3315,21 @@
                 <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
                 <span class="font-bold">Dr. James O'Donovan (615K Subs)</span>
               </span>
-              <span class="text-[10px] text-[#FFFDD9]/60">62% AVG HOLD</span>
+              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">62% AVG HOLD</span>
             </div>
           </div>
 
           <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
               Clinical Case Study &amp; 3D Anatomy Visuals
             </h3>
-            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
               Deep-dive medical educational documentary. Motion graphics track complex physiological concepts, with custom visual metaphors and color-matched medical overlays.
             </p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">3D Anatomy Graphics</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Paper Texture Cutouts</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Deep-Dive Cadence</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">3D Anatomy Graphics</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Paper Texture Cutouts</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Deep-Dive Cadence</span>
             </div>
           </div>
         </div>
@@ -3281,7 +3337,7 @@
         <!-- Video 4: Dan - Modern Alpha (16:9 Finance & Video Essay) -->
         <div class="portfolio-item-card video-card-poster group" data-category="long-form" onclick="openVideoModal('Ybod1nL9Zxk', 'Economic Breakdown with Kinetic B-Roll & SFX', 'Modern Alpha', false)">
           <div class="relative aspect-video w-full overflow-hidden bg-[#07080b]">
-            <img src="assets/stats/monthly-revenue-25k.png" alt="Finance Video Essay Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" loading="lazy" />
+            <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Finance Video Essay Mastercut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-[#090a10] via-black/50 to-transparent"></div>
             
             <div class="absolute top-3 left-3 flex items-center gap-2">
@@ -3304,21 +3360,21 @@
                 <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
                 <span class="font-bold">Dan — Modern Alpha (340K Subs)</span>
               </span>
-              <span class="text-[10px] text-[#FFFDD9]/60">74% 30S HOOK</span>
+              <span class="text-xs font-mono font-bold text-[#e05326] bg-black/70 px-2 py-0.5 rounded">74% 30S HOOK</span>
             </div>
           </div>
 
           <div class="p-5 bg-[#0b0c12] border-t border-white/[0.08]">
-            <h3 class="text-lg font-bold text-[#FFFDD9] uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-1.5">
+            <h3 class="text-xl font-extrabold text-white uppercase tracking-tight group-hover:text-[#e05326] transition-colors mb-2">
               Economic Breakdown with Kinetic B-Roll &amp; SFX
             </h3>
-            <p class="text-xs text-[rgba(255,253,217,0.65)] leading-relaxed mb-3">
+            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
               High-yield video essay framing: bespoke stock video curation, kinetic typographic calls-to-action, tension build-ups, and native sponsor bridge integration.
             </p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Kinetic B-Roll</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Curiosity Loops</span>
-              <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-[rgba(255,253,217,0.7)]">Native Sponsor Bridge</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Kinetic B-Roll</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Curiosity Loops</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-xs font-mono font-medium text-zinc-200">Native Sponsor Bridge</span>
             </div>
           </div>
         </div>
@@ -3343,46 +3399,46 @@
           
           <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
             <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="assets/stats/annual-reach-66m.png" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+              <img src="https://i.ytimg.com/vi/05EbH-_w0UQ/maxresdefault.jpg" alt="Lindsay Clancy Trial Breakdown Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
                 8.4% CTR
               </div>
             </div>
-            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
-            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">Curiosity Gap • Emotional Focus</div>
+            <div class="text-sm font-bold text-white uppercase truncate mb-1">Lindsay Clancy Trial Juror</div>
+            <div class="text-xs font-mono text-zinc-400">Curiosity Gap • Emotional Focus</div>
           </div>
 
           <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
             <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="assets/stats/ctr-velocity-47m.png" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+              <img src="https://i.ytimg.com/vi/Ybod1nL9Zxk/maxresdefault.jpg" alt="Sunny Hostin The View Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
                 7.6% CTR
               </div>
             </div>
-            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
-            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">+56% Velocity • Contrast Grade</div>
+            <div class="text-sm font-bold text-white uppercase truncate mb-1">Sunny Hostin Wild Lie Receipts</div>
+            <div class="text-xs font-mono text-zinc-400">+56% Velocity • Contrast Grade</div>
           </div>
 
           <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
             <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="assets/stats/retention-curve-surgery.png" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+              <img src="https://i.ytimg.com/vi/ClKTfE6uzR8/maxresdefault.jpg" alt="Lawyers Using Fake ChatGPT Cases" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
                 9.1% CTR
               </div>
             </div>
-            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
-            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">High Shock Value • 3D Accents</div>
+            <div class="text-sm font-bold text-white uppercase truncate mb-1">Lawyers Caught Using Fake AI</div>
+            <div class="text-xs font-mono text-zinc-400">High Shock Value • 3D Accents</div>
           </div>
 
           <div class="thumbnail-wall-card group p-3 bg-[#0d0e14]">
             <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-3">
-              <img src="assets/stats/spike-velocity-134pct.png" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-[9px] font-mono font-bold">
+              <img src="https://i.ytimg.com/vi/Axa6PyVdDTw/maxresdefault.jpg" alt="Jussie Defamation Lawsuit Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#e05326] text-white text-xs font-mono font-extrabold shadow-md">
                 7.9% CTR
               </div>
             </div>
-            <div class="text-xs font-bold text-[#FFFDD9] uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
-            <div class="text-[10px] font-mono text-[rgba(255,253,217,0.5)]">Documentary Polish • Clear Typography</div>
+            <div class="text-sm font-bold text-white uppercase truncate mb-1">Jussie Lawyers Sued for Fraud</div>
+            <div class="text-xs font-mono text-zinc-400">Documentary Polish • Clear Typography</div>
           </div>
 
         </div>
@@ -3784,7 +3840,7 @@
                 </div>
               </div>
               <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#e05326] transition-colors">Explore Format ↗</span>
+                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.5)] group-hover:text-[#e05326] transition-colors">Hover Tags ⟳</span>
                 <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
                   <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </div>
@@ -3792,13 +3848,27 @@
             </div>
 
             <!-- Absolute Floating Stage (Matter.js Rigid-Body Tags) -->
-            <!-- Scannable Format Tags -->
-            <div class="flex flex-wrap gap-2 mt-4 pt-1">
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#YouTubeLongForm</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#RetentionPacing</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#BroadcastAudioSFX</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#MotionGraphics</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#CinematicGrading</span>
+            <div class="burst-floating-stage" aria-hidden="true">
+              <div class="burst-pill-item pill-tag burst-pill-1">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#YouTubeLongForm</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-2">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#RetentionPacing</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-3">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#BroadcastAudioSFX</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-4">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#MotionGraphics</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-5">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#CinematicGrading</span>
+              </div>
             </div>
             
             <div class="burst-item-divider"></div>
@@ -3819,7 +3889,7 @@
                 </div>
               </div>
               <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#FFFDD9] transition-colors">Explore Format ↗</span>
+                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.5)] group-hover:text-[#FFFDD9] transition-colors">Hover Tags ⟳</span>
                 <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#FFFDD9] group-hover:border-[#FFFDD9] group-hover:text-[#181616] transition-all duration-300">
                   <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </div>
@@ -3827,13 +3897,27 @@
             </div>
 
             <!-- Absolute Floating Stage -->
-            <!-- Scannable Format Tags -->
-            <div class="flex flex-wrap gap-2 mt-4 pt-1">
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#ViralShorts</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#9x16Reels</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#DynamicCaptions</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#MicroHooks</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#AudioDucking</span>
+            <div class="burst-floating-stage" aria-hidden="true">
+              <div class="burst-pill-item pill-tag burst-pill-1">
+                <span class="tag-dot bg-[#FFFDD9]"></span>
+                <span class="tag-text">#YouTubeShorts</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-2">
+                <span class="tag-dot bg-[#FFFDD9]"></span>
+                <span class="tag-text">#InstagramReels</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-3">
+                <span class="tag-dot bg-[#FFFDD9]"></span>
+                <span class="tag-text">#TikTokAlgorithm</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-4">
+                <span class="tag-dot bg-[#FFFDD9]"></span>
+                <span class="tag-text">#AnimatedCaptions</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-5">
+                <span class="tag-dot bg-[#FFFDD9]"></span>
+                <span class="tag-text">#KineticHooks</span>
+              </div>
             </div>
             
             <div class="burst-item-divider"></div>
@@ -3854,7 +3938,7 @@
                 </div>
               </div>
               <div class="burst-trigger-badge flex items-center gap-3">
-                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.4)] group-hover:text-[#e05326] transition-colors">Explore Format ↗</span>
+                <span class="hidden sm:inline-block text-[11px] font-mono tracking-widest uppercase text-[rgba(255,253,217,0.5)] group-hover:text-[#e05326] transition-colors">Hover Tags ⟳</span>
                 <div class="w-10 h-10 rounded-full border border-[rgba(255,253,217,0.15)] flex items-center justify-center text-[#FFFDD9] group-hover:bg-[#e05326] group-hover:border-[#e05326] group-hover:text-white transition-all duration-300">
                   <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </div>
@@ -3862,12 +3946,27 @@
             </div>
 
             <!-- Absolute Floating Stage -->
-            <!-- Scannable Format Tags -->
-            <div class="flex flex-wrap gap-2 mt-4 pt-1">
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#FullChannelManagement</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#ThumbnailPackaging</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#SEOOptimization</span>
-              <span class="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-[#FFFDD9]">#ReleaseCadence</span>
+            <div class="burst-floating-stage" aria-hidden="true">
+              <div class="burst-pill-item pill-tag burst-pill-1">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#HighCTRThumbnails</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-2">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#TitleTestingAB</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-3">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#YouTubeSEO</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-4">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#UploadScheduling</span>
+              </div>
+              <div class="burst-pill-item pill-tag burst-pill-5">
+                <span class="tag-dot bg-[#e05326]"></span>
+                <span class="tag-text">#RetentionAnalytics</span>
+              </div>
             </div>
             
             <div class="burst-item-divider"></div>
@@ -4173,10 +4272,10 @@
         <!-- Pricing Toggle Switcher -->
         <div class="inline-flex items-center p-1.5 rounded-full bg-[#181616] border border-white/10 mt-8 shadow-xl">
           <button id="pricing-tab-monthly" type="button" class="px-6 py-2.5 rounded-full bg-[#e05326] text-white text-xs font-bold uppercase tracking-wider transition-all" onclick="setPricingMode('monthly')">
-            Monthly Retainers (Best Value)
+            Monthly Retainers
           </button>
-          <button id="pricing-tab-packages" type="button" class="px-6 py-2.5 rounded-full text-[rgba(255,253,217,0.7)] hover:text-white text-xs font-bold uppercase tracking-wider transition-all" onclick="setPricingMode('packages')">
-            Per-Video Packages
+          <button id="pricing-tab-quarterly" type="button" class="px-6 py-2.5 rounded-full text-[rgba(255,253,217,0.7)] hover:text-white text-xs font-bold uppercase tracking-wider transition-all" onclick="setPricingMode('quarterly')">
+            Quarterly (Save 15%)
           </button>
         </div>
       </div>
@@ -4199,10 +4298,11 @@
               Ideal for emerging channels, podcast hosts, and businesses publishing weekly content.
             </p>
 
-            <div class="flex items-baseline gap-2 mb-8 pb-6 border-b border-white/[0.08]">
+            <div class="flex items-baseline gap-2 mb-3 pb-3 border-b border-white/[0.08]">
               <span id="price-explore" class="text-4xl sm:text-5xl font-extrabold text-[#FFFDD9] font-mono tracking-tight">$1,495</span>
-              <span id="period-explore" class="text-xs font-mono text-[rgba(255,253,217,0.5)]">/ month</span>
+              <span id="period-explore" class="text-xs font-mono text-[rgba(255,253,217,0.6)]">/ month</span>
             </div>
+            <div id="sub-explore" class="text-xs font-mono text-[#e05326] mb-6">~$374 per video edit</div>
 
             <!-- Features List -->
             <div class="space-y-3.5 mb-8">
@@ -4240,6 +4340,7 @@
           <a href="#booking" class="w-full py-4 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-[#FFFDD9] text-xs font-extrabold uppercase tracking-wider text-center block transition-all border border-white/[0.1]">
             Get Started →
           </a>
+          <p id="bill-explore" class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] text-center mt-3">Billed monthly. Pause or cancel anytime.</p>
         </div>
 
         <!-- Package 2: Trending / Growth (Most Popular) -->
@@ -4261,10 +4362,11 @@
               Our signature high-velocity package designed to scale audience reach, watch time, and AdSense RPM.
             </p>
 
-            <div class="flex items-baseline gap-2 mb-8 pb-6 border-b border-white/[0.08]">
+            <div class="flex items-baseline gap-2 mb-3 pb-3 border-b border-white/[0.08]">
               <span id="price-trending" class="text-4xl sm:text-5xl font-extrabold text-[#FFFDD9] font-mono tracking-tight">$2,795</span>
-              <span id="period-trending" class="text-xs font-mono text-[rgba(255,253,217,0.5)]">/ month</span>
+              <span id="period-trending" class="text-xs font-mono text-[rgba(255,253,217,0.6)]">/ month</span>
             </div>
+            <div id="sub-trending" class="text-xs font-mono text-[#e05326] mb-6">~$175 per video asset (8 Long + 8 Shorts)</div>
 
             <!-- Features List -->
             <div class="space-y-3.5 mb-8">
@@ -4306,6 +4408,7 @@
           <a href="#booking" class="w-full py-4 rounded-xl bg-[#e05326] hover:bg-[#ff5d2e] text-white text-xs font-extrabold uppercase tracking-wider text-center block transition-all shadow-[0_4px_24px_rgba(224,83,38,0.4)] hover:scale-[1.02]">
             Start Trending Now →
           </a>
+          <p id="bill-trending" class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] text-center mt-3">Billed monthly. Dedicated lead editor.</p>
         </div>
 
         <!-- Package 3: Viral / Channel Scale -->
@@ -4323,10 +4426,11 @@
               The complete hands-off media engine for high-output creators, daily uploaders, and media brands.
             </p>
 
-            <div class="flex items-baseline gap-2 mb-8 pb-6 border-b border-white/[0.08]">
+            <div class="flex items-baseline gap-2 mb-3 pb-3 border-b border-white/[0.08]">
               <span id="price-viral" class="text-4xl sm:text-5xl font-extrabold text-[#FFFDD9] font-mono tracking-tight">$4,495</span>
-              <span id="period-viral" class="text-xs font-mono text-[rgba(255,253,217,0.5)]">/ month</span>
+              <span id="period-viral" class="text-xs font-mono text-[rgba(255,253,217,0.6)]">/ month</span>
             </div>
+            <div id="sub-viral" class="text-xs font-mono text-[#e05326] mb-6">~$187 per video asset (12+ Long + 12 Shorts)</div>
 
             <!-- Features List -->
             <div class="space-y-3.5 mb-8">
@@ -4368,6 +4472,7 @@
           <a href="#booking" class="w-full py-4 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-[#FFFDD9] text-xs font-extrabold uppercase tracking-wider text-center block transition-all border border-white/[0.1]">
             Scale Your Channel →
           </a>
+          <p id="bill-viral" class="text-[11px] font-mono text-[rgba(255,253,217,0.6)] text-center mt-3">Billed monthly. Full YouTube management.</p>
         </div>
 
       </div>
@@ -5398,13 +5503,13 @@
           ctx.restore();
 
           // Update Realtime Telemetry HUD
-          const curDay = Math.min(90, Math.max(1, Math.round(hoverU * 90)));
-          const curViews = (0.3 + Math.pow(hoverU, 2.15) * 14.5).toFixed(1) + 'M';
-          const curRev = '+$' + Math.round(16 + Math.pow(hoverU, 2.15) * 224) + 'K/mo';
+          const curCtr = (4.8 + Math.pow(hoverU, 1.4) * 3.8).toFixed(1) + '%';
+          const curViews = (1.2 + Math.pow(hoverU, 2.15) * 64.8).toFixed(1) + 'M';
+          const curHook = (62 + Math.pow(hoverU, 1.2) * 18).toFixed(1) + '% HOOK';
 
-          if (hudDay) hudDay.textContent = `DAY ${curDay}`;
-          if (hudViews) hudViews.textContent = curViews;
-          if (hudRevenue) hudRevenue.textContent = curRev;
+          if (hudDay) hudDay.textContent = curHook;
+          if (hudViews) hudViews.textContent = curCtr;     // Matches "AVG CTR:"
+          if (hudRevenue) hudRevenue.textContent = curViews; // Matches "TOTAL VIEWS:" 
 
           if (hud) {
             hud.style.opacity = '1';
@@ -6557,11 +6662,13 @@
        9. LIVE UTC FOOTER CLOCK & TRANSMISSION HANDLER
        ========================================================== */
     function updateClock() {
-      const clockEl = document.getElementById("footer-live-clock");
+      const clockEl = document.getElementById("footer-live-utc") || document.getElementById("footer-live-clock");
       if (clockEl) {
         const now = new Date();
-        const utcStr = now.toTimeString().split(" ")[0] + " UTC";
-        clockEl.textContent = utcStr;
+        const h = String(now.getUTCHours()).padStart(2, "0");
+        const m = String(now.getUTCMinutes()).padStart(2, "0");
+        const s = String(now.getUTCSeconds()).padStart(2, "0");
+        clockEl.textContent = `UTC: ${h}:${m}:${s}`;
       }
     }
     setInterval(updateClock, 1000);
@@ -6659,208 +6766,6 @@
       });
     }
 
-    /* ==========================================================
-       STUDIO STRATEGY CALENDAR ENGINE
-       ========================================================== */
-    const calMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let curCalYear = 2026;
-    let curCalMonth = 9; // October (0-indexed)
-    let selectedCalDay = 20;
-    let selectedCalTime = "02:00 PM PST";
-
-    const availableTimeSlots = [
-      { time: "10:00 AM PST", tag: "" },
-      { time: "11:30 AM PST", tag: "" },
-      { time: "02:00 PM PST", tag: "★ POPULAR" },
-      { time: "04:30 PM PST", tag: "" },
-      { time: "06:00 PM PST", tag: "" }
-    ];
-
-    function renderStudioCalendar() {
-      const monthTitle = document.getElementById("cal-month-title");
-      const daysGrid = document.getElementById("cal-days-grid");
-      if (!monthTitle || !daysGrid) return;
-
-      monthTitle.textContent = `${calMonths[curCalMonth]} ${curCalYear}`;
-
-      const firstDayIndex = new Date(curCalYear, curCalMonth, 1).getDay(); // 0 is Sun
-      const startOffset = (firstDayIndex + 6) % 7; // 0 is Mon
-      const totalDays = new Date(curCalYear, curCalMonth + 1, 0).getDate();
-
-      let html = "";
-      for (let i = 0; i < startOffset; i++) {
-        html += `<div class="p-1 text-neutral-800 text-xs font-mono"></div>`;
-      }
-
-      for (let d = 1; d <= totalDays; d++) {
-        const dayOfWeek = (startOffset + d - 1) % 7;
-        const isSunday = (dayOfWeek === 6);
-        const isPast = (d < 14 && curCalMonth === 9 && curCalYear === 2026);
-        const isAvailable = !isSunday && !isPast;
-        const isSelected = (d === selectedCalDay);
-
-        if (!isAvailable) {
-          html += `
-            <div class="h-8 flex items-center justify-center rounded-lg text-neutral-600 text-xs font-mono opacity-40 cursor-not-allowed">
-              ${d}
-            </div>
-          `;
-        } else {
-          const selClass = isSelected 
-            ? "bg-[#e05326] text-white font-extrabold shadow-[0_0_12px_rgba(224,83,38,0.6)]" 
-            : "bg-white/[0.04] hover:bg-white/[0.12] text-[#FFFDD9] font-medium";
-          
-          html += `
-            <button type="button" onclick="selectCalDate(${d})" class="h-8 flex flex-col items-center justify-center rounded-lg text-xs font-mono transition-all relative ${selClass}">
-              <span>${d}</span>
-              ${!isSelected ? '<span class="w-1 h-1 rounded-full bg-[#e05326] absolute bottom-1"></span>' : ''}
-            </button>
-          `;
-        }
-      }
-
-      daysGrid.innerHTML = html;
-      renderTimeSlots();
-      updateSelectedSlotUI();
-    }
-
-    function renderTimeSlots() {
-      const container = document.getElementById("cal-time-slots-container");
-      const dateLabel = document.getElementById("cal-selected-date-label");
-      if (!container) return;
-
-      const dateObj = new Date(curCalYear, curCalMonth, selectedCalDay);
-      const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      const dayName = dayNames[dateObj.getDay()];
-      const monthAbbr = calMonths[curCalMonth].slice(0, 3);
-      if (dateLabel) {
-        dateLabel.textContent = `${dayName}, ${monthAbbr} ${selectedCalDay}`;
-      }
-
-      let slotsHtml = "";
-      availableTimeSlots.forEach(slot => {
-        const isSel = (slot.time === selectedCalTime);
-        const btnClass = isSel 
-          ? "bg-[#e05326] text-white font-bold shadow-[0_0_15px_rgba(224,83,38,0.4)]" 
-          : "bg-white/[0.04] hover:bg-white/[0.1] text-[#FFFDD9]";
-
-        slotsHtml += `
-          <button type="button" onclick="selectTimeSlot('${slot.time}')" class="w-full px-3 py-2 rounded-lg text-xs font-mono flex items-center justify-between transition-all ${btnClass}">
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full ${isSel ? 'bg-white' : 'bg-[#e05326]'}"></span>
-              ${slot.time}
-            </span>
-            ${slot.tag ? `<span class="text-[9px] px-1.5 py-0.2 rounded font-bold ${isSel ? 'bg-white/20 text-white' : 'bg-[#e05326]/20 text-[#e05326]'}">${slot.tag}</span>` : ''}
-          </button>
-        `;
-      });
-
-      container.innerHTML = slotsHtml;
-    }
-
-    function selectCalDate(day) {
-      selectedCalDay = day;
-      playBeep(520, "sine", 0.04);
-      renderStudioCalendar();
-    }
-
-    function selectTimeSlot(time) {
-      selectedCalTime = time;
-      playBeep(640, "sine", 0.04);
-      renderTimeSlots();
-      updateSelectedSlotUI();
-    }
-
-    function updateSelectedSlotUI() {
-      const dateObj = new Date(curCalYear, curCalMonth, selectedCalDay);
-      const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      const dayName = dayNames[dateObj.getDay()];
-      const monthAbbr = calMonths[curCalMonth].slice(0, 3);
-      const slotString = `${dayName}, ${monthAbbr} ${selectedCalDay} @ ${selectedCalTime}`;
-
-      const slotNameEl = document.getElementById("cal-slot-name");
-      if (slotNameEl) slotNameEl.textContent = slotString;
-
-      const hiddenInput = document.getElementById("selected-call-slot");
-      if (hiddenInput) hiddenInput.value = slotString;
-
-      const formSlotText = document.getElementById("form-slot-text");
-      if (formSlotText) formSlotText.textContent = `Selected Call: ${slotString}`;
-    }
-
-    function confirmSelectedSlot() {
-      playBeep(750, "sine", 0.06);
-      const nameInput = document.getElementById("creator-name");
-      if (nameInput) {
-        nameInput.focus();
-        nameInput.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }
-
-    function prevMonthCal() {
-      if (curCalMonth > 0) {
-        curCalMonth--;
-      } else {
-        curCalMonth = 11;
-        curCalYear--;
-      }
-      playBeep(450, "sine", 0.03);
-      renderStudioCalendar();
-    }
-
-    function nextMonthCal() {
-      if (curCalMonth < 11) {
-        curCalMonth++;
-      } else {
-        curCalMonth = 0;
-        curCalYear++;
-      }
-      playBeep(450, "sine", 0.03);
-      renderStudioCalendar();
-    }
-
-    function handleTransmissionSubmit(event) {
-      event.preventDefault();
-      const form = document.getElementById("transmission-form");
-      const successBox = document.getElementById("transmission-success");
-      const submitBtn = document.getElementById("btn-submit-transmission");
-      const confirmedDisplay = document.getElementById("confirmed-slot-display");
-      const hiddenInput = document.getElementById("selected-call-slot");
-
-      playBeep(880, "sine", 0.1);
-
-      if (confirmedDisplay && hiddenInput) {
-        confirmedDisplay.textContent = `Your 30-min strategy call for ${hiddenInput.value} has been logged.`;
-      }
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = "<span>Transmission Received ✓</span>";
-        submitBtn.classList.remove("bg-[#e05326]");
-        submitBtn.classList.add("bg-emerald-600");
-      }
-
-      if (successBox) {
-        successBox.classList.remove("hidden");
-        successBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
-    }
-
-    window.selectCalDate = selectCalDate;
-    window.selectTimeSlot = selectTimeSlot;
-    window.confirmSelectedSlot = confirmSelectedSlot;
-    window.prevMonthCal = prevMonthCal;
-    window.nextMonthCal = nextMonthCal;
-    window.handleTransmissionSubmit = handleTransmissionSubmit;
-
-    // Initialize calendar on load
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", renderStudioCalendar);
-    } else {
-      renderStudioCalendar();
-    }
-
-  
     /* ==========================================================
        VIDEO SHOWCASE & ASYNC AUDIT ENGINE
        ========================================================== */
